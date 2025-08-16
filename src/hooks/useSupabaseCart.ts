@@ -60,6 +60,7 @@ export const useSupabaseCart = () => {
       setCart(data || []);
     } catch (error: any) {
       console.error('Error fetching cart:', error);
+      setCart([]);
     } finally {
       setLoading(false);
     }
@@ -155,7 +156,10 @@ export const useSupabaseCart = () => {
         if (error) throw error;
       }
 
-      await fetchCart();
+      // Force refresh cart data
+      setTimeout(async () => {
+        await fetchCart();
+      }, 100);
       
       toast({
         title: "Produit ajouté",
@@ -185,7 +189,10 @@ export const useSupabaseCart = () => {
 
       if (error) throw error;
 
-      await fetchCart();
+      // Force refresh cart data
+      setTimeout(async () => {
+        await fetchCart();
+      }, 100);
     } catch (error: any) {
       console.error('Error updating quantity:', error);
       toast({
@@ -205,7 +212,10 @@ export const useSupabaseCart = () => {
 
       if (error) throw error;
 
-      await fetchCart();
+      // Force refresh cart data  
+      setTimeout(async () => {
+        await fetchCart();
+      }, 100);
       
       toast({
         title: "Produit retiré",
