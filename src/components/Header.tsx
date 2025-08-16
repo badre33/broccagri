@@ -1,7 +1,7 @@
 import { ShoppingCart, Menu, Phone, MapPin } from 'lucide-react';
 import { Button } from '@/components/ui/custom-button';
 import { Badge } from '@/components/ui/badge';
-import { useCart } from '@/hooks/useCart';
+import { useSupabaseCart } from '@/hooks/useSupabaseCart';
 
 interface HeaderProps {
   onCartClick: () => void;
@@ -9,7 +9,7 @@ interface HeaderProps {
 }
 
 export function Header({ onCartClick, onMenuClick }: HeaderProps) {
-  const { itemCount } = useCart();
+  const { itemCount } = useSupabaseCart();
 
   return (
     <header className="bg-white shadow-md sticky top-0 z-50">

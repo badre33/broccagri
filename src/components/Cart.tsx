@@ -1,10 +1,8 @@
-import { useState } from 'react';
-import { X, Plus, Minus, ShoppingBag, CreditCard, Truck } from 'lucide-react';
+import React from 'react';
 import { Button } from '@/components/ui/custom-button';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { Separator } from '@/components/ui/separator';
-import { useCart } from '@/hooks/useCart';
+import { Minus, Plus, Trash2, ShoppingBag, ArrowLeft } from 'lucide-react';
+import { useSupabaseCart } from '@/hooks/useSupabaseCart';
 
 interface CartProps {
   isOpen: boolean;
@@ -12,30 +10,24 @@ interface CartProps {
 }
 
 export function Cart({ isOpen, onClose }: CartProps) {
-  const { items, total, updateQuantity, removeFromCart, clearCart } = useCart();
-  const [showCheckout, setShowCheckout] = useState(false);
+  const { items, total, itemCount, updateQuantity, removeFromCart, clearCart } = useSupabaseCart();
 
   if (!isOpen) return null;
 
-  const deliveryFee = total > 100 ? 0 : 15;
+  const deliveryFee = total < 100 ? 15 : 0;
   const finalTotal = total + deliveryFee;
 
   return (
     <div className="fixed inset-0 z-50 bg-black/50 backdrop-blur-sm">
-      <div className="fixed right-0 top-0 h-full w-full max-w-md bg-white shadow-xl overflow-hidden">
+      <div className="fixed right-0 top-0 h-full w-full max-w-md bg-background shadow-xl border-l">
         <div className="flex flex-col h-full">
           {/* Header */}
-          <div className="p-4 border-b bg-primary text-primary-foreground">
-            <div className="flex items-center justify-between">
-              <div className="flex items-center gap-2">
-                <ShoppingBag className="h-5 w-5" />
-                <h2 className="text-lg font-semibold">Mon Panier</h2>
-                <Badge variant="secondary" className="bg-white/20 text-white">
-                  {items.length}
-                </Badge>
-              </div>
-              <Button variant="ghost" size="icon" onClick={onClose} className="text-white hover:bg-white/20">
-                <X className="h-5 w-5" />
+          <div className="flex items-center justify-between p-4 border-b">
+            <h2 className="text-lg font-bold">Mon Panier</h2>
+            <div className="flex items-center gap-2">
+              <Badge variant="secondary">{itemCount} article{itemCount > 1 ? 's' : ''}</Badge>
+              <Button variant="ghost" size="icon" onClick={onClose}>
+                <ArrowLeft className="h-4 w-4" />
               </Button>
             </div>
           </div>
@@ -43,128 +35,107 @@ export function Cart({ isOpen, onClose }: CartProps) {
           {/* Content */}
           <div className="flex-1 overflow-y-auto">
             {items.length === 0 ? (
-              <div className="flex flex-col items-center justify-center h-full p-8 text-center">
+              <div className="flex flex-col items-center justify-center h-full p-6">
                 <ShoppingBag className="h-16 w-16 text-muted-foreground mb-4" />
-                <h3 className="text-lg font-semibold mb-2">Votre panier est vide</h3>
-                <p className="text-muted-foreground mb-6">
-                  Découvrez nos produits frais et commencez vos achats !
+                <h3 className="text-lg font-medium mb-2">Votre panier est vide</h3>
+                <p className="text-muted-foreground text-center mb-4">
+                  Découvrez nos produits frais et ajoutez-les à votre panier
                 </p>
-                <Button variant="premium" onClick={onClose}>
+                <Button onClick={onClose}>
                   Continuer mes achats
                 </Button>
               </div>
             ) : (
               <div className="p-4 space-y-4">
-                {items.map(item => (
-                  <Card key={item.product.id} className="p-4">
-                    <div className="flex items-start gap-3">
-                      <img 
-                        src={`https://images.unsplash.com/400x300/?${encodeURIComponent(item.product.name)}&fit=crop&auto=format`}
-                        alt={item.product.name}
-                        className="w-16 h-16 object-cover rounded-md"
-                        onError={(e) => {
-                          (e.target as HTMLImageElement).src = 'https://images.unsplash.com/photo-1590779033100-9f60a05a013d?w=400&h=300&fit=crop&auto=format';
-                        }}
-                      />
-                      
-                      <div className="flex-1">
-                        <h4 className="font-medium text-sm">{item.product.name}</h4>
-                        <p className="text-sm text-muted-foreground">
-                          {item.product.price.toFixed(2)} DH/{item.product.unit}
-                        </p>
-                        
-                        <div className="flex items-center justify-between mt-2">
-                          <div className="flex items-center gap-1">
-                            <Button 
-                              variant="outline" 
-                              size="icon" 
-                              className="h-6 w-6"
-                              onClick={() => updateQuantity(item.product.id, item.quantity - 0.5)}
-                            >
-                              <Minus className="h-3 w-3" />
-                            </Button>
-                            <span className="text-sm font-medium min-w-[3rem] text-center">
-                              {item.quantity} {item.product.unit}
-                            </span>
-                            <Button 
-                              variant="outline" 
-                              size="icon" 
-                              className="h-6 w-6"
-                              onClick={() => updateQuantity(item.product.id, item.quantity + 0.5)}
-                            >
-                              <Plus className="h-3 w-3" />
-                            </Button>
-                          </div>
-                          
-                          <Button 
-                            variant="ghost" 
-                            size="sm"
-                            onClick={() => removeFromCart(item.product.id)}
-                            className="text-destructive hover:text-destructive"
-                          >
-                            Supprimer
-                          </Button>
-                        </div>
-                      </div>
-                      
-                      <div className="text-right">
-                        <p className="font-semibold">
-                          {(item.product.price * item.quantity).toFixed(2)} DH
-                        </p>
-                      </div>
+                {items.map((item) => (
+                  <div key={item.id} className="flex items-center gap-3 p-3 bg-card rounded-lg border">
+                    <img 
+                      src={item.products.image_url || '/placeholder.svg'} 
+                      alt={item.products.name}
+                      className="w-16 h-16 object-cover rounded-lg"
+                    />
+                    <div className="flex-1">
+                      <h4 className="font-medium text-sm">{item.products.name}</h4>
+                      <p className="text-xs text-muted-foreground">
+                        {item.products.price.toFixed(2)} DH/{item.products.unit}
+                      </p>
                     </div>
-                  </Card>
+                    
+                    <div className="flex items-center gap-2">
+                      <Button 
+                        variant="outline" 
+                        size="icon" 
+                        className="h-8 w-8"
+                        onClick={() => updateQuantity(item.id, item.quantity - 0.5)}
+                        disabled={item.quantity <= 0.5}
+                      >
+                        <Minus className="h-3 w-3" />
+                      </Button>
+                      <span className="min-w-[3rem] text-center text-sm font-medium">
+                        {item.quantity} {item.products.unit}
+                      </span>
+                      <Button 
+                        variant="outline" 
+                        size="icon" 
+                        className="h-8 w-8"
+                        onClick={() => updateQuantity(item.id, item.quantity + 0.5)}
+                      >
+                        <Plus className="h-3 w-3" />
+                      </Button>
+                      <Button 
+                        variant="outline" 
+                        size="icon" 
+                        className="h-8 w-8 text-destructive hover:text-destructive"
+                        onClick={() => removeFromCart(item.id)}
+                      >
+                        <Trash2 className="h-3 w-3" />
+                      </Button>
+                    </div>
+                    
+                    <div className="text-right">
+                      <p className="font-medium text-sm">
+                        {(item.products.price * item.quantity).toFixed(2)} DH
+                      </p>
+                    </div>
+                  </div>
                 ))}
               </div>
             )}
           </div>
 
-          {/* Footer */}
+          {/* Footer with totals and actions */}
           {items.length > 0 && (
             <div className="border-t p-4 space-y-4">
-              {/* Summary */}
               <div className="space-y-2">
                 <div className="flex justify-between text-sm">
-                  <span>Sous-total</span>
+                  <span>Sous-total:</span>
                   <span>{total.toFixed(2)} DH</span>
                 </div>
                 <div className="flex justify-between text-sm">
-                  <span className="flex items-center gap-1">
-                    <Truck className="h-4 w-4" />
-                    Livraison
-                  </span>
-                  <span>
-                    {deliveryFee === 0 ? (
-                      <Badge variant="secondary" className="text-xs">Gratuite</Badge>
-                    ) : (
-                      `${deliveryFee.toFixed(2)} DH`
-                    )}
-                  </span>
+                  <span>Frais de livraison:</span>
+                  <span>{deliveryFee === 0 ? 'Gratuit' : `${deliveryFee.toFixed(2)} DH`}</span>
                 </div>
-                {deliveryFee > 0 && (
+                {total < 100 && (
                   <p className="text-xs text-muted-foreground">
-                    Livraison gratuite dès 100 DH d'achat
+                    Livraison gratuite à partir de 100 DH
                   </p>
                 )}
-                <Separator />
-                <div className="flex justify-between font-semibold text-lg">
-                  <span>Total</span>
-                  <span>{finalTotal.toFixed(2)} DH</span>
+                <div className="flex justify-between font-bold text-lg border-t pt-2">
+                  <span>Total:</span>
+                  <span className="text-primary">{finalTotal.toFixed(2)} DH</span>
                 </div>
               </div>
 
-              {/* Actions */}
               <div className="space-y-2">
-                <Button variant="premium" className="w-full" size="lg">
-                  <CreditCard className="mr-2 h-4 w-4" />
+                <Button variant="premium" className="w-full">
                   Procéder au paiement
                 </Button>
                 <div className="flex gap-2">
-                  <Button variant="outline" className="flex-1" onClick={() => clearCart()}>
-                    Vider le panier
+                  <Button variant="outline" className="flex-1" onClick={onClose}>
+                    Continuer mes achats
                   </Button>
-                  <Button variant="secondary" className="flex-1" onClick={onClose}>
-                    Continuer
+                  <Button variant="outline" onClick={clearCart}>
+                    Vider le panier
                   </Button>
                 </div>
               </div>
