@@ -2,7 +2,7 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/custom-button';
 import { Badge } from '@/components/ui/badge';
 import { Plus, Minus, ShoppingCart } from 'lucide-react';
-import { Product } from '@/data/products';
+import { Product } from '@/hooks/useProducts';
 import { useState } from 'react';
 
 interface ProductCardProps {
@@ -22,19 +22,16 @@ export function ProductCard({ product, onAddToCart }: ProductCardProps) {
     setQuantity(0.5); // Reset quantity after adding
   };
 
-  // Generate placeholder image URL based on product name
-  const getImageUrl = (productName: string) => {
-    // For demo purposes, we'll use a placeholder service
-    // In production, you would use the actual product images
-    const encodedName = encodeURIComponent(productName);
-    return `https://images.unsplash.com/400x300/?${encodedName}&fit=crop&auto=format`;
+  // Use the image URL from the database or fallback
+  const getImageUrl = () => {
+    return product.image_url || 'https://images.unsplash.com/photo-1590779033100-9f60a05a013d?w=400&h=300&fit=crop&auto=format';
   };
 
   return (
     <Card className="premium-card overflow-hidden group">
       <div className="relative h-48 overflow-hidden">
         <img 
-          src={getImageUrl(product.name)} 
+          src={getImageUrl()} 
           alt={product.name}
           className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
           onError={(e) => {
@@ -54,7 +51,7 @@ export function ProductCard({ product, onAddToCart }: ProductCardProps) {
           variant="outline" 
           className="absolute top-3 right-3 bg-white/90 text-primary border-primary"
         >
-          {product.category}
+          {product.categories?.name || 'Produit'}
         </Badge>
       </div>
       
