@@ -8,14 +8,12 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
           {/* Brand */}
           <div>
-            <div className="flex items-center gap-2 mb-4">
-              <div className="bg-white text-primary p-2 rounded-lg">
-                <span className="text-xl font-bold">🥬</span>
-              </div>
-              <div>
-                <h3 className="text-xl font-bold">BroccAgri</h3>
-                <p className="text-sm opacity-80">Frais & Local</p>
-              </div>
+            <div className="mb-4">
+              <img 
+                src="/lovable-uploads/d1e12569-f4ca-4c88-9d38-38d5962561d4.png" 
+                alt="BroccAgri" 
+                className="h-10 w-auto brightness-0 invert"
+              />
             </div>
             <p className="opacity-90 leading-relaxed mb-4">
               Votre partenaire de confiance pour des produits agricoles frais, 

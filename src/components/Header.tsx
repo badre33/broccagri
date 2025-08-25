@@ -35,37 +35,34 @@ export function Header({ onCartClick, onMenuClick }: HeaderProps) {
       {/* Main header */}
       <div className="container mx-auto px-4 py-4">
         <div className="flex items-center justify-between">
-          {/* Logo BroccAgri exact selon charte */}
-          <div className="flex items-center gap-3">
+          {/* Logo BroccAgri */}
+          <div>
             <img 
               src="/lovable-uploads/d1e12569-f4ca-4c88-9d38-38d5962561d4.png" 
               alt="BroccAgri - Produits agricoles frais du Maroc" 
               className="h-12 w-auto"
             />
-            <div>
-              <h1 className="text-2xl font-heading font-bold text-brand-slate">
-                Broccagri
-              </h1>
-              <p className="text-xs text-muted-foreground font-body">Des produits agricoles, pour votre bonheur</p>
-            </div>
           </div>
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center gap-6">
-            <a href="#accueil" className="text-foreground hover:text-primary transition-colors font-medium">
+            <a href="/" className="text-foreground hover:text-primary transition-colors font-medium">
               Accueil
             </a>
-            <a href="#legumes" className="text-foreground hover:text-primary transition-colors font-medium">
+            <a href="/legumes" className="text-foreground hover:text-primary transition-colors font-medium">
               Légumes
             </a>
-            <a href="#fruits" className="text-foreground hover:text-primary transition-colors font-medium">
+            <a href="/fruits" className="text-foreground hover:text-primary transition-colors font-medium">
               Fruits
             </a>
-            <a href="#salades" className="text-foreground hover:text-primary transition-colors font-medium">
+            <a href="/salades" className="text-foreground hover:text-primary transition-colors font-medium">
               Salades
             </a>
-            <a href="#herbes" className="text-foreground hover:text-primary transition-colors font-medium">
+            <a href="/herbes" className="text-foreground hover:text-primary transition-colors font-medium">
               Herbes
+            </a>
+            <a href="/blog" className="text-foreground hover:text-primary transition-colors font-medium">
+              Blog
             </a>
             <a href="#contact" className="text-foreground hover:text-primary transition-colors font-medium">
               Contact

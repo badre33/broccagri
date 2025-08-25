@@ -10,12 +10,13 @@ export function Hero({ onOrderClick }: HeroProps) {
   return (
     <section id="accueil" className="relative min-h-[80vh] flex items-center">
       {/* Background */}
-      <div className="absolute inset-0 hero-gradient">
+      <div className="absolute inset-0">
         <img 
           src={heroImage} 
           alt="Produits frais BroccAgri" 
-          className="w-full h-full object-cover mix-blend-overlay"
+          className="w-full h-full object-cover"
         />
+        <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/40 to-black/60"></div>
       </div>
       
       {/* Content */}

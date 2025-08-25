@@ -2,6 +2,9 @@ import React from 'react';
 import { Button } from '@/components/ui/custom-button';
 import { Card, CardContent } from '@/components/ui/card';
 import { useCategories } from '@/hooks/useProducts';
+import categoryVegetables from '@/assets/category-vegetables.jpg';
+import categoryFruits from '@/assets/category-fruits.jpg';
+import categoryHerbs from '@/assets/category-herbs.jpg';
 
 interface CategoriesProps {
   onCategoryClick: (category: string) => void;
@@ -12,10 +15,10 @@ export function Categories({ onCategoryClick }: CategoriesProps) {
 
   // Mapping des images par slug de catégorie
   const categoryImages = {
-    'legumes': '/src/assets/category-vegetables.jpg',
-    'fruits': '/src/assets/category-fruits.jpg', 
-    'salades': '/src/assets/category-herbs.jpg',
-    'herbes': '/src/assets/category-herbs.jpg'
+    'legumes': categoryVegetables,
+    'fruits': categoryFruits, 
+    'salades': categoryHerbs,
+    'herbes': categoryHerbs
   };
 
   if (loading) {
@@ -56,7 +59,7 @@ export function Categories({ onCategoryClick }: CategoriesProps) {
             >
               <div className="relative h-48 overflow-hidden">
                 <img 
-                  src={categoryImages[category.slug as keyof typeof categoryImages] || '/src/assets/category-vegetables.jpg'}
+                  src={categoryImages[category.slug as keyof typeof categoryImages] || categoryVegetables}
                   alt={category.name}
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                 />
