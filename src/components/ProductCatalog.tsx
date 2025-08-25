@@ -11,6 +11,23 @@ interface ProductCatalogProps {
   selectedCategory?: string;
 }
 
+// Descriptions personnalisées par catégorie
+const getCategoryDescription = (selectedCategory?: string, categoryName?: string) => {
+  if (!selectedCategory) {
+    return 'Découvrez notre sélection de produits les plus populaires, cultivés avec passion par nos agriculteurs partenaires';
+  }
+
+  const descriptions = {
+    legumes: 'Découvrez nos légumes frais cultivés dans le respect des traditions agricoles marocaines. Des produits de qualité, récoltés à maturité pour préserver toutes leurs saveurs et leurs bienfaits nutritionnels.',
+    fruits: 'Savourez nos fruits de saison, gorgés de soleil et récoltés à parfaite maturité. Une explosion de saveurs naturelles directement de nos vergers partenaires vers votre table.',
+    salades: 'Croquantes et rafraîchissantes, nos salades et légumes verts sont cueillis quotidiennement pour vous garantir une fraîcheur optimale. Parfaites pour des repas sains et équilibrés.',
+    herbes: 'Aromates et herbes fraîches pour sublimer vos plats. Cultivées avec soin selon les méthodes traditionnelles, elles apporteront authenticité et parfum à votre cuisine.'
+  };
+
+  return descriptions[selectedCategory as keyof typeof descriptions] || 
+    `Découvrez notre sélection complète de ${categoryName?.toLowerCase() || 'produits'} frais du terroir marocain`;
+};
+
 export function ProductCatalog({ selectedCategory }: ProductCatalogProps) {
   const [searchTerm, setSearchTerm] = useState('');
   const [priceRange, setPriceRange] = useState<string>('all');
@@ -61,10 +78,7 @@ export function ProductCatalog({ selectedCategory }: ProductCatalogProps) {
             }
           </h2>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            {selectedCategory ? 
-              `Découvrez notre sélection complète de ${currentCategory?.name?.toLowerCase() || 'produits'} frais du terroir marocain` :
-              'Découvrez notre sélection de produits les plus populaires, cultivés avec passion par nos agriculteurs partenaires'
-            }
+            {getCategoryDescription(selectedCategory, currentCategory?.name)}
           </p>
         </div>
 

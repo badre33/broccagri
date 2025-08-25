@@ -20,12 +20,22 @@ export function Footer() {
               directement du terroir marocain à votre table.
             </p>
             <div className="flex gap-2">
-              <Button variant="ghost" size="icon" className="text-white hover:bg-white/20">
-                <Facebook className="h-5 w-5" />
-              </Button>
-              <Button variant="ghost" size="icon" className="text-white hover:bg-white/20">
-                <Instagram className="h-5 w-5" />
-              </Button>
+            <Button 
+              variant="ghost" 
+              size="icon" 
+              className="text-white hover:bg-white/20"
+              onClick={() => window.open('https://www.facebook.com/profile.php?id=61572799044315', '_blank')}
+            >
+              <Facebook className="h-5 w-5" />
+            </Button>
+            <Button 
+              variant="ghost" 
+              size="icon" 
+              className="text-white hover:bg-white/20"
+              onClick={() => window.open('https://www.instagram.com/brocc_agri/', '_blank')}
+            >
+              <Instagram className="h-5 w-5" />
+            </Button>
             </div>
           </div>
 
@@ -67,8 +77,11 @@ export function Footer() {
               <a href="#herbes" className="block opacity-90 hover:opacity-100 transition-opacity">
                 Herbes
               </a>
-              <a href="#contact" className="block opacity-90 hover:opacity-100 transition-opacity">
+              <a href="/contact" className="block opacity-90 hover:opacity-100 transition-opacity">
                 Contact
+              </a>
+              <a href="/blog" className="block opacity-90 hover:opacity-100 transition-opacity">
+                Blog
               </a>
             </div>
           </div>

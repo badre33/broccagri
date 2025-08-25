@@ -64,7 +64,7 @@ export function Header({ onCartClick, onMenuClick }: HeaderProps) {
             <a href="/blog" className="text-foreground hover:text-primary transition-colors font-medium">
               Blog
             </a>
-            <a href="#contact" className="text-foreground hover:text-primary transition-colors font-medium">
+            <a href="/contact" className="text-foreground hover:text-primary transition-colors font-medium">
               Contact
             </a>
           </nav>
