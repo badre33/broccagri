@@ -35,14 +35,14 @@ export interface Category {
   updated_at: string;
 }
 
-export const useProducts = (categorySlug?: string, searchTerm?: string) => {
+export const useProducts = (categorySlug?: string, searchTerm?: string, featuredOnly?: boolean) => {
   const [products, setProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     fetchProducts();
-  }, [categorySlug, searchTerm]);
+  }, [categorySlug, searchTerm, featuredOnly]);
 
   const fetchProducts = async () => {
     try {
@@ -57,13 +57,30 @@ export const useProducts = (categorySlug?: string, searchTerm?: string) => {
             slug
           )
         `)
-        .eq('is_active', true)
-        .order('name');
+        .eq('is_active', true);
 
-      if (categorySlug && categorySlug !== 'all') {
-        query = query.eq('categories.slug', categorySlug);
+      // Si on veut seulement les produits mis en avant (par défaut, prendre les 12 premiers par prix)
+      if (featuredOnly) {
+        query = query.order('price', { ascending: true }).limit(12);
+      } else {
+        query = query.order('name');
       }
 
+      // Filtrer par catégorie si spécifiée
+      if (categorySlug && categorySlug !== 'all') {
+        // D'abord récupérer l'ID de la catégorie
+        const { data: categoryData } = await supabase
+          .from('categories')
+          .select('id')
+          .eq('slug', categorySlug)
+          .single();
+        
+        if (categoryData) {
+          query = query.eq('category_id', categoryData.id);
+        }
+      }
+
+      // Filtrer par terme de recherche
       if (searchTerm) {
         query = query.or(`name.ilike.%${searchTerm}%,description.ilike.%${searchTerm}%`);
       }

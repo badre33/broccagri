@@ -18,15 +18,22 @@ export function ProductCatalog({ selectedCategory }: ProductCatalogProps) {
   
   const { addToCart } = useSupabaseCart();
   const { categories, loading: categoriesLoading } = useCategories();
+  
+  // Afficher seulement les produits mis en avant si aucune catégorie n'est sélectionnée
+  const showFeaturedOnly = !selectedCategory && filterCategory === 'all' && !searchTerm;
+  
   const { products, loading: productsLoading } = useProducts(
-    filterCategory !== 'all' ? filterCategory : undefined,
-    searchTerm || undefined
+    selectedCategory || (filterCategory !== 'all' ? filterCategory : undefined),
+    searchTerm || undefined,
+    showFeaturedOnly
   );
 
   // Utiliser la catégorie sélectionnée depuis les props
   React.useEffect(() => {
     if (selectedCategory) {
       setFilterCategory(selectedCategory);
+    } else {
+      setFilterCategory('all');
     }
   }, [selectedCategory]);
 
@@ -54,10 +61,16 @@ export function ProductCatalog({ selectedCategory }: ProductCatalogProps) {
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
           <h2 className="text-4xl font-bold text-foreground mb-4">
-            Notre Catalogue
+            {selectedCategory ? 
+              `${categories.find(c => c.slug === selectedCategory)?.name || 'Produits'}` : 
+              'Produits Mis en Avant'
+            }
           </h2>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            Découvrez notre sélection de produits frais, cultivés avec passion par nos agriculteurs partenaires
+            {selectedCategory ? 
+              `Découvrez notre sélection de ${categories.find(c => c.slug === selectedCategory)?.name?.toLowerCase() || 'produits'}` :
+              'Découvrez notre sélection de produits les plus populaires, cultivés avec passion par nos agriculteurs partenaires'
+            }
           </p>
         </div>
 
@@ -85,60 +98,62 @@ export function ProductCatalog({ selectedCategory }: ProductCatalogProps) {
           </div>
         </div>
 
-        {/* Filtres par catégorie */}
-        <div className="mb-8">
-          <div className="flex flex-wrap gap-2 mb-6">
-            <Button
-              variant={filterCategory === 'all' ? 'premium' : 'outline'}
-              onClick={() => setFilterCategory('all')}
-              className="text-sm"
-            >
-              Toutes les catégories
-            </Button>
-            {categories.map((category) => (
+        {/* Filtres par catégorie - Masquer si une catégorie est déjà sélectionnée depuis les props */}
+        {!selectedCategory && (
+          <div className="mb-8">
+            <div className="flex flex-wrap gap-2 mb-6">
               <Button
-                key={category.id}
-                variant={filterCategory === category.slug ? 'premium' : 'outline'}
-                onClick={() => setFilterCategory(category.slug)}
+                variant={filterCategory === 'all' ? 'premium' : 'outline'}
+                onClick={() => setFilterCategory('all')}
                 className="text-sm"
               >
-                {category.name}
+                Produits mis en avant
               </Button>
-            ))}
-          </div>
+              {categories.map((category) => (
+                <Button
+                  key={category.id}
+                  variant={filterCategory === category.slug ? 'premium' : 'outline'}
+                  onClick={() => setFilterCategory(category.slug)}
+                  className="text-sm"
+                >
+                  {category.name}
+                </Button>
+              ))}
+            </div>
 
-          {/* Filtres par prix */}
-          <div className="flex flex-wrap gap-2">
-            <Button
-              variant={priceRange === 'all' ? 'premium' : 'outline'}
-              onClick={() => setPriceRange('all')}
-              className="text-sm"
-            >
-              Tous les prix
-            </Button>
-            <Button
-              variant={priceRange === 'low' ? 'premium' : 'outline'}
-              onClick={() => setPriceRange('low')}
-              className="text-sm"
-            >
-              ≤ 10 DH
-            </Button>
-            <Button
-              variant={priceRange === 'medium' ? 'premium' : 'outline'}
-              onClick={() => setPriceRange('medium')}
-              className="text-sm"
-            >
-              10-20 DH
-            </Button>
-            <Button
-              variant={priceRange === 'high' ? 'premium' : 'outline'}
-              onClick={() => setPriceRange('high')}
-              className="text-sm"
-            >
-              &gt; 20 DH
-            </Button>
+            {/* Filtres par prix */}
+            <div className="flex flex-wrap gap-2">
+              <Button
+                variant={priceRange === 'all' ? 'premium' : 'outline'}
+                onClick={() => setPriceRange('all')}
+                className="text-sm"
+              >
+                Tous les prix
+              </Button>
+              <Button
+                variant={priceRange === 'low' ? 'premium' : 'outline'}
+                onClick={() => setPriceRange('low')}
+                className="text-sm"
+              >
+                ≤ 10 DH
+              </Button>
+              <Button
+                variant={priceRange === 'medium' ? 'premium' : 'outline'}
+                onClick={() => setPriceRange('medium')}
+                className="text-sm"
+              >
+                10-20 DH
+              </Button>
+              <Button
+                variant={priceRange === 'high' ? 'premium' : 'outline'}
+                onClick={() => setPriceRange('high')}
+                className="text-sm"
+              >
+                &gt; 20 DH
+              </Button>
+            </div>
           </div>
-        </div>
+        )}
 
         {/* Nombre de produits trouvés */}
         <div className="flex items-center justify-between mb-6">
@@ -179,7 +194,9 @@ export function ProductCatalog({ selectedCategory }: ProductCatalogProps) {
               variant="outline" 
               onClick={() => {
                 setSearchTerm('');
-                setFilterCategory('all');
+                if (!selectedCategory) {
+                  setFilterCategory('all');
+                }
                 setPriceRange('all');
               }}
             >
