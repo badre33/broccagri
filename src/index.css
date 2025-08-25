@@ -6,33 +6,33 @@
 
 @layer base {
   :root {
-    /* Brand Colors - Fresh & Premium Theme */
+    /* Brand Colors - BroccAgri Theme */
     --background: 0 0% 100%;
-    --foreground: 155 8% 15%;
+    --foreground: 220 8% 25%;
 
     --card: 0 0% 100%;
-    --card-foreground: 155 8% 15%;
+    --card-foreground: 220 8% 25%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 155 8% 15%;
+    --popover-foreground: 220 8% 25%;
 
-    /* Primary - Fresh Green */
-    --primary: 142 69% 58%;
+    /* Primary - Nature Green (from logo) */
+    --primary: 140 65% 45%;
     --primary-foreground: 0 0% 100%;
-    --primary-hover: 142 69% 50%;
+    --primary-hover: 140 65% 40%;
 
-    /* Secondary - Soft Nature */
-    --secondary: 120 30% 96%;
-    --secondary-foreground: 155 8% 15%;
+    /* Secondary - Soft Earth */
+    --secondary: 120 20% 95%;
+    --secondary-foreground: 220 8% 25%;
 
-    /* Muted - Light Fresh */
-    --muted: 120 20% 97%;
-    --muted-foreground: 155 8% 45%;
+    /* Muted - Light Nature */
+    --muted: 120 15% 97%;
+    --muted-foreground: 220 8% 50%;
 
-    /* Accent - Fresh Orange */
-    --accent: 24 95% 53%;
+    /* Accent - Sun Orange (from logo) */
+    --accent: 35 90% 55%;
     --accent-foreground: 0 0% 100%;
-    --accent-hover: 24 95% 45%;
+    --accent-hover: 35 90% 50%;
 
     /* Success - Nature Green */
     --success: 142 76% 36%;
@@ -45,15 +45,15 @@
     --input: 120 20% 90%;
     --ring: 142 69% 58%;
 
-    /* Premium Gradients */
-    --gradient-primary: linear-gradient(135deg, hsl(142 69% 58%), hsl(142 76% 36%));
-    --gradient-accent: linear-gradient(135deg, hsl(24 95% 53%), hsl(35 100% 50%));
-    --gradient-hero: linear-gradient(135deg, hsl(142 69% 58% / 0.9), hsl(24 95% 53% / 0.8));
+    /* Premium Gradients - BroccAgri */
+    --gradient-primary: linear-gradient(135deg, hsl(140 65% 45%), hsl(140 70% 35%));
+    --gradient-accent: linear-gradient(135deg, hsl(35 90% 55%), hsl(45 95% 60%));
+    --gradient-hero: linear-gradient(135deg, hsl(140 65% 45% / 0.9), hsl(35 90% 55% / 0.8));
     
-    /* Premium Shadows */
-    --shadow-premium: 0 10px 30px -10px hsl(142 69% 58% / 0.2);
-    --shadow-card: 0 4px 12px -2px hsl(155 8% 15% / 0.08);
-    --shadow-elevated: 0 20px 40px -12px hsl(155 8% 15% / 0.15);
+    /* Premium Shadows - BroccAgri */
+    --shadow-premium: 0 10px 30px -10px hsl(140 65% 45% / 0.2);
+    --shadow-card: 0 4px 12px -2px hsl(220 8% 25% / 0.08);
+    --shadow-elevated: 0 20px 40px -12px hsl(220 8% 25% / 0.15);
 
     --radius: 0.5rem;
 
@@ -84,19 +84,19 @@
     --popover: 155 8% 10%;
     --popover-foreground: 0 0% 98%;
 
-    --primary: 142 69% 58%;
+    --primary: 140 65% 45%;
     --primary-foreground: 0 0% 100%;
-    --primary-hover: 142 69% 65%;
+    --primary-hover: 140 65% 50%;
 
-    --secondary: 155 8% 15%;
+    --secondary: 220 8% 15%;
     --secondary-foreground: 0 0% 98%;
 
-    --muted: 155 8% 15%;
-    --muted-foreground: 155 8% 65%;
+    --muted: 220 8% 15%;
+    --muted-foreground: 220 8% 65%;
 
-    --accent: 24 95% 53%;
+    --accent: 35 90% 55%;
     --accent-foreground: 0 0% 100%;
-    --accent-hover: 24 95% 60%;
+    --accent-hover: 35 90% 60%;
 
     --success: 142 76% 36%;
     --success-foreground: 0 0% 100%;
