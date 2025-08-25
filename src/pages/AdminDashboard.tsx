@@ -71,7 +71,7 @@ export default function AdminDashboard() {
         .order('created_at', { ascending: false });
 
       if (error) throw error;
-      setOrders(data || []);
+      setOrders((data as any) || []);
     } catch (error: any) {
       toast({
         title: "Erreur",

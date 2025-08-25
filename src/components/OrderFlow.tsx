@@ -71,7 +71,7 @@ export function OrderFlow({ isOpen, onClose }: OrderFlowProps) {
     setLoading(true);
 
     try {
-      // Créer la commande (order_number est généré automatiquement par la DB)
+      // Créer la commande (order_number sera généré automatiquement par le trigger)
       const { data: order, error: orderError } = await supabase
         .from('orders')
         .insert({
@@ -85,10 +85,10 @@ export function OrderFlow({ isOpen, onClose }: OrderFlowProps) {
             street: deliveryInfo.street,
             city: deliveryInfo.city,
             postalCode: deliveryInfo.postalCode
-          },
+          } as any,
           notes: deliveryInfo.notes || null,
           status: 'pending' as const
-        })
+        } as any)
         .select()
         .single();
 

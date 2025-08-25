@@ -194,7 +194,7 @@ export type Database = {
           delivery_time_slot?: string | null
           id?: string
           notes?: string | null
-          order_number: string
+          order_number?: string
           payment_method?: string | null
           status?: Database["public"]["Enums"]["order_status"]
           subtotal?: number

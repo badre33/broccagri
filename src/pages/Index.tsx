@@ -8,6 +8,7 @@ import { Contact } from '@/components/Contact';
 import { Footer } from '@/components/Footer';
 import { Cart } from '@/components/Cart';
 import { WhatsAppButton } from '@/components/WhatsAppButton';
+import { CheckoutButton } from '@/components/CheckoutButton';
 
 const Index = () => {
   const [isCartOpen, setIsCartOpen] = useState(false);
@@ -53,6 +54,7 @@ const Index = () => {
       />
       
       <WhatsAppButton />
+      <CheckoutButton />
     </div>
   );
 };
