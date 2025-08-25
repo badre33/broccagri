@@ -4,22 +4,28 @@ import { cva, type VariantProps } from "class-variance-authority"
 import { cn } from "@/lib/utils"
 
 const buttonVariants = cva(
-  "inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50",
+  "inline-flex items-center justify-center whitespace-nowrap text-sm font-medium ring-offset-background transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50",
   {
     variants: {
       variant: {
-        default: "bg-primary text-primary-foreground hover:bg-primary-hover",
-        destructive: "bg-destructive text-destructive-foreground hover:bg-destructive/90",
-        outline: "border border-input bg-background hover:bg-accent hover:text-accent-foreground",
-        secondary: "bg-secondary text-secondary-foreground hover:bg-secondary/80",
-        ghost: "hover:bg-accent hover:text-accent-foreground",
-        link: "text-primary underline-offset-4 hover:underline",
-        // Custom variants pour BroccAgri
-        hero: "bg-primary text-primary-foreground hover:bg-primary-hover shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-200",
-        accent: "bg-accent text-accent-foreground hover:bg-accent-hover shadow-md hover:shadow-lg",
-        success: "bg-success text-success-foreground hover:bg-success/90 shadow-md",
-        premium: "bg-gradient-to-r from-primary to-accent text-white hover:from-primary-hover hover:to-accent-hover shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300",
-        cart: "bg-accent text-accent-foreground hover:bg-accent-hover rounded-full shadow-md hover:shadow-lg transform hover:scale-105 transition-all duration-200",
+        // BroccAgri Primary selon charte
+        default: "bg-brand-green text-white hover:brightness-95 rounded-[12px] font-semibold shadow-md",
+        // BroccAgri Secondary selon charte  
+        secondary: "bg-brand-green-light text-white hover:brightness-95 rounded-[12px] font-semibold shadow-md",
+        // BroccAgri Ghost selon charte
+        ghost: "bg-transparent text-brand-green border border-brand-green hover:bg-brand-green hover:text-white rounded-[12px] font-semibold",
+        // Accent Jaune Soleil
+        accent: "bg-brand-sun text-brand-slate hover:brightness-95 rounded-[12px] font-semibold shadow-md",
+        // Variantes UI standards
+        destructive: "bg-destructive text-destructive-foreground hover:bg-destructive/90 rounded-[12px]",
+        outline: "border border-neutral-300 bg-background hover:bg-accent hover:text-accent-foreground rounded-[12px]",
+        link: "text-brand-green underline-offset-4 hover:underline",
+        // Variantes spéciales BroccAgri
+        hero: "bg-brand-green text-white hover:brightness-95 shadow-lg hover:shadow-xl transform hover:scale-105 rounded-[12px] font-semibold",
+        success: "bg-success text-success-foreground hover:brightness-95 rounded-[12px] font-semibold shadow-md",
+        premium: "bg-gradient-to-r from-brand-green to-brand-sun text-white hover:shadow-xl transform hover:scale-105 rounded-[12px] font-semibold",
+        cart: "bg-brand-sun text-brand-slate hover:brightness-95 rounded-full shadow-md hover:shadow-lg transform hover:scale-105",
+        soil: "bg-brand-soil text-white hover:brightness-95 rounded-[12px] font-semibold shadow-md",
       },
       size: {
         default: "h-10 px-4 py-2",

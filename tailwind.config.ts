@@ -18,12 +18,18 @@ export default {
 			}
 		},
 		extend: {
+			fontFamily: {
+				heading: 'var(--font-heading)',
+				body: 'var(--font-body)',
+				sans: 'var(--font-body)',
+			},
 			colors: {
 				border: 'hsl(var(--border))',
 				input: 'hsl(var(--input))',
 				ring: 'hsl(var(--ring))',
 				background: 'hsl(var(--background))',
 				foreground: 'hsl(var(--foreground))',
+				white: 'hsl(0 0% 100%)',
 				primary: {
 					DEFAULT: 'hsl(var(--primary))',
 					foreground: 'hsl(var(--primary-foreground))',
@@ -50,6 +56,10 @@ export default {
 					DEFAULT: 'hsl(var(--success))',
 					foreground: 'hsl(var(--success-foreground))'
 				},
+				soil: {
+					DEFAULT: 'hsl(var(--soil))',
+					foreground: 'hsl(var(--soil-foreground))'
+				},
 				popover: {
 					DEFAULT: 'hsl(var(--popover))',
 					foreground: 'hsl(var(--popover-foreground))'
@@ -67,6 +77,21 @@ export default {
 					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
+				},
+				// BroccAgri Brand Colors
+				brand: {
+					green: 'hsl(var(--brand-green))',
+					'green-light': 'hsl(var(--brand-green-light))',
+					slate: 'hsl(var(--brand-slate))',
+					sun: 'hsl(var(--brand-sun))',
+					soil: 'hsl(var(--brand-soil))'
+				},
+				neutral: {
+					900: 'hsl(var(--neutral-900))',
+					700: 'hsl(var(--neutral-700))',
+					500: 'hsl(var(--neutral-500))',
+					300: 'hsl(var(--neutral-300))',
+					100: 'hsl(var(--neutral-100))'
 				}
 			},
 			borderRadius: {

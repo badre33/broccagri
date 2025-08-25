@@ -35,22 +35,18 @@ export function Header({ onCartClick, onMenuClick }: HeaderProps) {
       {/* Main header */}
       <div className="container mx-auto px-4 py-4">
         <div className="flex items-center justify-between">
-          {/* Logo BroccAgri inspiré de l'image */}
+          {/* Logo BroccAgri exact selon charte */}
           <div className="flex items-center gap-3">
-            <div className="relative">
-              <div className="bg-gradient-to-br from-accent to-accent-hover p-2 rounded-full">
-                <span className="text-2xl">☀️</span>
-              </div>
-              <div className="absolute -bottom-1 -right-1 bg-primary text-primary-foreground p-1 rounded-full">
-                <span className="text-sm">🌱</span>
-              </div>
-            </div>
+            <img 
+              src="/lovable-uploads/d1e12569-f4ca-4c88-9d38-38d5962561d4.png" 
+              alt="BroccAgri - Produits agricoles frais du Maroc" 
+              className="h-12 w-auto"
+            />
             <div>
-              <h1 className="text-2xl font-bold text-foreground">
-                <span className="text-primary">Brocc</span>
-                <span className="text-accent">agri</span>
+              <h1 className="text-2xl font-heading font-bold text-brand-slate">
+                Broccagri
               </h1>
-              <p className="text-xs text-muted-foreground">Des produits agricoles, pour votre bonheur</p>
+              <p className="text-xs text-muted-foreground font-body">Des produits agricoles, pour votre bonheur</p>
             </div>
           </div>
 

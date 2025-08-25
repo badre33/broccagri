@@ -2,60 +2,77 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Design system for BroccAgri - Fresh & Premium */
+/* Design system for BroccAgri - Charte Graphique Officielle */
 
 @layer base {
   :root {
-    /* Brand Colors - BroccAgri Theme */
+    /* BroccAgri Brand Colors - Palette Officielle */
     --background: 0 0% 100%;
-    --foreground: 220 8% 25%;
+    --foreground: 220 22% 22%; /* #2B3945 - Bleu Ardoise */
 
     --card: 0 0% 100%;
-    --card-foreground: 220 8% 25%;
+    --card-foreground: 220 22% 22%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 220 8% 25%;
+    --popover-foreground: 220 22% 22%;
 
-    /* Primary - Nature Green (from logo) */
-    --primary: 140 65% 45%;
+    /* Primary - Vert BroccAgri (feuille foncée) #2E9E50 */
+    --primary: 142 55% 40%;
     --primary-foreground: 0 0% 100%;
-    --primary-hover: 140 65% 40%;
+    --primary-hover: 142 55% 35%;
 
-    /* Secondary - Soft Earth */
-    --secondary: 120 20% 95%;
-    --secondary-foreground: 220 8% 25%;
+    /* Secondary - Vert Clair (feuille claire) #7BC043 */
+    --secondary: 90 50% 52%;
+    --secondary-foreground: 0 0% 100%;
 
-    /* Muted - Light Nature */
-    --muted: 120 15% 97%;
-    --muted-foreground: 220 8% 50%;
+    /* Muted - Fond neutre #F7F7F7 */
+    --muted: 0 0% 97%;
+    --muted-foreground: 218 11% 50%; /* #6B7280 - Gris */
 
-    /* Accent - Sun Orange (from logo) */
-    --accent: 35 90% 55%;
-    --accent-foreground: 0 0% 100%;
-    --accent-hover: 35 90% 50%;
+    /* Accent - Jaune Soleil #FFC233 */
+    --accent: 45 100% 60%;
+    --accent-foreground: 220 22% 22%;
+    --accent-hover: 45 100% 55%;
 
-    /* Success - Nature Green */
-    --success: 142 76% 36%;
+    /* Success - Vert BroccAgri */
+    --success: 142 55% 40%;
     --success-foreground: 0 0% 100%;
+
+    /* Brun Terre #8B5E3C */
+    --soil: 25 40% 40%;
+    --soil-foreground: 0 0% 100%;
 
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 120 20% 90%;
-    --input: 120 20% 90%;
-    --ring: 142 69% 58%;
+    --border: 220 13% 82%; /* #D1D5DB - Gris clair */
+    --input: 220 13% 82%;
+    --ring: 142 55% 40%;
 
-    /* Premium Gradients - BroccAgri */
-    --gradient-primary: linear-gradient(135deg, hsl(140 65% 45%), hsl(140 70% 35%));
-    --gradient-accent: linear-gradient(135deg, hsl(35 90% 55%), hsl(45 95% 60%));
-    --gradient-hero: linear-gradient(135deg, hsl(140 65% 45% / 0.9), hsl(35 90% 55% / 0.8));
+    /* BroccAgri Design Tokens */
+    --brand-green: 142 55% 40%; /* #2E9E50 */
+    --brand-green-light: 90 50% 52%; /* #7BC043 */
+    --brand-slate: 220 22% 22%; /* #2B3945 */
+    --brand-sun: 45 100% 60%; /* #FFC233 */
+    --brand-soil: 25 40% 40%; /* #8B5E3C */
     
-    /* Premium Shadows - BroccAgri */
-    --shadow-premium: 0 10px 30px -10px hsl(140 65% 45% / 0.2);
-    --shadow-card: 0 4px 12px -2px hsl(220 8% 25% / 0.08);
-    --shadow-elevated: 0 20px 40px -12px hsl(220 8% 25% / 0.15);
+    /* Neutrals */
+    --neutral-900: 220 39% 11%; /* #111827 */
+    --neutral-700: 220 26% 20%; /* #374151 */
+    --neutral-500: 218 11% 50%; /* #6B7280 */
+    --neutral-300: 220 13% 82%; /* #D1D5DB */
+    --neutral-100: 0 0% 97%; /* #F7F7F7 */
 
-    --radius: 0.5rem;
+    /* Typography */
+    --font-heading: "Poppins", system-ui, sans-serif;
+    --font-body: "Inter", system-ui, sans-serif;
+
+    /* Effects */
+    --radius-12: 12px;
+    --shadow-card: 0 6px 20px hsl(220 39% 11% / 0.08);
+    --shadow-elevated: 0 20px 40px -12px hsl(220 39% 11% / 0.15);
+
+    --radius: 12px;
 
     --sidebar-background: 0 0% 98%;
 
@@ -75,41 +92,43 @@
   }
 
   .dark {
-    --background: 155 8% 8%;
+    --background: 220 39% 11%;
     --foreground: 0 0% 98%;
 
-    --card: 155 8% 10%;
+    --card: 220 26% 20%;
     --card-foreground: 0 0% 98%;
 
-    --popover: 155 8% 10%;
+    --popover: 220 26% 20%;
     --popover-foreground: 0 0% 98%;
 
-    --primary: 140 65% 45%;
+    --primary: 142 55% 40%;
     --primary-foreground: 0 0% 100%;
-    --primary-hover: 140 65% 50%;
+    --primary-hover: 142 55% 45%;
 
-    --secondary: 220 8% 15%;
-    --secondary-foreground: 0 0% 98%;
+    --secondary: 90 50% 52%;
+    --secondary-foreground: 0 0% 100%;
 
-    --muted: 220 8% 15%;
-    --muted-foreground: 220 8% 65%;
+    --muted: 220 26% 20%;
+    --muted-foreground: 218 11% 65%;
 
-    --accent: 35 90% 55%;
-    --accent-foreground: 0 0% 100%;
-    --accent-hover: 35 90% 60%;
+    --accent: 45 100% 60%;
+    --accent-foreground: 220 22% 22%;
+    --accent-hover: 45 100% 65%;
 
-    --success: 142 76% 36%;
+    --success: 142 55% 40%;
     --success-foreground: 0 0% 100%;
+
+    --soil: 25 40% 40%;
+    --soil-foreground: 0 0% 100%;
 
     --destructive: 0 62% 51%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 155 8% 20%;
-    --input: 155 8% 20%;
-    --ring: 142 69% 58%;
+    --border: 220 26% 30%;
+    --input: 220 26% 30%;
+    --ring: 142 55% 40%;
 
-    --shadow-premium: 0 10px 30px -10px hsl(0 0% 0% / 0.3);
-    --shadow-card: 0 4px 12px -2px hsl(0 0% 0% / 0.2);
+    --shadow-card: 0 6px 20px hsl(0 0% 0% / 0.2);
     --shadow-elevated: 0 20px 40px -12px hsl(0 0% 0% / 0.4);
     --sidebar-background: 240 5.9% 10%;
     --sidebar-foreground: 240 4.8% 95.9%;
@@ -128,8 +147,20 @@
   }
 
   body {
-    @apply bg-background text-foreground font-sans antialiased;
+    @apply bg-background text-foreground antialiased;
+    font-family: var(--font-body);
+    line-height: 1.6;
   }
+
+  /* Typography BroccAgri */
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+    letter-spacing: -0.01em;
+    font-weight: 600;
+  }
+
+  h1 { font-weight: 700; }
+  h2, h3 { font-weight: 600; }
 
   /* Premium scrollbar */
   ::-webkit-scrollbar {
@@ -151,9 +182,89 @@
 }
 
 @layer components {
+  /* BroccAgri Components selon charte graphique */
+  
+  /* Boutons BroccAgri */
+  .btn-primary {
+    background: hsl(var(--brand-green));
+    color: hsl(var(--white));
+    border-radius: var(--radius-12);
+    padding: 12px 20px;
+    font-weight: 600;
+    transition: all 0.2s ease;
+  }
+  
+  .btn-primary:hover {
+    filter: brightness(0.95);
+  }
+  
+  .btn-primary:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+  
+  .btn-secondary {
+    background: hsl(var(--brand-green-light));
+    color: hsl(var(--white));
+    border-radius: var(--radius-12);
+    padding: 12px 20px;
+    font-weight: 600;
+  }
+  
+  .btn-ghost {
+    background: transparent;
+    color: hsl(var(--brand-green));
+    border: 1px solid hsl(var(--brand-green));
+    border-radius: var(--radius-12);
+    padding: 12px 20px;
+  }
+  
+  /* Cartes produit BroccAgri */
+  .product-card {
+    background: hsl(var(--white));
+    border: 1px solid hsl(var(--neutral-300));
+    border-radius: var(--radius-12);
+    box-shadow: var(--shadow-card);
+    padding: 16px;
+    transition: all 0.3s ease;
+  }
+  
+  .product-card:hover {
+    box-shadow: var(--shadow-elevated);
+    transform: translateY(-2px);
+  }
+  
+  .product-card .price {
+    color: hsl(var(--brand-slate));
+    font-weight: 700;
+  }
+  
+  .product-card .badge-fresh {
+    background: hsl(var(--brand-green-light));
+    color: hsl(var(--white));
+    border-radius: 999px;
+    padding: 4px 10px;
+    font-size: 0.75rem;
+    font-weight: 600;
+  }
+  
+  /* Formulaires BroccAgri */
+  .input-broccagri {
+    border: 1px solid hsl(var(--neutral-300));
+    border-radius: var(--radius-12);
+    padding: 12px 14px;
+    outline: none;
+    transition: all 0.2s ease;
+  }
+  
+  .input-broccagri:focus {
+    border-color: hsl(var(--brand-green));
+    box-shadow: 0 0 0 3px hsl(var(--brand-green) / 0.2);
+  }
+  
   /* Hero section styling */
   .hero-gradient {
-    background: var(--gradient-hero);
+    background: linear-gradient(135deg, hsl(var(--brand-green) / 0.9), hsl(var(--brand-sun) / 0.8));
   }
   
   /* Premium animations */
@@ -179,16 +290,5 @@
       opacity: 1;
       transform: translateY(0);
     }
-  }
-  
-  /* Premium cards */
-  .premium-card {
-    box-shadow: var(--shadow-card);
-    transition: all 0.3s ease;
-  }
-  
-  .premium-card:hover {
-    box-shadow: var(--shadow-elevated);
-    transform: translateY(-2px);
   }
 }
