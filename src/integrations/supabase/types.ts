@@ -92,27 +92,33 @@ export type Database = {
         Row: {
           created_at: string
           description: string | null
+          description_ar: string | null
           id: string
           image_url: string | null
           name: string
+          name_ar: string | null
           slug: string
           updated_at: string
         }
         Insert: {
           created_at?: string
           description?: string | null
+          description_ar?: string | null
           id?: string
           image_url?: string | null
           name: string
+          name_ar?: string | null
           slug: string
           updated_at?: string
         }
         Update: {
           created_at?: string
           description?: string | null
+          description_ar?: string | null
           id?: string
           image_url?: string | null
           name?: string
+          name_ar?: string | null
           slug?: string
           updated_at?: string
         }
@@ -225,13 +231,16 @@ export type Database = {
           category_id: string | null
           created_at: string
           description: string | null
+          description_ar: string | null
           id: string
           image_url: string | null
           is_active: boolean | null
           min_stock: number | null
           name: string
+          name_ar: string | null
           organic: boolean | null
           origin: string | null
+          origin_ar: string | null
           price: number
           season: string | null
           slug: string
@@ -243,13 +252,16 @@ export type Database = {
           category_id?: string | null
           created_at?: string
           description?: string | null
+          description_ar?: string | null
           id?: string
           image_url?: string | null
           is_active?: boolean | null
           min_stock?: number | null
           name: string
+          name_ar?: string | null
           organic?: boolean | null
           origin?: string | null
+          origin_ar?: string | null
           price?: number
           season?: string | null
           slug: string
@@ -261,13 +273,16 @@ export type Database = {
           category_id?: string | null
           created_at?: string
           description?: string | null
+          description_ar?: string | null
           id?: string
           image_url?: string | null
           is_active?: boolean | null
           min_stock?: number | null
           name?: string
+          name_ar?: string | null
           organic?: boolean | null
           origin?: string | null
+          origin_ar?: string | null
           price?: number
           season?: string | null
           slug?: string

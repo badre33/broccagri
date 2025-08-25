@@ -4,6 +4,7 @@ import { Badge } from '@/components/ui/badge';
 import { Plus, Minus, ShoppingCart } from 'lucide-react';
 import { Product } from '@/hooks/useProducts';
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { getProductImage } from '@/utils/productImages';
 
 interface ProductCardProps {
@@ -13,6 +14,8 @@ interface ProductCardProps {
 
 export function ProductCard({ product, onAddToCart }: ProductCardProps) {
   const [quantity, setQuantity] = useState(0.5);
+  const { t, i18n } = useTranslation();
+  const isArabic = i18n.language === 'ar';
 
   const handleQuantityChange = (change: number) => {
     setQuantity(Math.max(0.5, quantity + change));
@@ -48,35 +51,37 @@ export function ProductCard({ product, onAddToCart }: ProductCardProps) {
             variant="secondary" 
             className="absolute top-3 left-3 bg-success text-success-foreground"
           >
-            Bio
+            {t('product.organic')}
           </Badge>
         )}
         <Badge 
           variant="outline" 
           className="absolute top-3 right-3 bg-white/90 text-primary border-primary"
         >
-          {product.categories?.name || 'Produit'}
+          {product.categories?.name || t('product.unit')}
         </Badge>
       </div>
       
       <CardContent className="p-4">
-        <h3 className="font-bold text-lg mb-2 text-foreground">{product.name}</h3>
-        {product.description && (
+        <h3 className="font-bold text-lg mb-2 text-foreground">
+          {isArabic ? product.name_ar || product.name : product.name}
+        </h3>
+        {(product.description || product.description_ar) && (
           <p className="text-sm text-muted-foreground mb-3 line-clamp-2">
-            {product.description}
+            {isArabic ? product.description_ar || product.description : product.description}
           </p>
         )}
         
         <div className="flex items-center justify-between mb-4">
           <div className="text-2xl font-bold text-primary">
-            {product.price.toFixed(2)} DH
+            {product.price.toFixed(2)} {t('common.currency')}
             <span className="text-sm font-normal text-muted-foreground">/{product.unit}</span>
           </div>
         </div>
         
         {/* Quantity selector */}
         <div className="flex items-center justify-between mb-4">
-          <span className="text-sm font-medium text-foreground">Quantité:</span>
+          <span className="text-sm font-medium text-foreground">{t('cart.quantity')}:</span>
           <div className="flex items-center gap-2">
             <Button 
               variant="outline" 
@@ -106,8 +111,8 @@ export function ProductCard({ product, onAddToCart }: ProductCardProps) {
           className="w-full"
           onClick={handleAddToCart}
         >
-          <ShoppingCart className="mr-2 h-4 w-4" />
-          Ajouter au panier
+          <ShoppingCart className={`h-4 w-4 ${isArabic ? 'ml-2' : 'mr-2'}`} />
+          {t('product.addToCart')}
         </Button>
       </CardContent>
     </Card>

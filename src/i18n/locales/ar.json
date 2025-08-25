@@ -29,7 +29,8 @@
     "vegetables": "الخضروات",
     "fruits": "الفواكه",
     "salads": "السلطات", 
-    "herbs": "الأعشاب العطرية"
+    "herbs": "الأعشاب العطرية",
+    "viewProducts": "عرض المنتجات"
   },
   "product": {
     "organic": "عضوي",

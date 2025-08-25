@@ -1,5 +1,6 @@
 import { X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { useTranslation } from 'react-i18next';
 
 interface MobileMenuProps {
   isOpen: boolean;
@@ -7,6 +8,8 @@ interface MobileMenuProps {
 }
 
 export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
+  const { t } = useTranslation();
+  
   if (!isOpen) return null;
 
   return (
@@ -20,7 +23,7 @@ export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
       {/* Menu panel */}
       <div className="fixed top-0 right-0 h-full w-80 max-w-[85vw] bg-white shadow-lg">
         <div className="flex items-center justify-between p-4 border-b">
-          <h2 className="text-lg font-semibold text-primary">Menu</h2>
+          <h2 className="text-lg font-semibold text-primary">{t('header.menu')}</h2>
           <Button
             variant="ghost"
             size="icon"
@@ -37,56 +40,56 @@ export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
               className="block px-4 py-3 text-foreground hover:bg-primary/5 hover:text-primary transition-colors font-medium rounded-md"
               onClick={onClose}
             >
-              Accueil
+              {t('nav.home')}
             </a>
             <a 
               href="/legumes" 
               className="block px-4 py-3 text-foreground hover:bg-primary/5 hover:text-primary transition-colors font-medium rounded-md"
               onClick={onClose}
             >
-              Légumes
+              {t('nav.vegetables')}
             </a>
             <a 
               href="/fruits" 
               className="block px-4 py-3 text-foreground hover:bg-primary/5 hover:text-primary transition-colors font-medium rounded-md"
               onClick={onClose}
             >
-              Fruits
+              {t('nav.fruits')}
             </a>
             <a 
               href="/salades" 
               className="block px-4 py-3 text-foreground hover:bg-primary/5 hover:text-primary transition-colors font-medium rounded-md"
               onClick={onClose}
             >
-              Salades
+              {t('nav.salads')}
             </a>
             <a 
               href="/herbes" 
               className="block px-4 py-3 text-foreground hover:bg-primary/5 hover:text-primary transition-colors font-medium rounded-md"
               onClick={onClose}
             >
-              Herbes
+              {t('nav.herbs')}
             </a>
             <a 
               href="/blog" 
               className="block px-4 py-3 text-foreground hover:bg-primary/5 hover:text-primary transition-colors font-medium rounded-md"
               onClick={onClose}
             >
-              Blog
+              {t('nav.blog')}
             </a>
             <a 
               href="/contact" 
               className="block px-4 py-3 text-foreground hover:bg-primary/5 hover:text-primary transition-colors font-medium rounded-md"
               onClick={onClose}
             >
-              Contact
+              {t('nav.contact')}
             </a>
             <a 
               href="/auth" 
               className="block px-4 py-3 text-foreground hover:bg-primary/5 hover:text-primary transition-colors font-medium rounded-md border-t mt-2 pt-4"
               onClick={onClose}
             >
-              🔐 Admin
+              🔐 {t('nav.admin')}
             </a>
           </div>
         </nav>

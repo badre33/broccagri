@@ -29,7 +29,8 @@
     "vegetables": "Légumes",
     "fruits": "Fruits", 
     "salads": "Salades",
-    "herbs": "Herbes Aromatiques"
+    "herbs": "Herbes Aromatiques",
+    "viewProducts": "Voir les produits"
   },
   "product": {
     "organic": "Bio",

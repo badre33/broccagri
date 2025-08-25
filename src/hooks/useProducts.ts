@@ -4,8 +4,10 @@ import { supabase } from '@/integrations/supabase/client';
 export interface Product {
   id: string;
   name: string;
+  name_ar?: string | null;
   slug: string;
   description: string | null;
+  description_ar?: string | null;
   price: number;
   unit: string;
   category_id: string | null;
@@ -15,6 +17,7 @@ export interface Product {
   organic: boolean | null;
   season: string | null;
   origin: string | null;
+  origin_ar?: string | null;
   is_active: boolean | null;
   created_at: string;
   updated_at: string;
@@ -28,8 +31,10 @@ export interface Product {
 export interface Category {
   id: string;
   name: string;
+  name_ar?: string | null;
   slug: string;
   description: string | null;
+  description_ar?: string | null;
   image_url: string | null;
   created_at: string;
   updated_at: string;
