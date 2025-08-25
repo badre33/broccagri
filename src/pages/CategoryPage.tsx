@@ -44,11 +44,33 @@ export default function CategoryPage() {
   const [isCartOpen, setIsCartOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
-  // S'assurer que le nom de la catégorie est correct - SANS fallback "Produits"
-  const categoryName = categoryNames[category as keyof typeof categoryNames] || (category ? category.charAt(0).toUpperCase() + category.slice(1) : 'Catégorie');
-  const categoryDescription = categoryDescriptions[category as keyof typeof categoryDescriptions] || '';
-  const categoryContentText = categoryContent[category as keyof typeof categoryContent] || '';
-  const categoryImage = categoryImages[category as keyof typeof categoryImages] || categoryVegetables;
+  // FORCER les bons noms de catégories - SANS FALLBACK FOIREUX
+  let categoryName = 'Légumes'; // Par défaut légumes
+  let categoryDescription = categoryDescriptions.legumes;
+  let categoryContentText = categoryContent.legumes;
+  let categoryImage = categoryImages.legumes;
+
+  if (category === 'legumes') {
+    categoryName = 'Légumes';
+    categoryDescription = categoryDescriptions.legumes;
+    categoryContentText = categoryContent.legumes;
+    categoryImage = categoryImages.legumes;
+  } else if (category === 'fruits') {
+    categoryName = 'Fruits';
+    categoryDescription = categoryDescriptions.fruits;
+    categoryContentText = categoryContent.fruits;
+    categoryImage = categoryImages.fruits;
+  } else if (category === 'salades') {
+    categoryName = 'Salades';
+    categoryDescription = categoryDescriptions.salades;
+    categoryContentText = categoryContent.salades;
+    categoryImage = categoryImages.salades;
+  } else if (category === 'herbes') {
+    categoryName = 'Herbes';
+    categoryDescription = categoryDescriptions.herbes;
+    categoryContentText = categoryContent.herbes;
+    categoryImage = categoryImages.herbes;
+  }
 
   // Debug pour vérifier les valeurs
   console.log('Category:', category);
