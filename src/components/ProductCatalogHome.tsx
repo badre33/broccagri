@@ -7,54 +7,25 @@ import { ProductCard } from './ProductCard';
 import { useProducts, useCategories, Product } from '@/hooks/useProducts';
 import { useSupabaseCart } from '@/hooks/useSupabaseCart';
 
-interface ProductCatalogProps {
+interface ProductCatalogHomeProps {
   selectedCategory?: string;
 }
 
-// Noms des catégories pour affichage direct
-const categoryNames = {
-  legumes: 'Légumes',
-  fruits: 'Fruits', 
-  salades: 'Salades',
-  herbes: 'Herbes'
-};
-
-// Descriptions personnalisées par catégorie
-const getCategoryDescription = (selectedCategory?: string, categoryName?: string) => {
-  if (!selectedCategory) {
-    return 'Découvrez notre sélection de produits les plus populaires, cultivés avec passion par nos agriculteurs partenaires';
-  }
-
-  const descriptions = {
-    legumes: 'Découvrez nos légumes frais cultivés dans le respect des traditions agricoles marocaines. Des produits de qualité, récoltés à maturité pour préserver toutes leurs saveurs et leurs bienfaits nutritionnels.',
-    fruits: 'Savourez nos fruits de saison, gorgés de soleil et récoltés à parfaite maturité. Une explosion de saveurs naturelles directement de nos vergers partenaires vers votre table.',
-    salades: 'Croquantes et rafraîchissantes, nos salades et légumes verts sont cueillis quotidiennement pour vous garantir une fraîcheur optimale. Parfaites pour des repas sains et équilibrés.',
-    herbes: 'Aromates et herbes fraîches pour sublimer vos plats. Cultivées avec soin selon les méthodes traditionnelles, elles apporteront authenticité et parfum à votre cuisine.'
-  };
-
-  return descriptions[selectedCategory as keyof typeof descriptions] || 
-    `Découvrez notre sélection complète de ${categoryName?.toLowerCase() || 'produits'} frais du terroir marocain`;
-};
-
-export function ProductCatalog({ selectedCategory }: ProductCatalogProps) {
+export function ProductCatalogHome({ selectedCategory }: ProductCatalogHomeProps) {
   const [searchTerm, setSearchTerm] = useState('');
   const [priceRange, setPriceRange] = useState<string>('all');
   
   const { addToCart } = useSupabaseCart();
   const { categories, loading: categoriesLoading } = useCategories();
   
-  // Si une catégorie est sélectionnée, on n'affiche que les produits de cette catégorie
-  // Si aucune catégorie n'est sélectionnée (page d'accueil), on affiche les produits mis en avant
-  const showFeaturedOnly = !selectedCategory;
+  // Page d'accueil : afficher les produits mis en avant
+  const showFeaturedOnly = true;
   
   const { products, loading: productsLoading } = useProducts(
     selectedCategory || undefined,
     searchTerm || undefined,
     showFeaturedOnly
   );
-
-  // Ne pas permettre de changer de catégorie si une catégorie est déjà sélectionnée
-  const currentCategory = categories.find(c => c.slug === selectedCategory);
 
   // Filtrer les produits par prix
   const filteredProducts = useMemo(() => {
@@ -80,45 +51,59 @@ export function ProductCatalog({ selectedCategory }: ProductCatalogProps) {
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
           <h2 className="text-4xl font-bold text-foreground mb-4">
-            {selectedCategory ? 
-              categoryNames[selectedCategory as keyof typeof categoryNames] || 'Produits' : 
-              'Produits Mis en Avant'
-            }
+            Produits Mis en Avant
           </h2>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            {getCategoryDescription(selectedCategory, categoryNames[selectedCategory as keyof typeof categoryNames])}
+            Découvrez notre sélection de produits les plus populaires, cultivés avec passion par nos agriculteurs partenaires
           </p>
         </div>
 
-        {/* Barre de recherche - Seulement sur page d'accueil */}
-        {!selectedCategory && (
-          <div className="max-w-md mx-auto mb-8">
-            <div className="relative">
-              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground h-4 w-4" />
-              <Input
-                type="text"
-                placeholder="Rechercher un produit..."
-                value={searchTerm}
-                onChange={(e) => setSearchTerm(e.target.value)}
-                className="pl-10 pr-10"
-              />
-              {searchTerm && (
-                <Button
-                  variant="ghost"
-                  size="icon"
-                  className="absolute right-1 top-1/2 transform -translate-y-1/2 h-8 w-8"
-                  onClick={() => setSearchTerm('')}
-                >
-                  <X className="h-4 w-4" />
-                </Button>
-              )}
-            </div>
+        {/* Barre de recherche */}
+        <div className="max-w-md mx-auto mb-8">
+          <div className="relative">
+            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground h-4 w-4" />
+            <Input
+              type="text"
+              placeholder="Rechercher un produit..."
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+              className="pl-10 pr-10"
+            />
+            {searchTerm && (
+              <Button
+                variant="ghost"
+                size="icon"
+                className="absolute right-1 top-1/2 transform -translate-y-1/2 h-8 w-8"
+                onClick={() => setSearchTerm('')}
+              >
+                <X className="h-4 w-4" />
+              </Button>
+            )}
           </div>
-        )}
+        </div>
 
-        {/* Filtres - Seulement filtres par prix sur les pages de catégories */}
+        {/* Filtres */}
         <div className="mb-8">
-          {/* Filtres par prix - Toujours disponibles */}
+          {/* Filtres de catégories */}
+          <div className="flex flex-wrap gap-2 mb-6">
+            <Button variant="premium" className="text-sm">
+              Produits mis en avant
+            </Button>
+            <Button variant="outline" className="text-sm">
+              Fruits
+            </Button>
+            <Button variant="outline" className="text-sm">
+              Herbes
+            </Button>
+            <Button variant="outline" className="text-sm">
+              Légumes
+            </Button>
+            <Button variant="outline" className="text-sm">
+              Salades
+            </Button>
+          </div>
+
+          {/* Filtres par prix */}
           <div className="flex flex-wrap gap-2">
             <Button
               variant={priceRange === 'all' ? 'premium' : 'outline'}

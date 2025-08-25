@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Header } from '@/components/Header';
 import { Hero } from '@/components/Hero';
 import { Categories } from '@/components/Categories';
-import { ProductCatalog } from '@/components/ProductCatalog';
+import { ProductCatalogHome } from '@/components/ProductCatalogHome';
 import { About } from '@/components/About';
 import { Contact } from '@/components/Contact';
 import { Footer } from '@/components/Footer';
@@ -40,7 +40,7 @@ const Index = () => {
       <main>
         <Hero onOrderClick={handleOrderClick} />
         <Categories onCategoryClick={handleCategoryClick} />
-        <ProductCatalog selectedCategory={selectedCategory} />
+        <ProductCatalogHome selectedCategory={selectedCategory} />
         <About />
         <Contact />
       </main>
