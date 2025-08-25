@@ -37,8 +37,9 @@ export default function CategoryPage() {
   const [isCartOpen, setIsCartOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
-  const categoryName = categoryNames[category as keyof typeof categoryNames] || category?.charAt(0).toUpperCase() + category?.slice(1) || 'Catégorie';
-  const categoryDescription = categoryDescriptions[category as keyof typeof categoryDescriptions] || '';
+  // S'assurer que le nom de la catégorie est correct
+  const categoryName = categoryNames[category as keyof typeof categoryNames];
+  const categoryDescription = categoryDescriptions[category as keyof typeof categoryDescriptions];
   const categoryImage = categoryImages[category as keyof typeof categoryImages] || categoryVegetables;
 
   return (
@@ -70,7 +71,19 @@ export default function CategoryPage() {
         </section>
 
         {/* Products */}
-        <ProductCatalog selectedCategory={category} />
+        <section className="py-16 bg-background">
+          <div className="container mx-auto px-4">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl font-bold text-foreground mb-4">
+                Notre sélection de {categoryName?.toLowerCase()}
+              </h2>
+              <p className="text-lg text-muted-foreground max-w-3xl mx-auto mb-8">
+                {categoryDescription}
+              </p>
+            </div>
+            <ProductCatalog selectedCategory={category} />
+          </div>
+        </section>
       </main>
       
       <Footer />

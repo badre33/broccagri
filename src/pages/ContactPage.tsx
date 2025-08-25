@@ -9,6 +9,7 @@ import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Phone, MapPin, Clock, MessageCircle, Mail, Send, Users, Truck, Shield } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
+import contactHero from '@/assets/contact-hero.jpg';
 
 export default function ContactPage() {
   const [isCartOpen, setIsCartOpen] = useState(false);
@@ -49,12 +50,20 @@ export default function ContactPage() {
       
       <main>
         {/* Hero Section */}
-        <section className="py-20 bg-gradient-to-br from-primary/20 to-accent/20">
-          <div className="container mx-auto px-4 text-center">
-            <h1 className="text-4xl md:text-5xl font-heading font-bold text-foreground mb-4">
+        <section 
+          className="py-20 bg-gradient-to-br from-primary/20 to-accent/20 relative"
+          style={{
+            backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.4)), url(${contactHero})`,
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            backgroundRepeat: 'no-repeat'
+          }}
+        >
+          <div className="container mx-auto px-4 text-center relative z-10">
+            <h1 className="text-4xl md:text-5xl font-heading font-bold text-white mb-4">
               Contactez-nous
             </h1>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+            <p className="text-xl text-white/90 max-w-3xl mx-auto">
               Notre équipe est à votre disposition pour répondre à toutes vos questions 
               et vous accompagner dans votre expérience BroccAgri. N'hésitez pas à nous contacter !
             </p>

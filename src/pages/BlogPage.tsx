@@ -9,6 +9,7 @@ import { Button } from '@/components/ui/custom-button';
 import { Calendar, User, ArrowRight } from 'lucide-react';
 import heroImage from '@/assets/hero-fresh-produce.jpg';
 import categoryVegetables from '@/assets/category-vegetables.jpg';
+import blogHero from '@/assets/blog-hero.jpg';
 
 const blogPosts = [
   {
@@ -125,12 +126,20 @@ export default function BlogPage() {
       
       <main>
         {/* Hero Section */}
-        <section className="py-20 bg-gradient-to-br from-primary/10 to-accent/10">
-          <div className="container mx-auto px-4 text-center">
-            <h1 className="text-4xl md:text-5xl font-heading font-bold text-brand-slate mb-4">
+        <section 
+          className="py-20 bg-gradient-to-br from-primary/20 to-accent/20 relative"
+          style={{
+            backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.4)), url(${blogHero})`,
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            backgroundRepeat: 'no-repeat'
+          }}
+        >
+          <div className="container mx-auto px-4 text-center relative z-10">
+            <h1 className="text-4xl md:text-5xl font-heading font-bold text-white mb-4">
               Blog BroccAgri
             </h1>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+            <p className="text-xl text-white/90 max-w-2xl mx-auto">
               Découvrez nos articles sur l'agriculture marocaine, nos conseils et nos actualités
             </p>
           </div>
