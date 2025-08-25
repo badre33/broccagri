@@ -16,7 +16,7 @@ export function CheckoutButton() {
     <>
       <Button 
         onClick={() => setShowOrderFlow(true)}
-        className="fixed bottom-6 right-6 z-40 shadow-lg"
+        className="fixed bottom-6 left-1/2 transform -translate-x-1/2 md:bottom-6 md:right-20 md:left-auto md:transform-none z-40 shadow-lg w-auto"
         size="lg"
       >
         <ShoppingCart className="h-5 w-5 mr-2" />

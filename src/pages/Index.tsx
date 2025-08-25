@@ -9,6 +9,7 @@ import { Footer } from '@/components/Footer';
 import { Cart } from '@/components/Cart';
 import { WhatsAppButton } from '@/components/WhatsAppButton';
 import { CheckoutButton } from '@/components/CheckoutButton';
+import { MobileMenu } from '@/components/MobileMenu';
 
 const Index = () => {
   const [isCartOpen, setIsCartOpen] = useState(false);
@@ -51,6 +52,11 @@ const Index = () => {
       <Cart 
         isOpen={isCartOpen}
         onClose={() => setIsCartOpen(false)}
+      />
+      
+      <MobileMenu 
+        isOpen={isMobileMenuOpen}
+        onClose={() => setIsMobileMenuOpen(false)}
       />
       
       <WhatsAppButton />

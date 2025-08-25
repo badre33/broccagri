@@ -1,5 +1,5 @@
 import { ShoppingCart, Menu, Phone, MapPin } from 'lucide-react';
-import { Button } from '@/components/ui/custom-button';
+import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { useSupabaseCart } from '@/hooks/useSupabaseCart';
 
@@ -72,10 +72,10 @@ export function Header({ onCartClick, onMenuClick }: HeaderProps) {
           {/* Actions */}
           <div className="flex items-center gap-3">
             <Button 
-              variant="cart" 
+              variant="outline" 
               size="icon" 
               onClick={onCartClick}
-              className="relative"
+              className="relative bg-primary/10 border-primary/20 hover:bg-primary/20"
             >
               <ShoppingCart className="h-5 w-5" />
               {itemCount > 0 && (
