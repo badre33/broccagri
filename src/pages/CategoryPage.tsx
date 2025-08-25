@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import { Header } from '@/components/Header';
 import { ProductCatalog } from '@/components/ProductCatalog';
 import { Footer } from '@/components/Footer';
@@ -40,12 +40,21 @@ function renderHeroSection(category: string) {
 }
 
 export default function CategoryPage() {
-  const { category } = useParams<{ category: string }>();
+  const location = useLocation();
   const [isCartOpen, setIsCartOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
+  // Extraire la catégorie depuis le pathname (/legumes -> legumes)
+  const category = location.pathname.substring(1);
+  
   const categoryName = categoryNames[category as keyof typeof categoryNames] || 'Légumes';
   const categoryContentText = categoryContent[category as keyof typeof categoryContent] || '';
+  
+  console.log('=== DEBUG LOCATION ===');
+  console.log('Current pathname:', location.pathname);
+  console.log('Extracted category:', category);
+  console.log('Category name:', categoryName);
+  console.log('=====================');
 
   return (
     <div className="min-h-screen bg-background">
