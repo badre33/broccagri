@@ -3,6 +3,8 @@ import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
 import { Cart } from '@/components/Cart';
 import { WhatsAppButton } from '@/components/WhatsAppButton';
+import { CheckoutButton } from '@/components/CheckoutButton';
+import { MobileMenu } from '@/components/MobileMenu';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/custom-button';
@@ -112,7 +114,13 @@ export default function BlogPage() {
           onClose={() => setIsCartOpen(false)}
         />
         
+        <MobileMenu 
+          isOpen={isMobileMenuOpen}
+          onClose={() => setIsMobileMenuOpen(false)}
+        />
+        
         <WhatsAppButton />
+        <CheckoutButton />
       </div>
     );
   }
@@ -220,7 +228,13 @@ export default function BlogPage() {
         onClose={() => setIsCartOpen(false)}
       />
       
+      <MobileMenu 
+        isOpen={isMobileMenuOpen}
+        onClose={() => setIsMobileMenuOpen(false)}
+      />
+      
       <WhatsAppButton />
+      <CheckoutButton />
     </div>
   );
 }

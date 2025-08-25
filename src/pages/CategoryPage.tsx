@@ -5,6 +5,8 @@ import { ProductCatalog } from '@/components/ProductCatalog';
 import { Footer } from '@/components/Footer';
 import { Cart } from '@/components/Cart';
 import { WhatsAppButton } from '@/components/WhatsAppButton';
+import { CheckoutButton } from '@/components/CheckoutButton';
+import { MobileMenu } from '@/components/MobileMenu';
 import { LegumesHero } from '@/components/LegumesHero';
 import { FruitsHero } from '@/components/FruitsHero';
 import { SaladesHero } from '@/components/SaladesHero';
@@ -90,7 +92,13 @@ export default function CategoryPage() {
         onClose={() => setIsCartOpen(false)}
       />
       
+      <MobileMenu 
+        isOpen={isMobileMenuOpen}
+        onClose={() => setIsMobileMenuOpen(false)}
+      />
+      
       <WhatsAppButton />
+      <CheckoutButton />
     </div>
   );
 }

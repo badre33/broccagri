@@ -3,6 +3,8 @@ import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
 import { Cart } from '@/components/Cart';
 import { WhatsAppButton } from '@/components/WhatsAppButton';
+import { CheckoutButton } from '@/components/CheckoutButton';
+import { MobileMenu } from '@/components/MobileMenu';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/custom-button';
 import { Input } from '@/components/ui/input';
@@ -279,7 +281,13 @@ export default function ContactPage() {
         onClose={() => setIsCartOpen(false)}
       />
       
+      <MobileMenu 
+        isOpen={isMobileMenuOpen}
+        onClose={() => setIsMobileMenuOpen(false)}
+      />
+      
       <WhatsAppButton />
+      <CheckoutButton />
     </div>
   );
 }
