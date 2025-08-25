@@ -74,10 +74,10 @@ export function Header({ onCartClick, onMenuClick }: HeaderProps) {
             <Button 
               variant="ghost" 
               size="sm"
-              onClick={() => window.location.href = '/admin'}
+              onClick={() => window.location.href = '/auth'}
               className="hidden sm:inline-flex text-sm font-medium"
             >
-              Admin
+              🔐 Admin
             </Button>
             <Button 
               variant="outline" 
