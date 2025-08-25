@@ -11,6 +11,14 @@ interface ProductCatalogProps {
   selectedCategory?: string;
 }
 
+// Noms des catégories pour affichage direct
+const categoryNames = {
+  legumes: 'Légumes',
+  fruits: 'Fruits', 
+  salades: 'Salades',
+  herbes: 'Herbes'
+};
+
 // Descriptions personnalisées par catégorie
 const getCategoryDescription = (selectedCategory?: string, categoryName?: string) => {
   if (!selectedCategory) {
@@ -73,12 +81,12 @@ export function ProductCatalog({ selectedCategory }: ProductCatalogProps) {
         <div className="text-center mb-12">
           <h2 className="text-4xl font-bold text-foreground mb-4">
             {selectedCategory ? 
-              currentCategory?.name || 'Produits' : 
+              categoryNames[selectedCategory as keyof typeof categoryNames] || 'Produits' : 
               'Produits Mis en Avant'
             }
           </h2>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            {getCategoryDescription(selectedCategory, currentCategory?.name)}
+            {getCategoryDescription(selectedCategory, categoryNames[selectedCategory as keyof typeof categoryNames])}
           </p>
         </div>
 

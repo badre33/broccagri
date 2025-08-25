@@ -62,19 +62,19 @@ export function Footer() {
           <div>
             <h4 className="text-lg font-semibold mb-4">Navigation</h4>
             <div className="space-y-2">
-              <a href="#accueil" className="block opacity-90 hover:opacity-100 transition-opacity">
+              <a href="/" className="block opacity-90 hover:opacity-100 transition-opacity">
                 Accueil
               </a>
-              <a href="#legumes" className="block opacity-90 hover:opacity-100 transition-opacity">
+              <a href="/legumes" className="block opacity-90 hover:opacity-100 transition-opacity">
                 Légumes
               </a>
-              <a href="#fruits" className="block opacity-90 hover:opacity-100 transition-opacity">
+              <a href="/fruits" className="block opacity-90 hover:opacity-100 transition-opacity">
                 Fruits
               </a>
-              <a href="#salades" className="block opacity-90 hover:opacity-100 transition-opacity">
+              <a href="/salades" className="block opacity-90 hover:opacity-100 transition-opacity">
                 Salades
               </a>
-              <a href="#herbes" className="block opacity-90 hover:opacity-100 transition-opacity">
+              <a href="/herbes" className="block opacity-90 hover:opacity-100 transition-opacity">
                 Herbes
               </a>
               <a href="/contact" className="block opacity-90 hover:opacity-100 transition-opacity">
