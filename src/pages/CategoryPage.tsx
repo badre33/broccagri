@@ -8,6 +8,8 @@ import { WhatsAppButton } from '@/components/WhatsAppButton';
 import categoryVegetables from '@/assets/category-vegetables.jpg';
 import categoryFruits from '@/assets/category-fruits.jpg';
 import categoryHerbs from '@/assets/category-herbs.jpg';
+import categorySalads from '@/assets/category-salads-hero.jpg';
+import categoryHerbsNew from '@/assets/category-herbs-hero.jpg';
 
 const categoryNames = {
   legumes: 'Légumes',
@@ -17,17 +19,17 @@ const categoryNames = {
 };
 
 const categoryDescriptions = {
-  legumes: 'Découvrez notre sélection de légumes frais du terroir marocain',
-  fruits: 'Des fruits de saison juteux et savoureux',
-  salades: 'Salades et légumes verts croquants',
-  herbes: 'Herbes fraîches et épices aromatiques'
+  legumes: 'Découvrez nos légumes frais cultivés dans le respect des traditions agricoles marocaines. Des produits de qualité, récoltés à maturité pour préserver toutes leurs saveurs et leurs bienfaits nutritionnels.',
+  fruits: 'Savourez nos fruits de saison, gorgés de soleil et récoltés à parfaite maturité. Une explosion de saveurs naturelles directement de nos vergers partenaires vers votre table.',
+  salades: 'Croquantes et rafraîchissantes, nos salades et légumes verts sont cueillis quotidiennement pour vous garantir une fraîcheur optimale. Parfaites pour des repas sains et équilibrés.',
+  herbes: 'Aromates et herbes fraîches pour sublimer vos plats. Cultivées avec soin selon les méthodes traditionnelles, elles apporteront authenticité et parfum à votre cuisine.'
 };
 
 const categoryImages = {
   legumes: categoryVegetables,
   fruits: categoryFruits,
-  salades: categoryHerbs,
-  herbes: categoryHerbs
+  salades: categorySalads,
+  herbes: categoryHerbsNew
 };
 
 export default function CategoryPage() {
