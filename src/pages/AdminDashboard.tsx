@@ -51,15 +51,11 @@ export default function AdminDashboard() {
 
   const fetchOrders = async () => {
     try {
-      const { data, error } = await supabase
+      // Récupérer les commandes avec les items
+      const { data: ordersData, error: ordersError } = await supabase
         .from('orders')
         .select(`
           *,
-          user_profiles!orders_user_id_fkey (
-            first_name,
-            last_name,
-            phone
-          ),
           order_items (
             id,
             product_name,
@@ -70,8 +66,31 @@ export default function AdminDashboard() {
         `)
         .order('created_at', { ascending: false });
 
-      if (error) throw error;
-      setOrders((data as any) || []);
+      if (ordersError) throw ordersError;
+
+      // Récupérer les profils utilisateurs pour chaque commande
+      const ordersWithProfiles = await Promise.all(
+        (ordersData || []).map(async (order) => {
+          if (order.user_id) {
+            const { data: profile } = await supabase
+              .from('user_profiles')
+              .select('first_name, last_name, phone')
+              .eq('user_id', order.user_id)
+              .single();
+            
+            return {
+              ...order,
+              user_profiles: profile
+            };
+          }
+          return {
+            ...order,
+            user_profiles: null
+          };
+        })
+      );
+
+      setOrders(ordersWithProfiles as any);
     } catch (error: any) {
       toast({
         title: "Erreur",
@@ -241,10 +260,22 @@ export default function AdminDashboard() {
                     <p className="text-sm">
                       <strong>Nom:</strong> {order.user_profiles?.first_name || ''} {order.user_profiles?.last_name || ''}
                     </p>
-                    <p className="text-sm flex items-center gap-1">
-                      <Phone className="h-3 w-3" />
-                      {order.user_profiles?.phone || 'Non renseigné'}
-                    </p>
+                    {order.user_profiles?.phone ? (
+                      <a 
+                        href={`https://wa.me/212${order.user_profiles.phone.replace(/^0/, '')}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-sm flex items-center gap-1 text-green-600 hover:text-green-800 transition-colors"
+                      >
+                        <Phone className="h-3 w-3" />
+                        {order.user_profiles.phone} (WhatsApp)
+                      </a>
+                    ) : (
+                      <p className="text-sm flex items-center gap-1 text-muted-foreground">
+                        <Phone className="h-3 w-3" />
+                        Non renseigné
+                      </p>
+                    )}
                   </div>
                   
                   <div>
