@@ -52,10 +52,10 @@ export function Contact() {
                 </CardTitle>
               </CardHeader>
               <CardContent>
-                <p className="text-lg font-semibold text-primary">+212 8 61 44 27 41</p>
+                <p className="text-lg font-semibold text-primary">+212 661-792473</p>
                 <p className="text-muted-foreground">Disponible 7j/7 de 8h à 20h</p>
                 <Button variant="outline" className="mt-3" asChild>
-                  <a href="tel:+212861442741">Appeler maintenant</a>
+                  <a href="tel:+212661792473">Appeler maintenant</a>
                 </Button>
               </CardContent>
             </Card>
@@ -68,10 +68,10 @@ export function Contact() {
                 </CardTitle>
               </CardHeader>
               <CardContent>
-                <p className="text-lg font-semibold text-success">+212 8 61 44 27 41</p>
+                <p className="text-lg font-semibold text-success">+212 661-792473</p>
                 <p className="text-muted-foreground">Chat en direct, réponse rapide</p>
                 <Button variant="success" className="mt-3" asChild>
-                  <a href="https://wa.me/212861442741" target="_blank" rel="noopener noreferrer">
+                  <a href="https://wa.me/212661792473" target="_blank" rel="noopener noreferrer">
                     Ouvrir WhatsApp
                   </a>
                 </Button>

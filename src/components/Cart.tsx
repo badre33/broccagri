@@ -126,9 +126,17 @@ export function Cart({ isOpen, onClose }: CartProps) {
                 </div>
               </div>
 
-              <div className="space-y-2">
-                <Button variant="premium" className="w-full">
-                  Procéder au paiement
+              <div className="space-y-3">
+                <div className="text-center p-3 bg-muted rounded-lg">
+                  <p className="text-sm font-medium text-muted-foreground">💰 Paiement à la livraison</p>
+                  <p className="text-xs text-muted-foreground">Payez en espèces lors de la réception</p>
+                </div>
+                <Button 
+                  variant="premium" 
+                  className="w-full"
+                  onClick={() => window.open(`https://wa.me/212661792473?text=Bonjour, je souhaite commander pour ${finalTotal.toFixed(2)} DH`, '_blank')}
+                >
+                  Commander via WhatsApp
                 </Button>
                 <div className="flex gap-2">
                   <Button variant="outline" className="flex-1" onClick={onClose}>

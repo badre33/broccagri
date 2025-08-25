@@ -7,6 +7,7 @@ import { About } from '@/components/About';
 import { Contact } from '@/components/Contact';
 import { Footer } from '@/components/Footer';
 import { Cart } from '@/components/Cart';
+import { WhatsAppButton } from '@/components/WhatsAppButton';
 
 const Index = () => {
   const [isCartOpen, setIsCartOpen] = useState(false);
@@ -50,6 +51,8 @@ const Index = () => {
         isOpen={isCartOpen}
         onClose={() => setIsCartOpen(false)}
       />
+      
+      <WhatsAppButton />
     </div>
   );
 };
