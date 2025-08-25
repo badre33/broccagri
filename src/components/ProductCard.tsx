@@ -4,6 +4,7 @@ import { Badge } from '@/components/ui/badge';
 import { Plus, Minus, ShoppingCart } from 'lucide-react';
 import { Product } from '@/hooks/useProducts';
 import { useState } from 'react';
+import { getProductImage } from '@/utils/productImages';
 
 interface ProductCardProps {
   product: Product;
@@ -22,9 +23,12 @@ export function ProductCard({ product, onAddToCart }: ProductCardProps) {
     setQuantity(0.5); // Reset quantity after adding
   };
 
-  // Use the image URL from the database or fallback
+  // Use the image URL from the database with our generated images
   const getImageUrl = () => {
-    return product.image_url || 'https://images.unsplash.com/photo-1590779033100-9f60a05a013d?w=400&h=300&fit=crop&auto=format';
+    if (product.image_url) {
+      return getProductImage(product.image_url);
+    }
+    return 'https://images.unsplash.com/photo-1590779033100-9f60a05a013d?w=400&h=300&fit=crop&auto=format';
   };
 
   return (
