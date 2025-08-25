@@ -78,18 +78,8 @@ export function ProductCatalog({ selectedCategory }: ProductCatalogProps) {
   return (
     <section id="catalogue" className="py-20 bg-background">
       <div className="container mx-auto px-4">
-        <div className="text-center mb-12">
-          <h2 className="text-4xl font-bold text-foreground mb-4">
-            {selectedCategory ? 
-              categoryNames[selectedCategory as keyof typeof categoryNames] || 'Produits' : 
-              'Produits Mis en Avant'
-            }
-          </h2>
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            {getCategoryDescription(selectedCategory, categoryNames[selectedCategory as keyof typeof categoryNames])}
-          </p>
-        </div>
-
+        {/* Pas de titre sur les pages de catégories - le titre est dans le hero */}
+        
         {/* Barre de recherche - Seulement sur page d'accueil */}
         {!selectedCategory && (
           <div className="max-w-md mx-auto mb-8">
