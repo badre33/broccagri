@@ -72,6 +72,14 @@ export function Header({ onCartClick, onMenuClick }: HeaderProps) {
           {/* Actions */}
           <div className="flex items-center gap-3">
             <Button 
+              variant="ghost" 
+              size="sm"
+              onClick={() => window.location.href = '/admin'}
+              className="hidden sm:inline-flex text-sm font-medium"
+            >
+              Admin
+            </Button>
+            <Button 
               variant="outline" 
               size="icon" 
               onClick={onCartClick}

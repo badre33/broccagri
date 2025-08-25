@@ -81,6 +81,13 @@ export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
             >
               Contact
             </a>
+            <a 
+              href="/admin" 
+              className="block px-4 py-3 text-foreground hover:bg-primary/5 hover:text-primary transition-colors font-medium rounded-md border-t mt-2 pt-4"
+              onClick={onClose}
+            >
+              🔐 Admin
+            </a>
           </div>
         </nav>
       </div>
