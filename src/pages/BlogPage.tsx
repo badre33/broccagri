@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
 import { Cart } from '@/components/Cart';
+import { WhatsAppButton } from '@/components/WhatsAppButton';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/custom-button';
@@ -109,6 +110,8 @@ export default function BlogPage() {
           isOpen={isCartOpen}
           onClose={() => setIsCartOpen(false)}
         />
+        
+        <WhatsAppButton />
       </div>
     );
   }
@@ -207,6 +210,8 @@ export default function BlogPage() {
         isOpen={isCartOpen}
         onClose={() => setIsCartOpen(false)}
       />
+      
+      <WhatsAppButton />
     </div>
   );
 }
