@@ -119,6 +119,30 @@ export function ProductCatalog({ selectedCategory }: ProductCatalogProps) {
               >
                 Produits mis en avant
               </Button>
+              <Button
+                variant="outline"
+                className="text-sm"
+              >
+                Fruits
+              </Button>
+              <Button
+                variant="outline"
+                className="text-sm"
+              >
+                Herbes
+              </Button>
+              <Button
+                variant="outline"
+                className="text-sm"
+              >
+                Légumes
+              </Button>
+              <Button
+                variant="outline"
+                className="text-sm"
+              >
+                Salades
+              </Button>
             </div>
           )}
 
