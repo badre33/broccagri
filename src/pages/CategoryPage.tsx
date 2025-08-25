@@ -44,11 +44,15 @@ export default function CategoryPage() {
   const [isCartOpen, setIsCartOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
-  // S'assurer que le nom de la catégorie est correct - avec fallback solide
-  const categoryName = categoryNames[category as keyof typeof categoryNames] || (category ? category.charAt(0).toUpperCase() + category.slice(1) : 'Produits');
+  // S'assurer que le nom de la catégorie est correct - SANS fallback "Produits"
+  const categoryName = categoryNames[category as keyof typeof categoryNames] || (category ? category.charAt(0).toUpperCase() + category.slice(1) : 'Catégorie');
   const categoryDescription = categoryDescriptions[category as keyof typeof categoryDescriptions] || '';
   const categoryContentText = categoryContent[category as keyof typeof categoryContent] || '';
   const categoryImage = categoryImages[category as keyof typeof categoryImages] || categoryVegetables;
+
+  // Debug pour vérifier les valeurs
+  console.log('Category:', category);
+  console.log('CategoryName:', categoryName);
 
   return (
     <div className="min-h-screen bg-background">
