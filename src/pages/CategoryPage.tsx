@@ -44,37 +44,48 @@ export default function CategoryPage() {
   const [isCartOpen, setIsCartOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
-  // FORCER les bons noms de catégories - SANS FALLBACK FOIREUX
-  let categoryName = 'Légumes'; // Par défaut légumes
-  let categoryDescription = categoryDescriptions.legumes;
-  let categoryContentText = categoryContent.legumes;
-  let categoryImage = categoryImages.legumes;
+  // FORCER les bons noms selon l'URL - CHAQUE PAGE SON CONTENU
+  let categoryName = 'Catégorie'; // Fallback temporaire
+  let categoryDescription = '';
+  let categoryContentText = '';
+  let categoryImage = categoryVegetables;
 
-  if (category === 'legumes') {
-    categoryName = 'Légumes';
-    categoryDescription = categoryDescriptions.legumes;
-    categoryContentText = categoryContent.legumes;
-    categoryImage = categoryImages.legumes;
-  } else if (category === 'fruits') {
-    categoryName = 'Fruits';
-    categoryDescription = categoryDescriptions.fruits;
-    categoryContentText = categoryContent.fruits;
-    categoryImage = categoryImages.fruits;
-  } else if (category === 'salades') {
-    categoryName = 'Salades';
-    categoryDescription = categoryDescriptions.salades;
-    categoryContentText = categoryContent.salades;
-    categoryImage = categoryImages.salades;
-  } else if (category === 'herbes') {
-    categoryName = 'Herbes';
-    categoryDescription = categoryDescriptions.herbes;
-    categoryContentText = categoryContent.herbes;
-    categoryImage = categoryImages.herbes;
+  // Forcer selon l'URL exacte
+  switch (category) {
+    case 'legumes':
+      categoryName = 'Légumes';
+      categoryDescription = categoryDescriptions.legumes;
+      categoryContentText = categoryContent.legumes;
+      categoryImage = categoryImages.legumes;
+      break;
+    case 'fruits':
+      categoryName = 'Fruits';
+      categoryDescription = categoryDescriptions.fruits;
+      categoryContentText = categoryContent.fruits;
+      categoryImage = categoryImages.fruits;
+      break;
+    case 'salades':
+      categoryName = 'Salades';
+      categoryDescription = categoryDescriptions.salades;
+      categoryContentText = categoryContent.salades;
+      categoryImage = categoryImages.salades;
+      break;
+    case 'herbes':
+      categoryName = 'Herbes';
+      categoryDescription = categoryDescriptions.herbes;
+      categoryContentText = categoryContent.herbes;
+      categoryImage = categoryImages.herbes;
+      break;
+    default:
+      // Si l'URL ne correspond à rien, on prend le premier caractère en majuscule
+      if (category) {
+        categoryName = category.charAt(0).toUpperCase() + category.slice(1);
+      }
   }
 
   // Debug pour vérifier les valeurs
-  console.log('Category:', category);
-  console.log('CategoryName:', categoryName);
+  console.log('URL Category:', category);
+  console.log('Final CategoryName:', categoryName);
 
   return (
     <div className="min-h-screen bg-background">

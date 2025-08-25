@@ -9,7 +9,7 @@ import { Button } from '@/components/ui/custom-button';
 import { Calendar, User, ArrowRight } from 'lucide-react';
 import heroImage from '@/assets/hero-fresh-produce.jpg';
 import categoryVegetables from '@/assets/category-vegetables.jpg';
-import blogHero from '@/assets/blog-hero.jpg';
+import blogHeroNew from '@/assets/blog-hero-new.jpg';
 
 const blogPosts = [
   {
@@ -129,7 +129,7 @@ export default function BlogPage() {
         <section 
           className="py-20 bg-gradient-to-br from-primary/20 to-accent/20 relative"
           style={{
-            backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.4)), url(${blogHero})`,
+            backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.4)), url(${blogHeroNew})`,
             backgroundSize: 'cover',
             backgroundPosition: 'center',
             backgroundRepeat: 'no-repeat'
