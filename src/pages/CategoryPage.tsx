@@ -44,48 +44,18 @@ export default function CategoryPage() {
   const [isCartOpen, setIsCartOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
-  // FORCER les bons noms selon l'URL - CHAQUE PAGE SON CONTENU
-  let categoryName = 'Catégorie'; // Fallback temporaire
-  let categoryDescription = '';
-  let categoryContentText = '';
-  let categoryImage = categoryVegetables;
+  // APPROCHE DIRECTE - FORCER MANUELLEMENT
+  const categoryName = categoryNames[category as keyof typeof categoryNames] || 'Erreur';
+  const categoryDescription = categoryDescriptions[category as keyof typeof categoryDescriptions] || '';
+  const categoryContentText = categoryContent[category as keyof typeof categoryContent] || '';
+  const categoryImage = categoryImages[category as keyof typeof categoryImages] || categoryVegetables;
 
-  // Forcer selon l'URL exacte
-  switch (category) {
-    case 'legumes':
-      categoryName = 'Légumes';
-      categoryDescription = categoryDescriptions.legumes;
-      categoryContentText = categoryContent.legumes;
-      categoryImage = categoryImages.legumes;
-      break;
-    case 'fruits':
-      categoryName = 'Fruits';
-      categoryDescription = categoryDescriptions.fruits;
-      categoryContentText = categoryContent.fruits;
-      categoryImage = categoryImages.fruits;
-      break;
-    case 'salades':
-      categoryName = 'Salades';
-      categoryDescription = categoryDescriptions.salades;
-      categoryContentText = categoryContent.salades;
-      categoryImage = categoryImages.salades;
-      break;
-    case 'herbes':
-      categoryName = 'Herbes';
-      categoryDescription = categoryDescriptions.herbes;
-      categoryContentText = categoryContent.herbes;
-      categoryImage = categoryImages.herbes;
-      break;
-    default:
-      // Si l'URL ne correspond à rien, on prend le premier caractère en majuscule
-      if (category) {
-        categoryName = category.charAt(0).toUpperCase() + category.slice(1);
-      }
-  }
-
-  // Debug pour vérifier les valeurs
-  console.log('URL Category:', category);
-  console.log('Final CategoryName:', categoryName);
+  // Debug pour voir ce qui se passe
+  console.log('=== DEBUG CATEGORY ===');
+  console.log('URL category:', category);
+  console.log('categoryNames object:', categoryNames);
+  console.log('Final categoryName:', categoryName);
+  console.log('=====================');
 
   return (
     <div className="min-h-screen bg-background">
