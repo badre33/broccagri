@@ -152,6 +152,48 @@
     line-height: 1.6;
   }
 
+  /* RTL Support */
+  [dir="rtl"] {
+    direction: rtl;
+  }
+
+  [dir="rtl"] .space-x-4 > * + * {
+    margin-left: 0;
+    margin-right: 1rem;
+  }
+
+  [dir="rtl"] .space-x-6 > * + * {
+    margin-left: 0;
+    margin-right: 1.5rem;
+  }
+
+  [dir="rtl"] .space-x-8 > * + * {
+    margin-left: 0;
+    margin-right: 2rem;
+  }
+
+  [dir="rtl"] .text-left {
+    text-align: right;
+  }
+
+  [dir="rtl"] .text-right {
+    text-align: left;
+  }
+
+  [dir="rtl"] .ml-auto {
+    margin-left: 0;
+    margin-right: auto;
+  }
+
+  [dir="rtl"] .mr-auto {
+    margin-left: auto;
+    margin-right: 0;
+  }
+
+  [dir="rtl"] .flex-row-reverse {
+    flex-direction: row-reverse;
+  }
+
   /* Typography BroccAgri */
   h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-heading);
@@ -161,6 +203,16 @@
 
   h1 { font-weight: 700; }
   h2, h3 { font-weight: 600; }
+
+  /* Arabic font support */
+  [dir="rtl"] * {
+    font-family: "Tajawal", "Arial", "Tahoma", sans-serif;
+  }
+
+  [dir="rtl"] h1, [dir="rtl"] h2, [dir="rtl"] h3, [dir="rtl"] h4, [dir="rtl"] h5, [dir="rtl"] h6 {
+    font-family: "Tajawal", "Arial", "Tahoma", sans-serif;
+    font-weight: 600;
+  }
 
   /* Premium scrollbar */
   ::-webkit-scrollbar {

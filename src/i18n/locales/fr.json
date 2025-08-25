@@ -1,0 +1,152 @@
+{
+  "nav": {
+    "home": "Accueil",
+    "vegetables": "Légumes",
+    "fruits": "Fruits",
+    "salads": "Salades",
+    "herbs": "Herbes",
+    "blog": "Blog",
+    "contact": "Contact",
+    "admin": "Admin"
+  },
+  "header": {
+    "phone": "+212 8 61 44 27 41",
+    "delivery": "Livraison dans tout le Maroc",
+    "freshProducts": "Produits 100% frais du terroir marocain",
+    "cart": "Panier",
+    "menu": "Menu"
+  },
+  "hero": {
+    "title": "Des Produits Frais",
+    "subtitle": "Directement du Terroir Marocain",
+    "description": "Découvrez notre sélection de fruits et légumes frais, cultivés avec passion dans les meilleures régions du Maroc.",
+    "shopNow": "Voir nos produits",
+    "orderNow": "Commander"
+  },
+  "categories": {
+    "title": "Nos Catégories",
+    "subtitle": "Découvrez notre gamme complète de produits frais",
+    "vegetables": "Légumes",
+    "fruits": "Fruits", 
+    "salads": "Salades",
+    "herbs": "Herbes Aromatiques"
+  },
+  "product": {
+    "organic": "Bio",
+    "origin": "Origine",
+    "season": "Saison",
+    "price": "Prix",
+    "addToCart": "Ajouter au panier",
+    "outOfStock": "Rupture de stock",
+    "inStock": "En stock",
+    "unit": "l'unité"
+  },
+  "cart": {
+    "title": "Mon Panier",
+    "empty": "Votre panier est vide",
+    "continueShopping": "Continuer mes achats",
+    "quantity": "Quantité",
+    "remove": "Supprimer",
+    "subtotal": "Sous-total",
+    "deliveryFee": "Frais de livraison",
+    "total": "Total",
+    "checkout": "Commander"
+  },
+  "order": {
+    "title": "Finaliser ma commande",
+    "delivery": "Informations de livraison",
+    "address": "Adresse de livraison",
+    "phone": "Numéro de téléphone",
+    "preferredDate": "Date de livraison préférée",
+    "timeSlot": "Créneau horaire", 
+    "notes": "Notes (optionnel)",
+    "summary": "Récapitulatif de commande",
+    "back": "Retour",
+    "confirm": "Confirmer ma commande",
+    "success": "Commande confirmée !",
+    "thankYou": "Merci pour votre commande. Nous vous contacterons bientôt.",
+    "orderNumber": "N° de commande"
+  },
+  "timeSlots": {
+    "morning": "Matin (8h-12h)",
+    "afternoon": "Après-midi (14h-18h)",
+    "evening": "Soirée (18h-21h)"
+  },
+  "contact": {
+    "title": "Contactez-nous",
+    "subtitle": "Une question ? N'hésitez pas à nous contacter",
+    "phone": "Téléphone",
+    "whatsapp": "WhatsApp", 
+    "email": "Email",
+    "address": "Adresse",
+    "hours": "Horaires d'ouverture",
+    "form": {
+      "name": "Nom complet",
+      "email": "Adresse email",
+      "subject": "Sujet",
+      "message": "Message",
+      "send": "Envoyer le message"
+    }
+  },
+  "footer": {
+    "description": "Votre partenaire de confiance pour des produits agricoles frais, directement du terroir marocain à votre table.",
+    "navigation": "Navigation",
+    "contact": "Contact",
+    "followUs": "Suivez-nous",
+    "rights": "Tous droits réservés"
+  },
+  "admin": {
+    "title": "Back-Office - Gestion des Commandes",
+    "subtitle": "Gérez toutes les commandes de votre boutique en ligne",
+    "stats": {
+      "pendingOrders": "Commandes en attente",
+      "totalOrders": "Total Commandes", 
+      "revenue": "Chiffre d'affaires"
+    },
+    "tabs": {
+      "all": "Toutes",
+      "pending": "En attente",
+      "confirmed": "Confirmées", 
+      "preparing": "En préparation",
+      "delivered": "Livrées"
+    },
+    "order": {
+      "number": "Commande",
+      "customer": "Informations Client",
+      "name": "Nom",
+      "delivery": "Livraison",
+      "date": "Date",
+      "timeSlot": "Créneau",
+      "products": "Produits commandés",
+      "notes": "Notes",
+      "actions": {
+        "confirm": "Confirmer",
+        "preparing": "En préparation", 
+        "ready": "Marquer comme prête",
+        "delivered": "Marquer comme livrée"
+      }
+    },
+    "status": {
+      "pending": "En attente",
+      "confirmed": "Confirmée",
+      "preparing": "En préparation", 
+      "ready": "Prête",
+      "delivered": "Livrée",
+      "cancelled": "Annulée"
+    },
+    "noOrders": "Aucune commande trouvée pour ce filtre"
+  },
+  "common": {
+    "loading": "Chargement...",
+    "error": "Erreur",
+    "success": "Succès",
+    "cancel": "Annuler",
+    "save": "Enregistrer",
+    "edit": "Modifier",
+    "delete": "Supprimer",
+    "search": "Rechercher",
+    "filter": "Filtrer",
+    "sort": "Trier",
+    "currency": "DH"
+  }
+}

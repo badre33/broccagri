@@ -1,7 +1,9 @@
 import { MapPin, Phone, Mail, Facebook, Instagram, Heart } from 'lucide-react';
 import { Button } from '@/components/ui/custom-button';
+import { useTranslation } from 'react-i18next';
 
 export function Footer() {
+  const { t } = useTranslation();
   return (
     <footer className="bg-primary text-primary-foreground">
       <div className="container mx-auto px-4 py-12">
@@ -16,8 +18,7 @@ export function Footer() {
               />
             </div>
             <p className="opacity-90 leading-relaxed mb-4">
-              Votre partenaire de confiance pour des produits agricoles frais, 
-              directement du terroir marocain à votre table.
+              {t('footer.description')}
             </p>
             <div className="flex gap-2">
             <Button 
@@ -41,11 +42,11 @@ export function Footer() {
 
           {/* Contact */}
           <div>
-            <h4 className="text-lg font-semibold mb-4">Contact</h4>
+            <h4 className="text-lg font-semibold mb-4">{t('footer.contact')}</h4>
             <div className="space-y-3">
               <div className="flex items-center gap-2 opacity-90">
                 <Phone className="h-4 w-4" />
-                <span>+212 8 61 44 27 41</span>
+                <span>+212661-792473</span>
               </div>
               <div className="flex items-center gap-2 opacity-90">
                 <Mail className="h-4 w-4" />
@@ -53,35 +54,35 @@ export function Footer() {
               </div>
               <div className="flex items-center gap-2 opacity-90">
                 <MapPin className="h-4 w-4" />
-                <span>Livraison dans tout le Maroc</span>
+                <span>{t('header.delivery')}</span>
               </div>
             </div>
           </div>
 
           {/* Navigation */}
           <div>
-            <h4 className="text-lg font-semibold mb-4">Navigation</h4>
+            <h4 className="text-lg font-semibold mb-4">{t('footer.navigation')}</h4>
             <div className="space-y-2">
               <a href="/" className="block opacity-90 hover:opacity-100 transition-opacity">
-                Accueil
+                {t('nav.home')}
               </a>
               <a href="/legumes" className="block opacity-90 hover:opacity-100 transition-opacity">
-                Légumes
+                {t('nav.vegetables')}
               </a>
               <a href="/fruits" className="block opacity-90 hover:opacity-100 transition-opacity">
-                Fruits
+                {t('nav.fruits')}
               </a>
               <a href="/salades" className="block opacity-90 hover:opacity-100 transition-opacity">
-                Salades
+                {t('nav.salads')}
               </a>
               <a href="/herbes" className="block opacity-90 hover:opacity-100 transition-opacity">
-                Herbes
+                {t('nav.herbs')}
               </a>
               <a href="/contact" className="block opacity-90 hover:opacity-100 transition-opacity">
-                Contact
+                {t('nav.contact')}
               </a>
               <a href="/blog" className="block opacity-90 hover:opacity-100 transition-opacity">
-                Blog
+                {t('nav.blog')}
               </a>
             </div>
           </div>
@@ -90,7 +91,7 @@ export function Footer() {
         <div className="border-t border-white/20 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <p className="text-sm opacity-80">
-              © 2024 BroccAgri. Tous droits réservés.
+              © 2024 BroccAgri. {t('footer.rights')}
             </p>
             <p className="text-sm opacity-80 flex items-center gap-1">
               Fait avec <Heart className="h-4 w-4 text-accent" /> pour l'agriculture marocaine

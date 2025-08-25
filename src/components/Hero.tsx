@@ -1,5 +1,7 @@
 import { Button } from '@/components/ui/custom-button';
 import { ArrowRight, Leaf, Truck, Shield } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
+import { useDirection } from '@/hooks/useDirection';
 import heroImage from '@/assets/hero-fresh-produce.jpg';
 
 interface HeroProps {
@@ -7,6 +9,8 @@ interface HeroProps {
 }
 
 export function Hero({ onOrderClick }: HeroProps) {
+  const { t } = useTranslation();
+  const { isRTL } = useDirection();
   return (
     <section id="accueil" className="relative min-h-[80vh] flex items-center">
       {/* Background */}
@@ -24,27 +28,25 @@ export function Hero({ onOrderClick }: HeroProps) {
         <div className="max-w-4xl mx-auto text-center text-white">
           <div className="animate-fade-in">
             <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight">
-              Vos produits agricoles frais,
+              {t('hero.title')}
               <span className="block bg-gradient-to-r from-accent to-yellow-400 bg-clip-text text-transparent">
-                livrés à domicile
+                {t('hero.subtitle')}
               </span>
             </h1>
             
             <p className="text-xl md:text-2xl mb-8 text-white/90 max-w-2xl mx-auto">
-              Découvrez la fraîcheur authentique du terroir marocain. 
-              Des légumes, fruits et herbes de qualité premium, 
-              directement des producteurs locaux à votre table.
+              {t('hero.description')}
             </p>
             
-            <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
+            <div className={`flex flex-col sm:flex-row gap-4 justify-center mb-12 ${isRTL ? 'sm:flex-row-reverse' : ''}`}>
               <Button 
                 variant="hero" 
                 size="xl" 
                 onClick={onOrderClick}
                 className="group"
               >
-                Commander maintenant
-                <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
+                {t('hero.orderNow')}
+                <ArrowRight className={`h-5 w-5 group-hover:translate-x-1 transition-transform ${isRTL ? 'mr-2 scale-x-[-1]' : 'ml-2'}`} />
               </Button>
               
               <Button 
@@ -52,7 +54,7 @@ export function Hero({ onOrderClick }: HeroProps) {
                 size="xl"
                 className="bg-white/10 border-white/30 text-white hover:bg-white hover:text-primary backdrop-blur-sm"
               >
-                Découvrir nos produits
+                {t('hero.shopNow')}
               </Button>
             </div>
           </div>

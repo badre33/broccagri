@@ -2,6 +2,8 @@ import { ShoppingCart, Menu, Phone, MapPin } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { useSupabaseCart } from '@/hooks/useSupabaseCart';
+import { useTranslation } from 'react-i18next';
+import { LanguageSwitcher } from '@/components/LanguageSwitcher';
 
 interface HeaderProps {
   onCartClick: () => void;
@@ -10,6 +12,7 @@ interface HeaderProps {
 
 export function Header({ onCartClick, onMenuClick }: HeaderProps) {
   const { itemCount } = useSupabaseCart();
+  const { t } = useTranslation();
 
   return (
     <header className="bg-white shadow-md sticky top-0 z-50">
@@ -19,15 +22,15 @@ export function Header({ onCartClick, onMenuClick }: HeaderProps) {
           <div className="flex items-center gap-4">
             <div className="flex items-center gap-1">
               <Phone className="h-4 w-4" />
-              <span>+212 8 61 44 27 41</span>
+              <span>+212661-792473</span>
             </div>
             <div className="flex items-center gap-1">
               <MapPin className="h-4 w-4" />
-              <span>Livraison dans tout le Maroc</span>
+              <span>{t('header.delivery')}</span>
             </div>
           </div>
           <div className="hidden md:block">
-            <span>🌱 Produits 100% frais du terroir marocain</span>
+            <span>🌱 {t('header.freshProducts')}</span>
           </div>
         </div>
       </div>
@@ -47,37 +50,39 @@ export function Header({ onCartClick, onMenuClick }: HeaderProps) {
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center gap-6">
             <a href="/" className="text-foreground hover:text-primary transition-colors font-medium">
-              Accueil
+              {t('nav.home')}
             </a>
             <a href="/legumes" className="text-foreground hover:text-primary transition-colors font-medium">
-              Légumes
+              {t('nav.vegetables')}
             </a>
             <a href="/fruits" className="text-foreground hover:text-primary transition-colors font-medium">
-              Fruits
+              {t('nav.fruits')}
             </a>
             <a href="/salades" className="text-foreground hover:text-primary transition-colors font-medium">
-              Salades
+              {t('nav.salads')}
             </a>
             <a href="/herbes" className="text-foreground hover:text-primary transition-colors font-medium">
-              Herbes
+              {t('nav.herbs')}
             </a>
             <a href="/blog" className="text-foreground hover:text-primary transition-colors font-medium">
-              Blog
+              {t('nav.blog')}
             </a>
             <a href="/contact" className="text-foreground hover:text-primary transition-colors font-medium">
-              Contact
+              {t('nav.contact')}
             </a>
           </nav>
 
           {/* Actions */}
           <div className="flex items-center gap-3">
+            <LanguageSwitcher />
+            
             <Button 
               variant="ghost" 
               size="sm"
               onClick={() => window.location.href = '/auth'}
               className="hidden sm:inline-flex text-sm font-medium"
             >
-              🔐 Admin
+              🔐 {t('nav.admin')}
             </Button>
             <Button 
               variant="outline" 
