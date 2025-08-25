@@ -25,6 +25,13 @@ const categoryDescriptions = {
   herbes: 'Aromates et herbes fraîches pour sublimer vos plats. Cultivées avec soin selon les méthodes traditionnelles, elles apporteront authenticité et parfum à votre cuisine.'
 };
 
+const categoryContent = {
+  legumes: 'Plongez dans l\'univers de nos légumes du terroir marocain ! Nos producteurs partenaires cultivent avec passion des légumes d\'exception : tomates charnues gorgées de soleil, carottes croquantes aux saveurs sucrées, oignons parfumés et pommes de terre onctueuses. Chaque légume est soigneusement sélectionné pour vous offrir le meilleur de la nature marocaine.',
+  fruits: 'Laissez-vous séduire par la richesse de nos vergers ! Nos fruits marocains sont de véritables joyaux gustatifs : oranges juteuses aux arômes intenses, figues moelleuses, dattes sucrées et bien d\'autres trésors fruités. Cultivés sous le soleil généreux du Maroc, ils vous offrent une explosion de saveurs authentiques à chaque bouchée.',
+  salades: 'Croquant, frais et plein de vitalité ! Nos salades et légumes verts sont la garantie d\'une alimentation saine et savoureuse. Laitue tendre, roquette piquante, épinards fondants... Cueillis à la rosée du matin, ils conservent toute leur fraîcheur et leurs qualités nutritionnelles pour égayer vos assiettes.',
+  herbes: 'Réveillez vos papilles avec nos herbes aromatiques d\'exception ! Menthe rafraîchissante, coriandre parfumée, persil généreux, basilic envoûtant... Nos herbes fraîches sont cultivées selon les traditions ancestrales marocaines pour apporter authenticité, parfum et caractère à tous vos plats.'
+};
+
 const categoryImages = {
   legumes: categoryVegetables,
   fruits: categoryFruits,
@@ -37,9 +44,10 @@ export default function CategoryPage() {
   const [isCartOpen, setIsCartOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
-  // S'assurer que le nom de la catégorie est correct
-  const categoryName = categoryNames[category as keyof typeof categoryNames];
-  const categoryDescription = categoryDescriptions[category as keyof typeof categoryDescriptions];
+  // S'assurer que le nom de la catégorie est correct - avec fallback solide
+  const categoryName = categoryNames[category as keyof typeof categoryNames] || (category ? category.charAt(0).toUpperCase() + category.slice(1) : 'Produits');
+  const categoryDescription = categoryDescriptions[category as keyof typeof categoryDescriptions] || '';
+  const categoryContentText = categoryContent[category as keyof typeof categoryContent] || '';
   const categoryImage = categoryImages[category as keyof typeof categoryImages] || categoryVegetables;
 
   return (
@@ -77,8 +85,8 @@ export default function CategoryPage() {
               <h2 className="text-3xl font-bold text-foreground mb-4">
                 Notre sélection de {categoryName?.toLowerCase()}
               </h2>
-              <p className="text-lg text-muted-foreground max-w-3xl mx-auto mb-8">
-                {categoryDescription}
+              <p className="text-lg text-muted-foreground max-w-4xl mx-auto mb-8">
+                {categoryContentText}
               </p>
             </div>
             <ProductCatalog selectedCategory={category} />
