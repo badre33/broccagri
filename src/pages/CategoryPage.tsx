@@ -37,7 +37,7 @@ export default function CategoryPage() {
   const [isCartOpen, setIsCartOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
-  const categoryName = categoryNames[category as keyof typeof categoryNames] || 'Produits';
+  const categoryName = categoryNames[category as keyof typeof categoryNames] || category || 'Catégorie';
   const categoryDescription = categoryDescriptions[category as keyof typeof categoryDescriptions] || '';
   const categoryImage = categoryImages[category as keyof typeof categoryImages] || categoryVegetables;
 
