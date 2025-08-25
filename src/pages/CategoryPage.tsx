@@ -5,24 +5,16 @@ import { ProductCatalog } from '@/components/ProductCatalog';
 import { Footer } from '@/components/Footer';
 import { Cart } from '@/components/Cart';
 import { WhatsAppButton } from '@/components/WhatsAppButton';
-import categoryVegetables from '@/assets/category-vegetables.jpg';
-import categoryFruits from '@/assets/category-fruits.jpg';
-import categoryHerbs from '@/assets/category-herbs.jpg';
-import categorySalads from '@/assets/category-salads-hero.jpg';
-import categoryHerbsNew from '@/assets/category-herbs-hero.jpg';
+import { LegumesHero } from '@/components/LegumesHero';
+import { FruitsHero } from '@/components/FruitsHero';
+import { SaladesHero } from '@/components/SaladesHero';
+import { HerbesHero } from '@/components/HerbesHero';
 
 const categoryNames = {
   legumes: 'Légumes',
   fruits: 'Fruits', 
   salades: 'Salades',
   herbes: 'Herbes'
-};
-
-const categoryDescriptions = {
-  legumes: 'Découvrez nos légumes frais cultivés dans le respect des traditions agricoles marocaines. Des produits de qualité, récoltés à maturité pour préserver toutes leurs saveurs et leurs bienfaits nutritionnels.',
-  fruits: 'Savourez nos fruits de saison, gorgés de soleil et récoltés à parfaite maturité. Une explosion de saveurs naturelles directement de nos vergers partenaires vers votre table.',
-  salades: 'Croquantes et rafraîchissantes, nos salades et légumes verts sont cueillis quotidiennement pour vous garantir une fraîcheur optimale. Parfaites pour des repas sains et équilibrés.',
-  herbes: 'Aromates et herbes fraîches pour sublimer vos plats. Cultivées avec soin selon les méthodes traditionnelles, elles apporteront authenticité et parfum à votre cuisine.'
 };
 
 const categoryContent = {
@@ -32,30 +24,28 @@ const categoryContent = {
   herbes: 'Réveillez vos papilles avec nos herbes aromatiques d\'exception ! Menthe rafraîchissante, coriandre parfumée, persil généreux, basilic envoûtant... Nos herbes fraîches sont cultivées selon les traditions ancestrales marocaines pour apporter authenticité, parfum et caractère à tous vos plats.'
 };
 
-const categoryImages = {
-  legumes: categoryVegetables,
-  fruits: categoryFruits,
-  salades: categorySalads,
-  herbes: categoryHerbsNew
-};
+function renderHeroSection(category: string) {
+  switch (category) {
+    case 'legumes':
+      return <LegumesHero />;
+    case 'fruits':
+      return <FruitsHero />;
+    case 'salades':
+      return <SaladesHero />;
+    case 'herbes':
+      return <HerbesHero />;
+    default:
+      return <LegumesHero />;
+  }
+}
 
 export default function CategoryPage() {
   const { category } = useParams<{ category: string }>();
   const [isCartOpen, setIsCartOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
-  // APPROCHE DIRECTE - FORCER MANUELLEMENT
-  const categoryName = categoryNames[category as keyof typeof categoryNames] || 'Erreur';
-  const categoryDescription = categoryDescriptions[category as keyof typeof categoryDescriptions] || '';
+  const categoryName = categoryNames[category as keyof typeof categoryNames] || 'Légumes';
   const categoryContentText = categoryContent[category as keyof typeof categoryContent] || '';
-  const categoryImage = categoryImages[category as keyof typeof categoryImages] || categoryVegetables;
-
-  // Debug pour voir ce qui se passe
-  console.log('=== DEBUG CATEGORY ===');
-  console.log('URL category:', category);
-  console.log('categoryNames object:', categoryNames);
-  console.log('Final categoryName:', categoryName);
-  console.log('=====================');
 
   return (
     <div className="min-h-screen bg-background">
@@ -65,25 +55,8 @@ export default function CategoryPage() {
       />
       
       <main>
-        {/* Hero Section */}
-        <section 
-          className="py-20 bg-gradient-to-br from-primary/20 to-accent/20 relative"
-          style={{
-            backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.4)), url(${categoryImage})`,
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
-            backgroundRepeat: 'no-repeat'
-          }}
-        >
-          <div className="container mx-auto px-4 text-center relative z-10">
-            <h1 className="text-4xl md:text-5xl font-heading font-bold text-white mb-4">
-              {categoryName}
-            </h1>
-            <p className="text-xl text-white/90 max-w-2xl mx-auto">
-              {categoryDescription}
-            </p>
-          </div>
-        </section>
+        {/* Hero Section spécifique à chaque catégorie */}
+        {renderHeroSection(category || 'legumes')}
 
         {/* Products */}
         <section className="py-16 bg-background">
