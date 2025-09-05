@@ -18,6 +18,7 @@ import bataviaVerte from '@/assets/products/batavia-verte.jpg';
 import pommesDeTerresPetites from '@/assets/products/pommes-de-terre-petites.jpg';
 import thym from '@/assets/products/thym.jpg';
 import celeri from '@/assets/products/celeri.jpg';
+import laitueVerte from '@/assets/products/laitue-verte.jpg';
 
 // Mapping des images de produits par nom/slug
 export const productImagesByName: Record<string, string> = {
@@ -30,7 +31,7 @@ export const productImagesByName: Record<string, string> = {
   'pomme-de-terre-petite': pommesDeTerresPetites,
   'thym': thym,
   'celeri': celeri,
-  'laitue-verte': lettuceImg,
+  'laitue-verte': laitueVerte,
   'laitue': lettuceImg,
   'menthe': mintImg,
 };

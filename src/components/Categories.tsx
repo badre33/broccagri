@@ -7,6 +7,7 @@ import { useSwipeGesture } from '@/hooks/useSwipeGesture';
 import categoryVegetables from '@/assets/category-vegetables.jpg';
 import categoryFruits from '@/assets/category-fruits.jpg';
 import categoryHerbs from '@/assets/category-herbs.jpg';
+import categorySalades from '@/assets/category-salades.jpg';
 
 interface CategoriesProps {
   onCategoryClick: (category: string) => void;
@@ -41,7 +42,7 @@ export function Categories({ onCategoryClick }: CategoriesProps) {
   const categoryImages = {
     'legumes': categoryVegetables,
     'fruits': categoryFruits, 
-    'salades': categoryHerbs,
+    'salades': categorySalades,
     'herbes': categoryHerbs
   };
 
