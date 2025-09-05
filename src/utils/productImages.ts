@@ -52,6 +52,19 @@ import poires from '@/assets/products/poires.jpg';
 import pommeImportee from '@/assets/products/pomme-importee.jpg';
 import pommeLocaleGrand from '@/assets/products/pomme-locale-grand.jpg';
 import pommeLocaleMoyen from '@/assets/products/pomme-locale-moyen.jpg';
+import bataviaRouge from '@/assets/products/batavia-rouge.jpg';
+import celeriRave from '@/assets/products/celeri-rave.jpg';
+import cheneRouge from '@/assets/products/chene-rouge.jpg';
+import cheneVert from '@/assets/products/chene-vert.jpg';
+import germeAlfalfa from '@/assets/products/germe-alfalfa.jpg';
+import germeBetterave from '@/assets/products/germe-betterave.jpg';
+import germePoireau from '@/assets/products/germe-poireau.jpg';
+import laitueRouge from '@/assets/products/laitue-rouge.jpg';
+import loloRouge from '@/assets/products/lolo-rouge.jpg';
+import mesclun from '@/assets/products/mesclun.jpg';
+import pousseBetterave from '@/assets/products/pousse-betterave.jpg';
+import pousseEpinard from '@/assets/products/pousse-epinard.jpg';
+import tomateCerise from '@/assets/products/tomate-cerise.jpg';
 
 // Mapping des images de produits par nom/slug
 export const productImagesByName: Record<string, string> = {
@@ -104,6 +117,19 @@ export const productImagesByName: Record<string, string> = {
   'pomme-locale-grand': pommeLocaleGrand,
   'pomme-locale-moyen': pommeLocaleMoyen,
   'pomme-locale': pommeLocaleMoyen,
+  'batavia-rouge': bataviaRouge,
+  'celeri-rave': celeriRave,
+  'chene-rouge': cheneRouge,
+  'chene-vert': cheneVert,
+  'germe-alfalfa': germeAlfalfa,
+  'germe-betterave': germeBetterave,
+  'germe-poireau': germePoireau,
+  'laitue-rouge': laitueRouge,
+  'lolo-rouge': loloRouge,
+  'mesclun': mesclun,
+  'pousse-betterave': pousseBetterave,
+  'pousse-epinard': pousseEpinard,
+  'tomate-cerise': tomateCerise,
 };
 
 // Mapping des images de produits par URL (existant)
