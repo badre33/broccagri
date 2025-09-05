@@ -2,7 +2,8 @@ import { useState, useEffect, useCallback } from 'react';
 import { supabase } from '@/integrations/supabase/client';
 import { useAuth } from './useAuth';
 import { Product } from './useProducts';
-import { toast } from '@/hooks/use-toast';
+import { useToast } from '@/hooks/use-toast';
+import { useTranslation } from 'react-i18next';
 
 export interface CartItem {
   id: string;
@@ -22,6 +23,8 @@ export interface CartState {
 
 export const useSupabaseCart = () => {
   const { user, session } = useAuth();
+  const { toast } = useToast();
+  const { t } = useTranslation();
   const [cart, setCart] = useState<CartItem[]>([]);
   const [loading, setLoading] = useState(false);
 
@@ -162,14 +165,14 @@ export const useSupabaseCart = () => {
       }, 100);
       
       toast({
-        title: "Produit ajouté",
-        description: `${product.name} a été ajouté à votre panier`,
+        title: t('cart.productAdded', 'Produit ajouté'),
+        description: `${product.name} ${t('cart.addedToCart', 'a été ajouté à votre panier')}`,
       });
     } catch (error: any) {
       console.error('Error adding to cart:', error);
       toast({
-        title: "Erreur",
-        description: "Impossible d'ajouter le produit au panier",
+        title: t('common.error', 'Erreur'),
+        description: t('cart.cannotAdd', "Impossible d'ajouter le produit au panier"),
         variant: "destructive",
       });
     }
@@ -196,8 +199,8 @@ export const useSupabaseCart = () => {
     } catch (error: any) {
       console.error('Error updating quantity:', error);
       toast({
-        title: "Erreur",
-        description: "Impossible de modifier la quantité",
+        title: t('common.error', 'Erreur'),
+        description: t('cart.cannotUpdate', "Impossible de modifier la quantité"),
         variant: "destructive",
       });
     }
@@ -218,14 +221,14 @@ export const useSupabaseCart = () => {
       }, 100);
       
       toast({
-        title: "Produit retiré",
-        description: "Le produit a été retiré de votre panier",
+        title: t('cart.productRemoved', "Produit retiré"),
+        description: t('cart.removedFromCart', "Le produit a été retiré de votre panier"),
       });
     } catch (error: any) {
       console.error('Error removing from cart:', error);
       toast({
-        title: "Erreur",
-        description: "Impossible de retirer le produit",
+        title: t('common.error', 'Erreur'),
+        description: t('cart.cannotRemove', "Impossible de retirer le produit"),
         variant: "destructive",
       });
     }
@@ -249,14 +252,14 @@ export const useSupabaseCart = () => {
       setCart([]);
       
       toast({
-        title: "Panier vidé",
-        description: "Votre panier a été vidé",
+        title: t('cart.cartCleared', "Panier vidé"),
+        description: t('cart.cartEmptied', "Votre panier a été vidé"),
       });
     } catch (error: any) {
       console.error('Error clearing cart:', error);
       toast({
-        title: "Erreur",
-        description: "Impossible de vider le panier",
+        title: t('common.error', 'Erreur'),
+        description: t('cart.cannotClear', "Impossible de vider le panier"),
         variant: "destructive",
       });
     }

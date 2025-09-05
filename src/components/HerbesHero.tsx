@@ -1,6 +1,9 @@
 import categoryHerbsNew from '@/assets/category-herbs-hero.jpg';
+import { useTranslation } from 'react-i18next';
 
 export function HerbesHero() {
+  const { t } = useTranslation();
+  
   return (
     <section 
       className="py-20 bg-gradient-to-br from-primary/20 to-accent/20 relative"
@@ -13,10 +16,10 @@ export function HerbesHero() {
     >
       <div className="container mx-auto px-4 text-center relative z-10">
         <h1 className="text-4xl md:text-5xl font-heading font-bold text-white mb-4">
-          Herbes
+          {t('categoryHeroes.herbs.title')}
         </h1>
         <p className="text-xl text-white/90 max-w-2xl mx-auto">
-          Aromates et herbes fraîches pour sublimer vos plats. Cultivées avec soin selon les méthodes traditionnelles, elles apporteront authenticité et parfum à votre cuisine.
+          {t('categoryHeroes.herbs.description')}
         </p>
       </div>
     </section>

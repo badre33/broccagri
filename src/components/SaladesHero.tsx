@@ -1,6 +1,9 @@
 import categorySalads from '@/assets/category-salads-hero-new.jpg';
+import { useTranslation } from 'react-i18next';
 
 export function SaladesHero() {
+  const { t } = useTranslation();
+  
   return (
     <section 
       className="py-20 bg-gradient-to-br from-primary/20 to-accent/20 relative"
@@ -13,10 +16,10 @@ export function SaladesHero() {
     >
       <div className="container mx-auto px-4 text-center relative z-10">
         <h1 className="text-4xl md:text-5xl font-heading font-bold text-white mb-4">
-          Salades
+          {t('categoryHeroes.salads.title')}
         </h1>
         <p className="text-xl text-white/90 max-w-2xl mx-auto">
-          Croquantes et rafraîchissantes, nos salades et légumes verts sont cueillis quotidiennement pour vous garantir une fraîcheur optimale. Parfaites pour des repas sains et équilibrés.
+          {t('categoryHeroes.salads.description')}
         </p>
       </div>
     </section>

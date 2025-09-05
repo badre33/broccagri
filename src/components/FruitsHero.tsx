@@ -1,6 +1,9 @@
 import categoryFruits from '@/assets/category-fruits.jpg';
+import { useTranslation } from 'react-i18next';
 
 export function FruitsHero() {
+  const { t } = useTranslation();
+  
   return (
     <section 
       className="py-20 bg-gradient-to-br from-primary/20 to-accent/20 relative"
@@ -13,10 +16,10 @@ export function FruitsHero() {
     >
       <div className="container mx-auto px-4 text-center relative z-10">
         <h1 className="text-4xl md:text-5xl font-heading font-bold text-white mb-4">
-          Fruits
+          {t('categoryHeroes.fruits.title')}
         </h1>
         <p className="text-xl text-white/90 max-w-2xl mx-auto">
-          Savourez nos fruits de saison, gorgés de soleil et récoltés à parfaite maturité. Une explosion de saveurs naturelles directement de nos vergers partenaires vers votre table.
+          {t('categoryHeroes.fruits.description')}
         </p>
       </div>
     </section>

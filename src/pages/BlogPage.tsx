@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
 import { Cart } from '@/components/Cart';
@@ -9,32 +10,42 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/custom-button';
 import { Calendar, User, ArrowRight } from 'lucide-react';
+import { useGlobalDirection } from '@/hooks/useGlobalDirection';
 import heroImage from '@/assets/hero-fresh-produce.jpg';
 import categoryVegetables from '@/assets/category-vegetables.jpg';
 import blogHeroNew from '@/assets/blog-hero-new.jpg';
 
-const blogPosts = [
-  {
-    id: 1,
-    title: "L'Agriculture Marocaine : Un Trésor de Biodiversité",
-    excerpt: "Découvrez la richesse et la diversité des produits agricoles du Maroc, de la plaine du Souss aux montagnes de l'Atlas.",
-    content: `Le Maroc possède l'une des agricultures les plus diversifiées d'Afrique du Nord. Grâce à ses différents climats et terroirs, le royaume offre une palette exceptionnelle de produits frais.
+export default function BlogPage() {
+  const { t } = useTranslation();
+  const [isCartOpen, setIsCartOpen] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [selectedPost, setSelectedPost] = useState<typeof blogPosts[0] | null>(null);
+
+  // Assurer la gestion RTL
+  useGlobalDirection();
+
+  const blogPosts = [
+    {
+      id: 1,
+      title: t('blog.posts.agriculture.title'),
+      excerpt: t('blog.posts.agriculture.excerpt'),
+      content: `Le Maroc possède l'une des agricultures les plus diversifiées d'Afrique du Nord. Grâce à ses différents climats et terroirs, le royaume offre une palette exceptionnelle de produits frais.
 
 Des plaines fertiles du Souss-Massa aux vallées de l'Atlas, chaque région développe ses spécialités. Les tomates cerises de Souss, les oranges de Berkane, les olives de Meknès... autant de produits qui font la renommée du terroir marocain.
 
 Cette diversité climatique permet une production étalée sur toute l'année, garantissant des produits frais en permanence. C'est cette richesse que nous vous proposons chez BroccAgri, en travaillant directement avec les producteurs locaux.
 
 L'agriculture marocaine c'est aussi un savoir-faire ancestral transmis de génération en génération. Les techniques traditionnelles, combinées aux innovations modernes, permettent d'obtenir des produits d'une qualité exceptionnelle.`,
-    author: "Équipe BroccAgri",
-    date: "15 Mars 2024",
-    category: "Agriculture",
-    image: heroImage
-  },
-  {
-    id: 2,
-    title: "Circuit Court : Pourquoi Choisir le Direct Producteur ?",
-    excerpt: "Les avantages du circuit court pour les consommateurs, les producteurs et l'environnement. Une approche durable et responsable.",
-    content: `Le circuit court révolutionne notre façon de consommer. En éliminant les intermédiaires, nous créons un lien direct entre producteurs et consommateurs, bénéfique pour tous.
+      author: "Équipe BroccAgri",
+      date: "15 Mars 2024",
+      category: t('blog.posts.agriculture.category'),
+      image: heroImage
+    },
+    {
+      id: 2,
+      title: t('blog.posts.circuit.title'),
+      excerpt: t('blog.posts.circuit.excerpt'),
+      content: `Le circuit court révolutionne notre façon de consommer. En éliminant les intermédiaires, nous créons un lien direct entre producteurs et consommateurs, bénéfique pour tous.
 
 Pour les consommateurs, c'est la garantie de produits ultra-frais, récoltés à maturité. Fini les légumes cueillis verts pour supporter le transport ! Nos produits arrivent chez vous dans les 24h après la récolte.
 
@@ -43,17 +54,12 @@ Pour les producteurs, c'est une rémunération plus juste. En supprimant les int
 Pour l'environnement, c'est moins de transport, moins d'emballage, moins de gaspillage. Nos produits parcourent en moyenne 50 km contre 500 km pour la distribution traditionnelle.
 
 Chez BroccAgri, nous croyons que cette approche est l'avenir de l'alimentation. Nous travaillons avec plus de 50 producteurs locaux pour vous offrir le meilleur du terroir marocain, directement de la ferme à votre table.`,
-    author: "Équipe BroccAgri",
-    date: "8 Mars 2024", 
-    category: "Durabilité",
-    image: categoryVegetables
-  }
-];
-
-export default function BlogPage() {
-  const [isCartOpen, setIsCartOpen] = useState(false);
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [selectedPost, setSelectedPost] = useState<typeof blogPosts[0] | null>(null);
+      author: "Équipe BroccAgri",
+      date: "8 Mars 2024", 
+      category: t('blog.posts.circuit.category'),
+      image: categoryVegetables
+    }
+  ];
 
   if (selectedPost) {
     return (
@@ -70,7 +76,7 @@ export default function BlogPage() {
               onClick={() => setSelectedPost(null)}
               className="mb-8"
             >
-              ← Retour au blog
+              {t('blog.backToBlog')}
             </Button>
             
             <article>
@@ -145,10 +151,10 @@ export default function BlogPage() {
         >
           <div className="container mx-auto px-4 text-center relative z-10">
             <h1 className="text-4xl md:text-5xl font-heading font-bold text-white mb-4">
-              Blog BroccAgri
+              {t('blog.title')}
             </h1>
             <p className="text-xl text-white/90 max-w-2xl mx-auto">
-              Découvrez nos articles sur l'agriculture marocaine, nos conseils et nos actualités
+              {t('blog.subtitle')}
             </p>
           </div>
         </section>
@@ -196,7 +202,7 @@ export default function BlogPage() {
                       className="group p-0 h-auto font-medium text-primary hover:text-primary-hover"
                       onClick={() => setSelectedPost(post)}
                     >
-                      Lire l'article
+                      {t('blog.readArticle')}
                       <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
                     </Button>
                   </CardContent>
@@ -207,14 +213,13 @@ export default function BlogPage() {
             {/* Call to Action */}
             <div className="text-center bg-gradient-to-r from-primary/10 to-accent/10 rounded-xl p-8">
               <h3 className="text-2xl font-heading font-bold text-brand-slate mb-4">
-                Découvrez nos produits frais
+                {t('blog.cta.title')}
               </h3>
               <p className="text-muted-foreground mb-6 max-w-2xl mx-auto">
-                Passez de la lecture à l'action ! Explorez notre catalogue de produits frais 
-                du terroir marocain et commandez dès maintenant.
+                {t('blog.cta.description')}
               </p>
               <Button variant="premium" size="lg" onClick={() => window.location.href = '/'}>
-                Voir notre catalogue
+                {t('blog.cta.button')}
               </Button>
             </div>
           </div>

@@ -1,6 +1,9 @@
 import categoryVegetables from '@/assets/category-vegetables.jpg';
+import { useTranslation } from 'react-i18next';
 
 export function LegumesHero() {
+  const { t } = useTranslation();
+  
   return (
     <section 
       className="py-20 bg-gradient-to-br from-primary/20 to-accent/20 relative"
@@ -13,10 +16,10 @@ export function LegumesHero() {
     >
       <div className="container mx-auto px-4 text-center relative z-10">
         <h1 className="text-4xl md:text-5xl font-heading font-bold text-white mb-4">
-          Légumes
+          {t('categoryHeroes.vegetables.title')}
         </h1>
         <p className="text-xl text-white/90 max-w-2xl mx-auto">
-          Découvrez nos légumes frais cultivés dans le respect des traditions agricoles marocaines. Des produits de qualité, récoltés à maturité pour préserver toutes leurs saveurs et leurs bienfaits nutritionnels.
+          {t('categoryHeroes.vegetables.description')}
         </p>
       </div>
     </section>

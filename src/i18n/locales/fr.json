@@ -31,6 +31,24 @@
       "qualityDesc": "Satisfaction 100% ou remboursé"
     }
   },
+  "categoryHeroes": {
+    "vegetables": {
+      "title": "Légumes",
+      "description": "Découvrez nos légumes frais cultivés dans le respect des traditions agricoles marocaines. Des produits de qualité, récoltés à maturité pour préserver toutes leurs saveurs et leurs bienfaits nutritionnels."
+    },
+    "fruits": {
+      "title": "Fruits",
+      "description": "Savourez la douceur et la jutosité de nos fruits marocains. Des oranges parfumées aux dattes sucrées, chaque fruit est une invitation au voyage au cœur des vergers marocains."
+    },
+    "salads": {
+      "title": "Salades",
+      "description": "Fraîcheur et vitalité à chaque feuille ! Nos salades et légumes verts sont soigneusement sélectionnés pour vous offrir des ingrédients sains et savoureux pour vos plats du quotidien."
+    },
+    "herbs": {
+      "title": "Herbes Aromatiques", 
+      "description": "Éveillez vos sens avec nos herbes aromatiques d'exception. Menthe, coriandre, persil, basilic... des herbes fraîches pour sublimer vos plats marocains authentiques."
+    }
+  },
   "featured": {
     "title": "Produits Mis en Avant",
     "subtitle": "Découvrez notre sélection de produits les plus populaires, cultivés avec passion par nos agriculteurs partenaires",
@@ -146,7 +164,17 @@
     "subtotal": "Sous-total",
     "deliveryFee": "Frais de livraison",
     "total": "Total",
-    "checkout": "Commander"
+    "checkout": "Commander",
+    "productAdded": "Produit ajouté",
+    "addedToCart": "a été ajouté à votre panier",
+    "cannotAdd": "Impossible d'ajouter le produit au panier",
+    "cannotUpdate": "Impossible de modifier la quantité",
+    "productRemoved": "Produit retiré",
+    "removedFromCart": "Le produit a été retiré de votre panier",
+    "cannotRemove": "Impossible de retirer le produit",
+    "cartCleared": "Panier vidé",
+    "cartEmptied": "Votre panier a été vidé",
+    "cannotClear": "Impossible de vider le panier"
   },
   "order": {
     "title": "Finaliser ma commande",
@@ -215,6 +243,32 @@
       "cancelled": "Annulée"
     },
     "noOrders": "Aucune commande trouvée pour ce filtre"
+  },
+  "blog": {
+    "title": "Blog BroccAgri",
+    "subtitle": "Découvrez nos articles sur l'agriculture marocaine, nos conseils et nos actualités",
+    "readArticle": "Lire l'article",
+    "backToBlog": "← Retour au blog",
+    "author": "Auteur",
+    "date": "Date",
+    "category": "Catégorie",
+    "cta": {
+      "title": "Découvrez nos produits frais",
+      "description": "Passez de la lecture à l'action ! Explorez notre catalogue de produits frais du terroir marocain et commandez dès maintenant.",
+      "button": "Voir notre catalogue"
+    },
+    "posts": {
+      "agriculture": {
+        "title": "L'Agriculture Marocaine : Un Trésor de Biodiversité",
+        "excerpt": "Découvrez la richesse et la diversité des produits agricoles du Maroc, de la plaine du Souss aux montagnes de l'Atlas.",
+        "category": "Agriculture"
+      },
+      "circuit": {
+        "title": "Circuit Court : Pourquoi Choisir le Direct Producteur ?",
+        "excerpt": "Les avantages du circuit court pour les consommateurs, les producteurs et l'environnement. Une approche durable et responsable.",
+        "category": "Durabilité"
+      }
+    }
   },
   "common": {
     "loading": "Chargement...",
