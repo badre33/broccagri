@@ -56,15 +56,15 @@ import bataviaRouge from '@/assets/products/batavia-rouge.jpg';
 import celeriRave from '@/assets/products/celeri-rave.jpg';
 import cheneRouge from '@/assets/products/chene-rouge.jpg';
 import cheneVert from '@/assets/products/chene-vert.jpg';
-import germeAlfalfa from '@/assets/products/germe-alfalfa.jpg';
-import germeBetterave from '@/assets/products/germe-betterave.jpg';
-import germePoireau from '@/assets/products/germe-poireau.jpg';
+import germeAlfalfa from '@/assets/products/germe-alfalfa-new.jpg';
+import germeBetterave from '@/assets/products/germe-betterave-new.jpg';
+import germePoireau from '@/assets/products/germe-poireau-new.jpg';
 import laitueRouge from '@/assets/products/laitue-rouge.jpg';
-import loloRouge from '@/assets/products/lolo-rouge.jpg';
+import loloRouge from '@/assets/products/lolo-rouge-new.jpg';
 import mesclun from '@/assets/products/mesclun.jpg';
-import pousseBetterave from '@/assets/products/pousse-betterave.jpg';
-import pousseEpinard from '@/assets/products/pousse-epinard.jpg';
-import tomateCerise from '@/assets/products/tomate-cerise.jpg';
+import pousseBetterave from '@/assets/products/pousse-betterave-new.jpg';
+import pousseEpinard from '@/assets/products/pousse-epinard-new.jpg';
+import tomateCerise from '@/assets/products/tomate-cerise-new.jpg';
 
 // Mapping des images de produits par nom/slug
 export const productImagesByName: Record<string, string> = {
