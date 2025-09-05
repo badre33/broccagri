@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Button } from '@/components/ui/button';
 import { 
@@ -8,14 +9,34 @@ import {
 } from '@/components/ui/dropdown-menu';
 import { Languages } from 'lucide-react';
 
+// Gestion globale de la direction RTL
+export function useGlobalDirection() {
+  const { i18n } = useTranslation();
+  
+  useEffect(() => {
+    // Appliquer la direction au changement de langue
+    const updateDirection = () => {
+      document.documentElement.dir = i18n.language === 'ar' ? 'rtl' : 'ltr';
+      document.documentElement.lang = i18n.language;
+    };
+    
+    // Appliquer immédiatement
+    updateDirection();
+    
+    // Écouter les changements de langue
+    i18n.on('languageChanged', updateDirection);
+    
+    return () => {
+      i18n.off('languageChanged', updateDirection);
+    };
+  }, [i18n]);
+}
+
 export const LanguageSwitcher = () => {
   const { i18n } = useTranslation();
 
   const changeLanguage = (lng: string) => {
     i18n.changeLanguage(lng);
-    // Mettre à jour la direction du document
-    document.documentElement.dir = lng === 'ar' ? 'rtl' : 'ltr';
-    document.documentElement.lang = lng;
   };
 
   const currentLanguage = i18n.language;

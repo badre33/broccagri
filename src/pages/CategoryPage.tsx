@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useLocation } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { Header } from '@/components/Header';
 import { ProductCatalog } from '@/components/ProductCatalog';
 import { Footer } from '@/components/Footer';
@@ -11,20 +12,7 @@ import { LegumesHero } from '@/components/LegumesHero';
 import { FruitsHero } from '@/components/FruitsHero';
 import { SaladesHero } from '@/components/SaladesHero';
 import { HerbesHero } from '@/components/HerbesHero';
-
-const categoryNames = {
-  legumes: 'Légumes',
-  fruits: 'Fruits', 
-  salades: 'Salades',
-  herbes: 'Herbes'
-};
-
-const categoryContent = {
-  legumes: 'Plongez dans l\'univers de nos légumes du terroir marocain ! Nos producteurs partenaires cultivent avec passion des légumes d\'exception : tomates charnues gorgées de soleil, carottes croquantes aux saveurs sucrées, oignons parfumés et pommes de terre onctueuses. Chaque légume est soigneusement sélectionné pour vous offrir le meilleur de la nature marocaine.',
-  fruits: 'Laissez-vous séduire par la richesse de nos vergers ! Nos fruits marocains sont de véritables joyaux gustatifs : oranges juteuses aux arômes intenses, figues moelleuses, dattes sucrées et bien d\'autres trésors fruités. Cultivés sous le soleil généreux du Maroc, ils vous offrent une explosion de saveurs authentiques à chaque bouchée.',
-  salades: 'Croquant, frais et plein de vitalité ! Nos salades et légumes verts sont la garantie d\'une alimentation saine et savoureuse. Laitue tendre, roquette piquante, épinards fondants... Cueillis à la rosée du matin, ils conservent toute leur fraîcheur et leurs qualités nutritionnelles pour égayer vos assiettes.',
-  herbes: 'Réveillez vos papilles avec nos herbes aromatiques d\'exception ! Menthe rafraîchissante, coriandre parfumée, persil généreux, basilic envoûtant... Nos herbes fraîches sont cultivées selon les traditions ancestrales marocaines pour apporter authenticité, parfum et caractère à tous vos plats.'
-};
+import { useGlobalDirection } from '@/components/LanguageSwitcher';
 
 function renderHeroSection(category: string) {
   switch (category) {
@@ -43,19 +31,32 @@ function renderHeroSection(category: string) {
 
 export default function CategoryPage() {
   const location = useLocation();
+  const { t } = useTranslation();
   const [isCartOpen, setIsCartOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  
+  // Assurer la gestion RTL
+  useGlobalDirection();
 
   // Extraire la catégorie depuis le pathname (/legumes -> legumes)
   const category = location.pathname.substring(1);
   
-  const categoryName = categoryNames[category as keyof typeof categoryNames] || 'Légumes';
-  const categoryContentText = categoryContent[category as keyof typeof categoryContent] || '';
+  const getTranslationKey = (category: string) => {
+    const keyMap: { [key: string]: string } = {
+      'legumes': 'vegetables',
+      'fruits': 'fruits', 
+      'salades': 'salads',
+      'herbes': 'herbs'
+    };
+    return keyMap[category] || 'vegetables';
+  };
+
+  const translationKey = getTranslationKey(category);
   
   console.log('=== DEBUG LOCATION ===');
   console.log('Current pathname:', location.pathname);
   console.log('Extracted category:', category);
-  console.log('Category name:', categoryName);
+  console.log('Translation key:', translationKey);
   console.log('=====================');
 
   return (
@@ -74,10 +75,10 @@ export default function CategoryPage() {
           <div className="container mx-auto px-4">
             <div className="text-center mb-12">
               <h2 className="text-3xl font-bold text-foreground mb-4">
-                Notre sélection de {categoryName?.toLowerCase()}
+                {t(`categoryPages.${translationKey}.title`)}
               </h2>
               <p className="text-lg text-muted-foreground max-w-4xl mx-auto mb-8">
-                {categoryContentText}
+                {t(`categoryPages.${translationKey}.description`)}
               </p>
             </div>
             <ProductCatalog selectedCategory={category} />

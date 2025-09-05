@@ -109,6 +109,24 @@
     "herbs": "Herbes Aromatiques",
     "viewProducts": "Voir les produits"
   },
+  "categoryPages": {
+    "vegetables": {
+      "title": "Notre sélection de légumes",
+      "description": "Plongez dans l'univers de nos légumes du terroir marocain ! Nos producteurs partenaires cultivent avec passion des légumes d'exception : tomates charnues gorgées de soleil, carottes croquantes aux saveurs sucrées, oignons parfumés et pommes de terre onctueuses. Chaque légume est soigneusement sélectionné pour vous offrir le meilleur de la nature marocaine."
+    },
+    "fruits": {
+      "title": "Notre sélection de fruits",
+      "description": "Laissez-vous séduire par la richesse de nos vergers ! Nos fruits marocains sont de véritables joyaux gustatifs : oranges juteuses aux arômes intenses, figues moelleuses, dattes sucrées et bien d'autres trésors fruités. Cultivés sous le soleil généreux du Maroc, ils vous offrent une explosion de saveurs authentiques à chaque bouchée."
+    },
+    "salads": {
+      "title": "Notre sélection de salades", 
+      "description": "Croquant, frais et plein de vitalité ! Nos salades et légumes verts sont la garantie d'une alimentation saine et savoureuse. Laitue tendre, roquette piquante, épinards fondants... Cueillis à la rosée du matin, ils conservent toute leur fraîcheur et leurs qualités nutritionnelles pour égayer vos assiettes."
+    },
+    "herbs": {
+      "title": "Notre sélection d'herbes",
+      "description": "Réveillez vos papilles avec nos herbes aromatiques d'exception ! Menthe rafraîchissante, coriandre parfumée, persil généreux, basilic envoûtant... Nos herbes fraîches sont cultivées selon les traditions ancestrales marocaines pour apporter authenticité, parfum et caractère à tous vos plats."
+    }
+  },
   "product": {
     "organic": "Bio",
     "origin": "Origine",
