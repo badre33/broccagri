@@ -101,6 +101,9 @@ export const productImagesByName: Record<string, string> = {
   'pomme-importee': pommeImportee,
   'pomme-locale-grand-calibre': pommeLocaleGrand,
   'pomme-locale-moyen-calibre': pommeLocaleMoyen,
+  'pomme-locale-grand': pommeLocaleGrand,
+  'pomme-locale-moyen': pommeLocaleMoyen,
+  'pomme-locale': pommeLocaleMoyen,
 };
 
 // Mapping des images de produits par URL (existant)
