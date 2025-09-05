@@ -60,7 +60,7 @@ import germeAlfalfa from '@/assets/products/germe-alfalfa-new.jpg';
 import germeBetterave from '@/assets/products/germe-betterave-new.jpg';
 import germePoireau from '@/assets/products/germe-poireau-new.jpg';
 import laitueRouge from '@/assets/products/laitue-rouge.jpg';
-import loloRouge from '@/assets/products/lolo-rouge-new.jpg';
+import loloRouge from '@/assets/products/lollo-rouge-final.jpg';
 import mesclun from '@/assets/products/mesclun.jpg';
 import pousseBetterave from '@/assets/products/pousse-betterave-new.jpg';
 import pousseEpinard from '@/assets/products/pousse-epinard-new.jpg';
