@@ -1,4 +1,4 @@
-import categorySalads from '@/assets/category-salads-hero.jpg';
+import categorySalads from '@/assets/category-salads-hero-new.jpg';
 
 export function SaladesHero() {
   return (
