@@ -12,7 +12,7 @@ import { LegumesHero } from '@/components/LegumesHero';
 import { FruitsHero } from '@/components/FruitsHero';
 import { SaladesHero } from '@/components/SaladesHero';
 import { HerbesHero } from '@/components/HerbesHero';
-import { useGlobalDirection } from '@/components/LanguageSwitcher';
+import { useGlobalDirection } from '@/hooks/useGlobalDirection';
 
 function renderHeroSection(category: string) {
   switch (category) {

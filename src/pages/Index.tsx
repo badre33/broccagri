@@ -10,11 +10,15 @@ import { Cart } from '@/components/Cart';
 import { WhatsAppButton } from '@/components/WhatsAppButton';
 import { CheckoutButton } from '@/components/CheckoutButton';
 import { MobileMenu } from '@/components/MobileMenu';
+import { useGlobalDirection } from '@/hooks/useGlobalDirection';
 
 const Index = () => {
   const [isCartOpen, setIsCartOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState<string>();
+
+  // Assurer la gestion RTL
+  useGlobalDirection();
 
   const handleCategoryClick = (category: string) => {
     setSelectedCategory(category);
