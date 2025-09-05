@@ -21,7 +21,84 @@
     "subtitle": "Directement du Terroir Marocain",
     "description": "Découvrez notre sélection de fruits et légumes frais, cultivés avec passion dans les meilleures régions du Maroc.",
     "shopNow": "Voir nos produits",
-    "orderNow": "Commander"
+    "orderNow": "Commander",
+    "features": {
+      "fresh": "100% Frais",
+      "freshDesc": "Produits récoltés quotidiennement",
+      "delivery": "Livraison Rapide",
+      "deliveryDesc": "Livré en 24h dans tout le Maroc",
+      "quality": "Qualité Garantie", 
+      "qualityDesc": "Satisfaction 100% ou remboursé"
+    }
+  },
+  "featured": {
+    "title": "Produits Mis en Avant",
+    "subtitle": "Découvrez notre sélection de produits les plus populaires, cultivés avec passion par nos agriculteurs partenaires",
+    "searchPlaceholder": "Rechercher un produit...",
+    "allPrices": "Tous les prix",
+    "lowPrice": "≤ 10 DH",
+    "mediumPrice": "10-20 DH",
+    "highPrice": "> 20 DH",
+    "productsFound": "produit trouvé",
+    "productsFoundPlural": "produits trouvés",
+    "noProducts": "Aucun produit trouvé pour vos critères",
+    "resetFilters": "Réinitialiser les filtres"
+  },
+  "about": {
+    "title": "Notre Mission : Soutenir l'Agriculture Marocaine",
+    "subtitle": "Chez BroccAgri, nous croyons fermement au potentiel de l'agriculture marocaine. Notre mission est de créer un pont direct entre les producteurs locaux et les consommateurs, garantissant ainsi une rémunération juste pour nos agriculteurs partenaires tout en vous offrant des produits d'une fraîcheur exceptionnelle.",
+    "values": {
+      "partnership": {
+        "title": "Partenariat Agricole",
+        "description": "Nous travaillons directement avec plus de 50 agriculteurs marocains pour vous garantir des produits authentiques."
+      },
+      "passion": {
+        "title": "Passion & Qualité",
+        "description": "Chaque produit est sélectionné avec soin pour vous offrir le meilleur du terroir marocain."
+      },
+      "responsible": {
+        "title": "Agriculture Responsable",
+        "description": "Nous privilégions les pratiques agricoles durables et respectueuses de l'environnement."
+      },
+      "excellence": {
+        "title": "Excellence Garantie",
+        "description": "Notre engagement : vous livrer des produits frais de la plus haute qualité, directement du producteur."
+      }
+    },
+    "mission": {
+      "title": "Ensemble, cultivons l'avenir du Maroc",
+      "description": "En choisissant BroccAgri, vous participez directement au développement de l'agriculture locale et soutenez les familles d'agriculteurs marocains. Chaque achat est un geste de solidarité qui contribue à préserver notre patrimoine agricole et à promouvoir une alimentation saine et locale."
+    }
+  },
+  "contact": {
+    "title": "Contactez-nous",
+    "subtitle": "Une question ? Un besoin spécifique ? Notre équipe est là pour vous accompagner dans votre expérience BroccAgri.",
+    "phone": "Téléphone",
+    "phoneNumber": "+212 661-792473",
+    "phoneAvailability": "Disponible 7j/7 de 8h à 20h",
+    "callNow": "Appeler maintenant",
+    "whatsapp": "WhatsApp",
+    "whatsappDesc": "Chat en direct, réponse rapide",
+    "openWhatsapp": "Ouvrir WhatsApp",
+    "deliveryZone": "Zone de Livraison",
+    "allMorocco": "Tout le Maroc",
+    "deliveryDesc": "Livraison dans toutes les villes principales",
+    "serviceHours": "Horaires de Service",
+    "mondayFriday": "Lundi - Vendredi",
+    "saturday": "Samedi",
+    "sunday": "Dimanche",
+    "sendMessage": "Envoyez-nous un message",
+    "form": {
+      "fullName": "Nom complet *",
+      "namePlaceholder": "Votre nom",
+      "phone": "Téléphone",
+      "phonePlaceholder": "+212 6 XX XX XX XX",
+      "email": "Email *",
+      "emailPlaceholder": "votre@email.com",
+      "message": "Message *",
+      "messagePlaceholder": "Décrivez votre demande, question ou suggestion...",
+      "send": "Envoyer le message"
+    }
   },
   "categories": {
     "title": "Nos Catégories",
@@ -72,22 +149,6 @@
     "morning": "Matin (8h-12h)",
     "afternoon": "Après-midi (14h-18h)",
     "evening": "Soirée (18h-21h)"
-  },
-  "contact": {
-    "title": "Contactez-nous",
-    "subtitle": "Une question ? N'hésitez pas à nous contacter",
-    "phone": "Téléphone",
-    "whatsapp": "WhatsApp", 
-    "email": "Email",
-    "address": "Adresse",
-    "hours": "Horaires d'ouverture",
-    "form": {
-      "name": "Nom complet",
-      "email": "Adresse email",
-      "subject": "Sujet",
-      "message": "Message",
-      "send": "Envoyer le message"
-    }
   },
   "footer": {
     "description": "Votre partenaire de confiance pour des produits agricoles frais, directement du terroir marocain à votre table.",

@@ -1,27 +1,30 @@
 import { Card, CardContent } from '@/components/ui/card';
 import { Users, Heart, Leaf, Award } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 
 export function About() {
+  const { t } = useTranslation();
+  
   const values = [
     {
       icon: <Users className="h-8 w-8 text-primary" />,
-      title: "Partenariat Agricole",
-      description: "Nous travaillons directement avec plus de 50 agriculteurs marocains pour vous garantir des produits authentiques."
+      title: t('about.values.partnership.title'),
+      description: t('about.values.partnership.description')
     },
     {
       icon: <Heart className="h-8 w-8 text-accent" />,
-      title: "Passion & Qualité",
-      description: "Chaque produit est sélectionné avec soin pour vous offrir le meilleur du terroir marocain."
+      title: t('about.values.passion.title'),
+      description: t('about.values.passion.description')
     },
     {
       icon: <Leaf className="h-8 w-8 text-success" />,
-      title: "Agriculture Responsable",
-      description: "Nous privilégions les pratiques agricoles durables et respectueuses de l'environnement."
+      title: t('about.values.responsible.title'),
+      description: t('about.values.responsible.description')
     },
     {
       icon: <Award className="h-8 w-8 text-primary" />,
-      title: "Excellence Garantie",
-      description: "Notre engagement : vous livrer des produits frais de la plus haute qualité, directement du producteur."
+      title: t('about.values.excellence.title'),
+      description: t('about.values.excellence.description')
     }
   ];
 
@@ -31,13 +34,10 @@ export function About() {
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold mb-6">
-              Notre Mission : Soutenir l'Agriculture Marocaine
+              {t('about.title')}
             </h2>
             <p className="text-xl text-muted-foreground leading-relaxed">
-              Chez BroccAgri, nous croyons fermement au potentiel de l'agriculture marocaine. 
-              Notre mission est de créer un pont direct entre les producteurs locaux et les consommateurs, 
-              garantissant ainsi une rémunération juste pour nos agriculteurs partenaires tout en vous 
-              offrant des produits d'une fraîcheur exceptionnelle.
+              {t('about.subtitle')}
             </p>
           </div>
 
@@ -59,12 +59,10 @@ export function About() {
 
           <div className="bg-primary text-primary-foreground rounded-lg p-8 text-center">
             <h3 className="text-2xl font-bold mb-4">
-              Ensemble, cultivons l'avenir du Maroc
+              {t('about.mission.title')}
             </h3>
             <p className="text-lg opacity-90 leading-relaxed">
-              En choisissant BroccAgri, vous participez directement au développement de l'agriculture locale 
-              et soutenez les familles d'agriculteurs marocains. Chaque achat est un geste de solidarité 
-              qui contribue à préserver notre patrimoine agricole et à promouvoir une alimentation saine et locale.
+              {t('about.mission.description')}
             </p>
           </div>
         </div>

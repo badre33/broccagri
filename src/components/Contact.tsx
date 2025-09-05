@@ -4,8 +4,10 @@ import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Phone, MapPin, Clock, MessageCircle, Mail, Send } from 'lucide-react';
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 
 export function Contact() {
+  const { t } = useTranslation();
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -33,11 +35,10 @@ export function Contact() {
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            Contactez-nous
+            {t('contact.title')}
           </h2>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            Une question ? Un besoin spécifique ? Notre équipe est là pour vous accompagner 
-            dans votre expérience BroccAgri.
+            {t('contact.subtitle')}
           </p>
         </div>
 
@@ -48,14 +49,14 @@ export function Contact() {
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
                   <Phone className="h-5 w-5 text-primary" />
-                  Téléphone
+                  {t('contact.phone')}
                 </CardTitle>
               </CardHeader>
               <CardContent>
-                <p className="text-lg font-semibold text-primary">+212 661-792473</p>
-                <p className="text-muted-foreground">Disponible 7j/7 de 8h à 20h</p>
+                <p className="text-lg font-semibold text-primary">{t('contact.phoneNumber')}</p>
+                <p className="text-muted-foreground">{t('contact.phoneAvailability')}</p>
                 <Button variant="outline" className="mt-3" asChild>
-                  <a href="tel:+212661792473">Appeler maintenant</a>
+                  <a href="tel:+212661792473">{t('contact.callNow')}</a>
                 </Button>
               </CardContent>
             </Card>
@@ -64,15 +65,15 @@ export function Contact() {
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
                   <MessageCircle className="h-5 w-5 text-success" />
-                  WhatsApp
+                  {t('contact.whatsapp')}
                 </CardTitle>
               </CardHeader>
               <CardContent>
-                <p className="text-lg font-semibold text-success">+212 661-792473</p>
-                <p className="text-muted-foreground">Chat en direct, réponse rapide</p>
+                <p className="text-lg font-semibold text-success">{t('contact.phoneNumber')}</p>
+                <p className="text-muted-foreground">{t('contact.whatsappDesc')}</p>
                 <Button variant="success" className="mt-3" asChild>
                   <a href="https://wa.me/212661792473" target="_blank" rel="noopener noreferrer">
-                    Ouvrir WhatsApp
+                    {t('contact.openWhatsapp')}
                   </a>
                 </Button>
               </CardContent>
@@ -82,12 +83,12 @@ export function Contact() {
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
                   <MapPin className="h-5 w-5 text-accent" />
-                  Zone de Livraison
+                  {t('contact.deliveryZone')}
                 </CardTitle>
               </CardHeader>
               <CardContent>
-                <p className="text-lg font-semibold">Tout le Maroc</p>
-                <p className="text-muted-foreground">Livraison dans toutes les villes principales</p>
+                <p className="text-lg font-semibold">{t('contact.allMorocco')}</p>
+                <p className="text-muted-foreground">{t('contact.deliveryDesc')}</p>
                 <div className="mt-3 space-y-1">
                   <p className="text-sm">📍 Casablanca, Rabat, Marrakech</p>
                   <p className="text-sm">📍 Fès, Meknès, Tanger, Agadir</p>
@@ -100,21 +101,21 @@ export function Contact() {
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
                   <Clock className="h-5 w-5 text-primary" />
-                  Horaires de Service
+                  {t('contact.serviceHours')}
                 </CardTitle>
               </CardHeader>
               <CardContent>
                 <div className="space-y-2">
                   <div className="flex justify-between">
-                    <span>Lundi - Vendredi</span>
+                    <span>{t('contact.mondayFriday')}</span>
                     <span className="font-medium">8h00 - 20h00</span>
                   </div>
                   <div className="flex justify-between">
-                    <span>Samedi</span>
+                    <span>{t('contact.saturday')}</span>
                     <span className="font-medium">8h00 - 18h00</span>
                   </div>
                   <div className="flex justify-between">
-                    <span>Dimanche</span>
+                    <span>{t('contact.sunday')}</span>
                     <span className="font-medium">10h00 - 16h00</span>
                   </div>
                 </div>
@@ -127,53 +128,53 @@ export function Contact() {
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
                 <Mail className="h-5 w-5 text-primary" />
-                Envoyez-nous un message
+                {t('contact.sendMessage')}
               </CardTitle>
             </CardHeader>
             <CardContent>
               <form onSubmit={handleSubmit} className="space-y-4">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div>
-                    <label className="text-sm font-medium mb-2 block">Nom complet *</label>
+                    <label className="text-sm font-medium mb-2 block">{t('contact.form.fullName')}</label>
                     <Input
                       name="name"
                       value={formData.name}
                       onChange={handleChange}
-                      placeholder="Votre nom"
+                      placeholder={t('contact.form.namePlaceholder')}
                       required
                     />
                   </div>
                   <div>
-                    <label className="text-sm font-medium mb-2 block">Téléphone</label>
+                    <label className="text-sm font-medium mb-2 block">{t('contact.form.phone')}</label>
                     <Input
                       name="phone"
                       value={formData.phone}
                       onChange={handleChange}
-                      placeholder="+212 6 XX XX XX XX"
+                      placeholder={t('contact.form.phonePlaceholder')}
                       type="tel"
                     />
                   </div>
                 </div>
                 
                 <div>
-                  <label className="text-sm font-medium mb-2 block">Email *</label>
+                  <label className="text-sm font-medium mb-2 block">{t('contact.form.email')}</label>
                   <Input
                     name="email"
                     value={formData.email}
                     onChange={handleChange}
-                    placeholder="votre@email.com"
+                    placeholder={t('contact.form.emailPlaceholder')}
                     type="email"
                     required
                   />
                 </div>
                 
                 <div>
-                  <label className="text-sm font-medium mb-2 block">Message *</label>
+                  <label className="text-sm font-medium mb-2 block">{t('contact.form.message')}</label>
                   <Textarea
                     name="message"
                     value={formData.message}
                     onChange={handleChange}
-                    placeholder="Décrivez votre demande, question ou suggestion..."
+                    placeholder={t('contact.form.messagePlaceholder')}
                     rows={5}
                     required
                   />
@@ -181,7 +182,7 @@ export function Contact() {
                 
                 <Button type="submit" variant="premium" className="w-full" size="lg">
                   <Send className="mr-2 h-4 w-4" />
-                  Envoyer le message
+                  {t('contact.form.send')}
                 </Button>
               </form>
             </CardContent>

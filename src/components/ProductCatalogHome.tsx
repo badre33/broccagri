@@ -6,12 +6,14 @@ import { Search, X } from 'lucide-react';
 import { ProductCard } from './ProductCard';
 import { useProducts, useCategories, Product } from '@/hooks/useProducts';
 import { useSupabaseCart } from '@/hooks/useSupabaseCart';
+import { useTranslation } from 'react-i18next';
 
 interface ProductCatalogHomeProps {
   selectedCategory?: string;
 }
 
 export function ProductCatalogHome({ selectedCategory }: ProductCatalogHomeProps) {
+  const { t } = useTranslation();
   const [searchTerm, setSearchTerm] = useState('');
   const [priceRange, setPriceRange] = useState<string>('all');
   
@@ -51,10 +53,10 @@ export function ProductCatalogHome({ selectedCategory }: ProductCatalogHomeProps
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
           <h2 className="text-4xl font-bold text-foreground mb-4">
-            Produits Mis en Avant
+            {t('featured.title')}
           </h2>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            Découvrez notre sélection de produits les plus populaires, cultivés avec passion par nos agriculteurs partenaires
+            {t('featured.subtitle')}
           </p>
         </div>
 
@@ -64,7 +66,7 @@ export function ProductCatalogHome({ selectedCategory }: ProductCatalogHomeProps
             <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground h-4 w-4" />
             <Input
               type="text"
-              placeholder="Rechercher un produit..."
+              placeholder={t('featured.searchPlaceholder')}
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
               className="pl-10 pr-10"
@@ -87,19 +89,19 @@ export function ProductCatalogHome({ selectedCategory }: ProductCatalogHomeProps
           {/* Filtres de catégories */}
           <div className="flex flex-wrap gap-2 mb-6">
             <Button variant="premium" className="text-sm">
-              Produits mis en avant
+              {t('featured.title')}
             </Button>
             <Button variant="outline" className="text-sm">
-              Fruits
+              {t('categories.fruits')}
             </Button>
             <Button variant="outline" className="text-sm">
-              Herbes
+              {t('categories.herbs')}
             </Button>
             <Button variant="outline" className="text-sm">
-              Légumes
+              {t('categories.vegetables')}
             </Button>
             <Button variant="outline" className="text-sm">
-              Salades
+              {t('categories.salads')}
             </Button>
           </div>
 
@@ -110,28 +112,28 @@ export function ProductCatalogHome({ selectedCategory }: ProductCatalogHomeProps
               onClick={() => setPriceRange('all')}
               className="text-sm"
             >
-              Tous les prix
+              {t('featured.allPrices')}
             </Button>
             <Button
               variant={priceRange === 'low' ? 'premium' : 'outline'}
               onClick={() => setPriceRange('low')}
               className="text-sm"
             >
-              ≤ 10 DH
+              {t('featured.lowPrice')}
             </Button>
             <Button
               variant={priceRange === 'medium' ? 'premium' : 'outline'}
               onClick={() => setPriceRange('medium')}
               className="text-sm"
             >
-              10-20 DH
+              {t('featured.mediumPrice')}
             </Button>
             <Button
               variant={priceRange === 'high' ? 'premium' : 'outline'}
               onClick={() => setPriceRange('high')}
               className="text-sm"
             >
-              &gt; 20 DH
+              {t('featured.highPrice')}
             </Button>
           </div>
         </div>
@@ -139,7 +141,7 @@ export function ProductCatalogHome({ selectedCategory }: ProductCatalogHomeProps
         {/* Nombre de produits trouvés */}
         <div className="flex items-center justify-between mb-6">
           <Badge variant="outline" className="text-sm">
-            {filteredProducts.length} produit{filteredProducts.length > 1 ? 's' : ''} trouvé{filteredProducts.length > 1 ? 's' : ''}
+            {filteredProducts.length} {filteredProducts.length > 1 ? t('featured.productsFoundPlural') : t('featured.productsFound')}
           </Badge>
         </div>
 
@@ -169,7 +171,7 @@ export function ProductCatalogHome({ selectedCategory }: ProductCatalogHomeProps
         {!productsLoading && !categoriesLoading && filteredProducts.length === 0 && (
           <div className="text-center py-12">
             <p className="text-muted-foreground text-lg mb-4">
-              Aucun produit trouvé pour vos critères
+              {t('featured.noProducts')}
             </p>
             <Button 
               variant="outline" 
@@ -178,7 +180,7 @@ export function ProductCatalogHome({ selectedCategory }: ProductCatalogHomeProps
                 setPriceRange('all');
               }}
             >
-              Réinitialiser les filtres
+              {t('featured.resetFilters')}
             </Button>
           </div>
         )}
