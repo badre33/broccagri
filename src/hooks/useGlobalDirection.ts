@@ -11,6 +11,12 @@ export function useGlobalDirection() {
       document.documentElement.lang = i18n.language;
     };
     
+    // Forcer la langue sauvegardée au chargement
+    const savedLang = localStorage.getItem('i18nextLng');
+    if (savedLang && savedLang !== i18n.language) {
+      i18n.changeLanguage(savedLang);
+    }
+    
     // Appliquer immédiatement
     updateDirection();
     
