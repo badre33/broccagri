@@ -9,12 +9,11 @@ import {
 } from '@/components/ui/dropdown-menu';
 import { Languages } from 'lucide-react';
 
-// Gestion globale de la direction RTL
+// Hook global pour gérer la direction RTL
 export function useGlobalDirection() {
   const { i18n } = useTranslation();
   
   useEffect(() => {
-    // Appliquer la direction au changement de langue
     const updateDirection = () => {
       document.documentElement.dir = i18n.language === 'ar' ? 'rtl' : 'ltr';
       document.documentElement.lang = i18n.language;
@@ -26,12 +25,14 @@ export function useGlobalDirection() {
     // Écouter les changements de langue
     i18n.on('languageChanged', updateDirection);
     
+    // Nettoyage
     return () => {
       i18n.off('languageChanged', updateDirection);
     };
   }, [i18n]);
 }
 
+// Composant de changement de langue
 export const LanguageSwitcher = () => {
   const { i18n } = useTranslation();
 
