@@ -122,8 +122,11 @@ export const productImagesByName: Record<string, string> = {
   'chene-rouge': cheneRouge,
   'chene-vert': cheneVert,
   'germe-alfalfa': germeAlfalfa,
+  'germes-alfalfa': germeAlfalfa,
   'germe-betterave': germeBetterave,
+  'germes-betterave': germeBetterave,
   'germe-poireau': germePoireau,
+  'germes-poireau': germePoireau,
   'laitue-rouge': laitueRouge,
   'lolo-rouge': loloRouge,
   'lolo': loloRouge,
@@ -135,6 +138,7 @@ export const productImagesByName: Record<string, string> = {
   'pousses-epinard': pousseEpinard,
   'tomate-cerise': tomateCerise,
   'tomates-cerise': tomateCerise,
+  'tomates-cerises': tomateCerise,
   'tomate-cherry': tomateCerise,
 };
 
