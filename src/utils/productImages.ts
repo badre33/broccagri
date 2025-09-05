@@ -19,6 +19,25 @@ import pommesDeTerresPetites from '@/assets/products/pommes-de-terre-petites.jpg
 import thym from '@/assets/products/thym.jpg';
 import celeri from '@/assets/products/celeri.jpg';
 import laitueVerte from '@/assets/products/laitue-verte.jpg';
+import asperges from '@/assets/products/asperges.jpg';
+import aubergines from '@/assets/products/aubergines.jpg';
+import betteraves from '@/assets/products/betteraves.jpg';
+import champignons from '@/assets/products/champignons.jpg';
+import chouRouge from '@/assets/products/chou-rouge.jpg';
+import chouVert from '@/assets/products/chou-vert.jpg';
+import citrouille from '@/assets/products/citrouille.jpg';
+import citrouillerouge from '@/assets/products/citrouille-rouge.jpg';
+import courgettes from '@/assets/products/courgettes.jpg';
+import endives from '@/assets/products/endives.jpg';
+import epinards from '@/assets/products/epinards.jpg';
+import epinardsPottes from '@/assets/products/epinards-pottes.jpg';
+import petitsPois from '@/assets/products/petits-pois.jpg';
+import poivronDoux from '@/assets/products/poivron-doux.jpg';
+import poivronRouge from '@/assets/products/poivron-rouge.jpg';
+import poivronVert from '@/assets/products/poivron-vert.jpg';
+import pommesDeTerresFrites from '@/assets/products/pommes-de-terre-frites.jpg';
+import pommesDouces from '@/assets/products/pommes-douces.jpg';
+import topinambours from '@/assets/products/topinambours.jpg';
 
 // Mapping des images de produits par nom/slug
 export const productImagesByName: Record<string, string> = {
@@ -34,6 +53,25 @@ export const productImagesByName: Record<string, string> = {
   'laitue-verte': laitueVerte,
   'laitue': lettuceImg,
   'menthe': mintImg,
+  'asperge': asperges,
+  'aubergine': aubergines,
+  'betterave': betteraves,
+  'champignon': champignons,
+  'chou-rouge': chouRouge,
+  'chou-vert': chouVert,
+  'citrouille': citrouille,
+  'citrouille-rouge': citrouillerouge,
+  'courgette': courgettes,
+  'endive': endives,
+  'epinard': epinards,
+  'epinard-pottes': epinardsPottes,
+  'petits-pois': petitsPois,
+  'poivron-doux': poivronDoux,
+  'poivron-rouge': poivronRouge,
+  'poivron-vert': poivronVert,
+  'pomme-de-terre-frite': pommesDeTerresFrites,
+  'pomme-douce': pommesDouces,
+  'topinambour': topinambours,
 };
 
 // Mapping des images de produits par URL (existant)
