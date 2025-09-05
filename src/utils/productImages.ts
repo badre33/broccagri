@@ -126,10 +126,16 @@ export const productImagesByName: Record<string, string> = {
   'germe-poireau': germePoireau,
   'laitue-rouge': laitueRouge,
   'lolo-rouge': loloRouge,
+  'lolo': loloRouge,
+  'lou-loup-rouge': loloRouge,
   'mesclun': mesclun,
   'pousse-betterave': pousseBetterave,
   'pousse-epinard': pousseEpinard,
+  'pousses-betterave': pousseBetterave,
+  'pousses-epinard': pousseEpinard,
   'tomate-cerise': tomateCerise,
+  'tomates-cerise': tomateCerise,
+  'tomate-cherry': tomateCerise,
 };
 
 // Mapping des images de produits par URL (existant)
