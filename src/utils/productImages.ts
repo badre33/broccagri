@@ -65,6 +65,18 @@ import mesclun from '@/assets/products/mesclun.jpg';
 import pousseBetterave from '@/assets/products/pousse-betterave-new.jpg';
 import pousseEpinard from '@/assets/products/pousse-epinard-new.jpg';
 import tomateCerise from '@/assets/products/tomate-cerise-new.jpg';
+import aneth from '@/assets/products/aneth.jpg';
+import artichaut from '@/assets/products/artichaut.jpg';
+import artichautBeldi from '@/assets/products/artichaut-beldi.jpg';
+import basilic from '@/assets/products/basilic.jpg';
+import cardon from '@/assets/products/cardon.jpg';
+import ciboulette from '@/assets/products/ciboulette.jpg';
+import fenouil from '@/assets/products/fenouil.jpg';
+import feves from '@/assets/products/feves.jpg';
+import haricotsVerts from '@/assets/products/haricots-verts.jpg';
+import mauveDesBois from '@/assets/products/mauve-des-bois.jpg';
+import navets from '@/assets/products/navets.jpg';
+import romarin from '@/assets/products/romarin.jpg';
 
 // Mapping des images de produits par nom/slug
 export const productImagesByName: Record<string, string> = {
@@ -144,6 +156,23 @@ export const productImagesByName: Record<string, string> = {
   'tomates-cerise': tomateCerise,
   'tomates-cerises': tomateCerise,
   'tomate-cherry': tomateCerise,
+  'aneth': aneth,
+  'artichaut': artichaut,
+  'artichaut-beldi': artichautBeldi,
+  'basilic': basilic,
+  'cardon': cardon,
+  'ciboulette': ciboulette,
+  'fenouil': fenouil,
+  'feve': feves,
+  'feves': feves,
+  'haricot-vert': haricotsVerts,
+  'haricots-verts': haricotsVerts,
+  'mauve-des-bois': mauveDesBois,
+  'navet': navets,
+  'navets': navets,
+  'oignon-vert': greenOnions,
+  'romarin': romarin,
+  'petit-pois': petitsPois,
 };
 
 // Mapping des images de produits par URL (existant)

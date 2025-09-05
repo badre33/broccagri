@@ -29,9 +29,7 @@ export function ProductCard({ product, onAddToCart }: ProductCardProps) {
   // Use the image URL from the database with our generated images
   const getImageUrl = () => {
     if (product.image_url || product.slug) {
-      console.log('Product:', product.name, 'Slug:', product.slug, 'Image URL:', product.image_url);
       const mappedImage = getProductImage(product.image_url || '', product.slug);
-      console.log('Mapped to:', mappedImage);
       return mappedImage;
     }
     return 'https://images.unsplash.com/photo-1590779033100-9f60a05a013d?w=400&h=300&fit=crop&auto=format';
