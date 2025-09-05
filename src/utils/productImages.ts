@@ -38,6 +38,20 @@ import poivronVert from '@/assets/products/poivron-vert.jpg';
 import pommesDeTerresFrites from '@/assets/products/pommes-de-terre-frites.jpg';
 import pommesDouces from '@/assets/products/pommes-douces.jpg';
 import topinambours from '@/assets/products/topinambours.jpg';
+import ananas from '@/assets/products/ananas.jpg';
+import bananeImportee from '@/assets/products/banane-importee.jpg';
+import bananeLocale from '@/assets/products/banane-locale.jpg';
+import fraises from '@/assets/products/fraises.jpg';
+import kaki from '@/assets/products/kaki.jpg';
+import kiwi from '@/assets/products/kiwi.jpg';
+import mangues from '@/assets/products/mangues.jpg';
+import orangeAJus from '@/assets/products/orange-a-jus.jpg';
+import orangeClementine from '@/assets/products/orange-clementine.jpg';
+import orangeNavel from '@/assets/products/orange-navel.jpg';
+import poires from '@/assets/products/poires.jpg';
+import pommeImportee from '@/assets/products/pomme-importee.jpg';
+import pommeLocaleGrand from '@/assets/products/pomme-locale-grand.jpg';
+import pommeLocaleMoyen from '@/assets/products/pomme-locale-moyen.jpg';
 
 // Mapping des images de produits par nom/slug
 export const productImagesByName: Record<string, string> = {
@@ -72,6 +86,21 @@ export const productImagesByName: Record<string, string> = {
   'pomme-de-terre-frite': pommesDeTerresFrites,
   'pomme-douce': pommesDouces,
   'topinambour': topinambours,
+  'ananas': ananas,
+  'banane-importee': bananeImportee,
+  'banane-locale': bananeLocale,
+  'fraise': fraises,
+  'kaki': kaki,
+  'kiwi': kiwi,
+  'mangue': mangues,
+  'orange-a-jus': orangeAJus,
+  'orange-clementine': orangeClementine,
+  'orange-navel': orangeNavel,
+  'navel': orangeNavel,
+  'poire': poires,
+  'pomme-importee': pommeImportee,
+  'pomme-locale-grand-calibre': pommeLocaleGrand,
+  'pomme-locale-moyen-calibre': pommeLocaleMoyen,
 };
 
 // Mapping des images de produits par URL (existant)
