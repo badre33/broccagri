@@ -28,9 +28,9 @@ export function ProductCard({ product, onAddToCart }: ProductCardProps) {
 
   // Use the image URL from the database with our generated images
   const getImageUrl = () => {
-    if (product.image_url) {
-      console.log('Product image URL for', product.name, ':', product.image_url);
-      const mappedImage = getProductImage(product.image_url);
+    if (product.image_url || product.slug) {
+      console.log('Product:', product.name, 'Slug:', product.slug, 'Image URL:', product.image_url);
+      const mappedImage = getProductImage(product.image_url || '', product.slug);
       console.log('Mapped to:', mappedImage);
       return mappedImage;
     }

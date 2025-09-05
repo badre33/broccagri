@@ -19,7 +19,23 @@ import pommesDeTerresPetites from '@/assets/products/pommes-de-terre-petites.jpg
 import thym from '@/assets/products/thym.jpg';
 import celeri from '@/assets/products/celeri.jpg';
 
-// Mapping des images de produits
+// Mapping des images de produits par nom/slug
+export const productImagesByName: Record<string, string> = {
+  'persil': persil,
+  'coriandre': coriandre,
+  'iceberg': saladeIceberg,
+  'laitue-romaine': laitueRomaine,
+  'salade-frisee': saladeFrisee,
+  'batavia-verte': bataviaVerte,
+  'pomme-de-terre-petite': pommesDeTerresPetites,
+  'thym': thym,
+  'celeri': celeri,
+  'laitue-verte': lettuceImg,
+  'laitue': lettuceImg,
+  'menthe': mintImg,
+};
+
+// Mapping des images de produits par URL (existant)
 export const productImages: Record<string, string> = {
   '/src/assets/products/tomates.jpg': tomatoImg,
   '/src/assets/products/oranges.jpg': orangeImg,
@@ -43,6 +59,17 @@ export const productImages: Record<string, string> = {
 };
 
 // Fonction pour obtenir l'image d'un produit
-export const getProductImage = (imageUrl: string): string => {
-  return productImages[imageUrl] || imageUrl;
+export const getProductImage = (imageUrl: string, productSlug?: string): string => {
+  // Priorité 1: Chercher par slug si disponible
+  if (productSlug && productImagesByName[productSlug]) {
+    return productImagesByName[productSlug];
+  }
+  
+  // Priorité 2: Chercher par URL si disponible
+  if (imageUrl && productImages[imageUrl]) {
+    return productImages[imageUrl];
+  }
+  
+  // Fallback: image par défaut
+  return imageUrl || 'https://images.unsplash.com/photo-1590779033100-9f60a05a013d?w=400&h=300&fit=crop&auto=format';
 };
