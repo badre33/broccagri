@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
 import { Cart } from '@/components/Cart';
@@ -11,12 +12,17 @@ import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Phone, MapPin, Clock, MessageCircle, Mail, Send, Users, Truck, Shield } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
+import { useGlobalDirection } from '@/hooks/useGlobalDirection';
 import contactHero from '@/assets/contact-hero.jpg';
 
 export default function ContactPage() {
+  const { t } = useTranslation();
   const [isCartOpen, setIsCartOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const { toast } = useToast();
+  
+  // Assurer la gestion RTL
+  useGlobalDirection();
   
   const [formData, setFormData] = useState({
     name: '',
@@ -30,8 +36,8 @@ export default function ContactPage() {
     e.preventDefault();
     console.log('Contact form submitted:', formData);
     toast({
-      title: "Message envoyé !",
-      description: "Nous vous recontacterons dans les plus brefs délais.",
+      title: t('contact.form.messageSent', "Message envoyé !"),
+      description: t('contact.form.responseTime', "Nous vous recontacterons dans les plus brefs délais."),
     });
     setFormData({ name: '', email: '', phone: '', subject: '', message: '' });
   };
@@ -63,11 +69,10 @@ export default function ContactPage() {
         >
           <div className="container mx-auto px-4 text-center relative z-10">
             <h1 className="text-4xl md:text-5xl font-heading font-bold text-white mb-4">
-              Contactez-nous
+              {t('contact.title')}
             </h1>
             <p className="text-xl text-white/90 max-w-3xl mx-auto">
-              Notre équipe est à votre disposition pour répondre à toutes vos questions 
-              et vous accompagner dans votre expérience BroccAgri. N'hésitez pas à nous contacter !
+              {t('contact.pageSubtitle', 'Notre équipe est à votre disposition pour répondre à toutes vos questions et vous accompagner dans votre expérience BroccAgri. N\'hésitez pas à nous contacter !')}
             </p>
           </div>
         </section>
@@ -76,41 +81,41 @@ export default function ContactPage() {
         <section className="py-16 bg-background">
           <div className="container mx-auto px-4">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
-              <Card className="text-center">
-                <CardContent className="pt-6">
-                  <Phone className="h-12 w-12 text-primary mx-auto mb-4" />
-                  <h3 className="font-semibold mb-2">Téléphone</h3>
-                  <p className="text-muted-foreground">+212 8 61 44 27 41</p>
-                  <p className="text-sm text-muted-foreground mt-1">Lun-Sam 8h-18h</p>
-                </CardContent>
-              </Card>
+                <Card className="text-center">
+                  <CardContent className="pt-6">
+                    <Phone className="h-12 w-12 text-primary mx-auto mb-4" />
+                    <h3 className="font-semibold mb-2">{t('contact.phone')}</h3>
+                    <p className="text-muted-foreground">{t('contact.phoneNumber')}</p>
+                    <p className="text-sm text-muted-foreground mt-1">{t('contact.phoneHours', 'Lun-Sam 8h-18h')}</p>
+                  </CardContent>
+                </Card>
 
-              <Card className="text-center">
-                <CardContent className="pt-6">
-                  <Mail className="h-12 w-12 text-primary mx-auto mb-4" />
-                  <h3 className="font-semibold mb-2">Email</h3>
-                  <p className="text-muted-foreground">contact@broccagri.ma</p>
-                  <p className="text-sm text-muted-foreground mt-1">Réponse sous 24h</p>
-                </CardContent>
-              </Card>
+                <Card className="text-center">
+                  <CardContent className="pt-6">
+                    <Mail className="h-12 w-12 text-primary mx-auto mb-4" />
+                    <h3 className="font-semibold mb-2">{t('contact.email', 'Email')}</h3>
+                    <p className="text-muted-foreground">contact@broccagri.ma</p>
+                    <p className="text-sm text-muted-foreground mt-1">{t('contact.emailResponse', 'Réponse sous 24h')}</p>
+                  </CardContent>
+                </Card>
 
-              <Card className="text-center">
-                <CardContent className="pt-6">
-                  <MessageCircle className="h-12 w-12 text-primary mx-auto mb-4" />
-                  <h3 className="font-semibold mb-2">WhatsApp</h3>
-                  <p className="text-muted-foreground">+212 661 792 473</p>
-                  <p className="text-sm text-muted-foreground mt-1">Chat instantané</p>
-                </CardContent>
-              </Card>
+                <Card className="text-center">
+                  <CardContent className="pt-6">
+                    <MessageCircle className="h-12 w-12 text-primary mx-auto mb-4" />
+                    <h3 className="font-semibold mb-2">{t('contact.whatsapp')}</h3>
+                    <p className="text-muted-foreground">+212 661 792 473</p>
+                    <p className="text-sm text-muted-foreground mt-1">{t('contact.instantChat', 'Chat instantané')}</p>
+                  </CardContent>
+                </Card>
 
-              <Card className="text-center">
-                <CardContent className="pt-6">
-                  <MapPin className="h-12 w-12 text-primary mx-auto mb-4" />
-                  <h3 className="font-semibold mb-2">Zone de livraison</h3>
-                  <p className="text-muted-foreground">Tout le Maroc</p>
-                  <p className="text-sm text-muted-foreground mt-1">Livraison rapide</p>
-                </CardContent>
-              </Card>
+                <Card className="text-center">
+                  <CardContent className="pt-6">
+                    <MapPin className="h-12 w-12 text-primary mx-auto mb-4" />
+                    <h3 className="font-semibold mb-2">{t('contact.deliveryZone')}</h3>
+                    <p className="text-muted-foreground">{t('contact.allMorocco')}</p>
+                    <p className="text-sm text-muted-foreground mt-1">{t('contact.fastDelivery', 'Livraison rapide')}</p>
+                  </CardContent>
+                </Card>
             </div>
 
             {/* Main Contact Section */}
@@ -118,10 +123,9 @@ export default function ContactPage() {
               {/* Contact Info */}
               <div className="space-y-8">
                 <div>
-                  <h2 className="text-3xl font-bold mb-6">Parlons de vos besoins</h2>
+                  <h2 className="text-3xl font-bold mb-6">{t('contact.talkNeeds', 'Parlons de vos besoins')}</h2>
                   <p className="text-muted-foreground text-lg mb-8">
-                    Que vous soyez un particulier à la recherche de produits frais ou un professionnel 
-                    souhaitant établir un partenariat, nous sommes là pour vous écouter et vous conseiller.
+                    {t('contact.needsDescription', 'Que vous soyez un particulier à la recherche de produits frais ou un professionnel souhaitant établir un partenariat, nous sommes là pour vous écouter et vous conseiller.')}
                   </p>
                 </div>
 
@@ -131,9 +135,9 @@ export default function ContactPage() {
                       <div className="flex items-start gap-4">
                         <Users className="h-8 w-8 text-primary mt-1" />
                         <div>
-                          <h3 className="font-semibold mb-2">Particuliers</h3>
+                          <h3 className="font-semibold mb-2">{t('contact.individuals', 'Particuliers')}</h3>
                           <p className="text-muted-foreground">
-                            Commandes personnalisées, conseils produits, livraisons à domicile
+                            {t('contact.individualsDesc', 'Commandes personnalisées, conseils produits, livraisons à domicile')}
                           </p>
                         </div>
                       </div>
@@ -145,9 +149,9 @@ export default function ContactPage() {
                       <div className="flex items-start gap-4">
                         <Truck className="h-8 w-8 text-primary mt-1" />
                         <div>
-                          <h3 className="font-semibold mb-2">Professionnels</h3>
+                          <h3 className="font-semibold mb-2">{t('contact.professionals', 'Professionnels')}</h3>
                           <p className="text-muted-foreground">
-                            Partenariats restaurants, hôtels, épiceries - Tarifs préférentiels
+                            {t('contact.professionalsDesc', 'Partenariats restaurants, hôtels, épiceries - Tarifs préférentiels')}
                           </p>
                         </div>
                       </div>
@@ -159,9 +163,9 @@ export default function ContactPage() {
                       <div className="flex items-start gap-4">
                         <Shield className="h-8 w-8 text-primary mt-1" />
                         <div>
-                          <h3 className="font-semibold mb-2">Qualité garantie</h3>
+                          <h3 className="font-semibold mb-2">{t('contact.qualityGuaranteed', 'Qualité garantie')}</h3>
                           <p className="text-muted-foreground">
-                            Produits certifiés, traçabilité complète, satisfaction client prioritaire
+                            {t('contact.qualityDesc', 'Produits certifiés, traçabilité complète, satisfaction client prioritaire')}
                           </p>
                         </div>
                       </div>
@@ -172,99 +176,98 @@ export default function ContactPage() {
                 <div className="bg-muted/50 p-6 rounded-lg">
                   <h3 className="font-semibold mb-3 flex items-center gap-2">
                     <Clock className="h-5 w-5 text-primary" />
-                    Horaires d'ouverture
+                    {t('contact.serviceHours')}
                   </h3>
                   <div className="space-y-2 text-sm">
                     <div className="flex justify-between">
-                      <span>Lundi - Vendredi</span>
+                      <span>{t('contact.mondayFriday')}</span>
                       <span>8h00 - 18h00</span>
                     </div>
                     <div className="flex justify-between">
-                      <span>Samedi</span>
+                      <span>{t('contact.saturday')}</span>
                       <span>8h00 - 16h00</span>
                     </div>
                     <div className="flex justify-between">
-                      <span>Dimanche</span>
-                      <span className="text-muted-foreground">Fermé</span>
+                      <span>{t('contact.sunday')}</span>
+                      <span className="text-muted-foreground">{t('contact.closed', 'Fermé')}</span>
                     </div>
                   </div>
                 </div>
               </div>
 
-              {/* Contact Form */}
               <Card>
                 <CardHeader>
                   <CardTitle className="flex items-center gap-2">
                     <Send className="h-5 w-5 text-primary" />
-                    Envoyez-nous un message
+                    {t('contact.sendMessage')}
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
                   <form onSubmit={handleSubmit} className="space-y-6">
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                       <div>
-                        <label className="block text-sm font-medium mb-2">Nom complet *</label>
+                        <label className="block text-sm font-medium mb-2">{t('contact.form.fullName')}</label>
                         <Input
                           type="text"
                           name="name"
                           value={formData.name}
                           onChange={handleChange}
                           required
-                          placeholder="Votre nom et prénom"
+                          placeholder={t('contact.form.namePlaceholder')}
                         />
                       </div>
                       <div>
-                        <label className="block text-sm font-medium mb-2">Téléphone *</label>
+                        <label className="block text-sm font-medium mb-2">{t('contact.form.phone')}</label>
                         <Input
                           type="tel"
                           name="phone"
                           value={formData.phone}
                           onChange={handleChange}
                           required
-                          placeholder="+212 6XX XXX XXX"
+                          placeholder={t('contact.form.phonePlaceholder')}
                         />
                       </div>
                     </div>
                     
                     <div>
-                      <label className="block text-sm font-medium mb-2">Email *</label>
+                      <label className="block text-sm font-medium mb-2">{t('contact.form.email')}</label>
                       <Input
                         type="email"
                         name="email"
                         value={formData.email}
                         onChange={handleChange}
                         required
-                        placeholder="votre@email.com"
+                        placeholder={t('contact.form.emailPlaceholder')}
                       />
                     </div>
 
                     <div>
-                      <label className="block text-sm font-medium mb-2">Sujet *</label>
+                      <label className="block text-sm font-medium mb-2">{t('contact.form.subject', 'Sujet *')}</label>
                       <Input
                         type="text"
                         name="subject"
                         value={formData.subject}
                         onChange={handleChange}
                         required
-                        placeholder="Objet de votre message"
+                        placeholder={t('contact.form.subjectPlaceholder', 'Objet de votre message')}
                       />
                     </div>
                     
                     <div>
-                      <label className="block text-sm font-medium mb-2">Message *</label>
+                      <label className="block text-sm font-medium mb-2">{t('contact.form.message')}</label>
                       <Textarea
                         name="message"
                         value={formData.message}
                         onChange={handleChange}
                         required
                         rows={6}
-                        placeholder="Décrivez votre demande en détail..."
+                        placeholder={t('contact.form.messagePlaceholder')}
                       />
                     </div>
                     
                     <Button type="submit" variant="premium" className="w-full">
                       <Send className="mr-2 h-4 w-4" />
-                      Envoyer le message
+                      {t('contact.form.send')}
                     </Button>
                   </form>
                 </CardContent>
