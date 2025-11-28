@@ -16,15 +16,16 @@ export function ProductCatalogHome({ selectedCategory }: ProductCatalogHomeProps
   const { t } = useTranslation();
   const [searchTerm, setSearchTerm] = useState('');
   const [priceRange, setPriceRange] = useState<string>('all');
+  const [categoryFilter, setCategoryFilter] = useState<string>('all');
   
   const { addToCart } = useSupabaseCart();
   const { categories, loading: categoriesLoading } = useCategories();
   
-  // Page d'accueil : afficher les produits mis en avant
-  const showFeaturedOnly = true;
+  // Page d'accueil : afficher les produits mis en avant seulement si aucun filtre n'est actif
+  const showFeaturedOnly = categoryFilter === 'all' && !searchTerm;
   
   const { products, loading: productsLoading } = useProducts(
-    selectedCategory || undefined,
+    categoryFilter !== 'all' ? categoryFilter : undefined,
     searchTerm || undefined,
     showFeaturedOnly
   );
@@ -88,19 +89,39 @@ export function ProductCatalogHome({ selectedCategory }: ProductCatalogHomeProps
         <div className="mb-8">
           {/* Filtres de catégories */}
           <div className="flex flex-wrap gap-2 mb-6">
-            <Button variant="premium" className="text-sm">
+            <Button 
+              variant={categoryFilter === 'all' ? 'premium' : 'outline'} 
+              onClick={() => setCategoryFilter('all')}
+              className="text-sm"
+            >
               {t('featured.title')}
             </Button>
-            <Button variant="outline" className="text-sm">
+            <Button 
+              variant={categoryFilter === 'fruits' ? 'premium' : 'outline'}
+              onClick={() => setCategoryFilter('fruits')}
+              className="text-sm"
+            >
               {t('categories.fruits')}
             </Button>
-            <Button variant="outline" className="text-sm">
+            <Button 
+              variant={categoryFilter === 'herbes' ? 'premium' : 'outline'}
+              onClick={() => setCategoryFilter('herbes')}
+              className="text-sm"
+            >
               {t('categories.herbs')}
             </Button>
-            <Button variant="outline" className="text-sm">
+            <Button 
+              variant={categoryFilter === 'legumes' ? 'premium' : 'outline'}
+              onClick={() => setCategoryFilter('legumes')}
+              className="text-sm"
+            >
               {t('categories.vegetables')}
             </Button>
-            <Button variant="outline" className="text-sm">
+            <Button 
+              variant={categoryFilter === 'salades' ? 'premium' : 'outline'}
+              onClick={() => setCategoryFilter('salades')}
+              className="text-sm"
+            >
               {t('categories.salads')}
             </Button>
           </div>
@@ -178,6 +199,7 @@ export function ProductCatalogHome({ selectedCategory }: ProductCatalogHomeProps
               onClick={() => {
                 setSearchTerm('');
                 setPriceRange('all');
+                setCategoryFilter('all');
               }}
             >
               {t('featured.resetFilters')}
