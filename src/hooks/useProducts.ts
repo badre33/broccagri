@@ -1,44 +1,9 @@
 import { useState, useEffect } from 'react';
-import { supabase } from '@/integrations/supabase/client';
+import { localProducts, localCategories, LocalProduct, LocalCategory } from '@/data/localProducts';
 
-export interface Product {
-  id: string;
-  name: string;
-  name_ar?: string | null;
-  slug: string;
-  description: string | null;
-  description_ar?: string | null;
-  price: number;
-  unit: string;
-  category_id: string | null;
-  image_url: string | null;
-  stock: number | null;
-  min_stock: number | null;
-  organic: boolean | null;
-  season: string | null;
-  origin: string | null;
-  origin_ar?: string | null;
-  is_active: boolean | null;
-  created_at: string;
-  updated_at: string;
-  categories?: {
-    id: string;
-    name: string;
-    slug: string;
-  } | null;
-}
-
-export interface Category {
-  id: string;
-  name: string;
-  name_ar?: string | null;
-  slug: string;
-  description: string | null;
-  description_ar?: string | null;
-  image_url: string | null;
-  created_at: string;
-  updated_at: string;
-}
+// Alias des types locaux pour compatibilité
+export type Product = LocalProduct;
+export type Category = LocalCategory;
 
 export const useProducts = (categorySlug?: string, searchTerm?: string, featuredOnly?: boolean) => {
   const [products, setProducts] = useState<Product[]>([]);
@@ -52,49 +17,34 @@ export const useProducts = (categorySlug?: string, searchTerm?: string, featured
   const fetchProducts = async () => {
     try {
       setLoading(true);
-      let query = supabase
-        .from('products')
-        .select(`
-          *,
-          categories (
-            id,
-            name,
-            slug
-          )
-        `)
-        .eq('is_active', true);
-
-      // Si on veut seulement les produits mis en avant (par défaut, prendre les 12 premiers par prix)
-      if (featuredOnly) {
-        query = query.order('price', { ascending: true }).limit(12);
-      } else {
-        query = query.order('name');
-      }
+      
+      let filtered = [...localProducts];
 
       // Filtrer par catégorie si spécifiée
       if (categorySlug && categorySlug !== 'all') {
-        // D'abord récupérer l'ID de la catégorie
-        const { data: categoryData } = await supabase
-          .from('categories')
-          .select('id')
-          .eq('slug', categorySlug)
-          .single();
-        
-        if (categoryData) {
-          query = query.eq('category_id', categoryData.id);
+        const category = localCategories.find(c => c.slug === categorySlug);
+        if (category) {
+          filtered = filtered.filter(p => p.category_id === category.id);
         }
       }
 
       // Filtrer par terme de recherche
-      if (searchTerm) {
-        query = query.or(`name.ilike.%${searchTerm}%,description.ilike.%${searchTerm}%`);
+      if (searchTerm && searchTerm.trim()) {
+        const term = searchTerm.toLowerCase();
+        filtered = filtered.filter(p => 
+          p.name.toLowerCase().includes(term) || 
+          (p.description && p.description.toLowerCase().includes(term))
+        );
       }
 
-      const { data, error } = await query;
+      // Si on veut seulement les produits mis en avant
+      if (featuredOnly) {
+        filtered = filtered.sort((a, b) => a.price - b.price).slice(0, 12);
+      } else {
+        filtered = filtered.sort((a, b) => a.name.localeCompare(b.name));
+      }
 
-      if (error) throw error;
-
-      setProducts(data || []);
+      setProducts(filtered);
     } catch (error: any) {
       setError(error.message);
     } finally {
@@ -122,14 +72,8 @@ export const useCategories = () => {
   const fetchCategories = async () => {
     try {
       setLoading(true);
-      const { data, error } = await supabase
-        .from('categories')
-        .select('*')
-        .order('name');
-
-      if (error) throw error;
-
-      setCategories(data || []);
+      const sorted = [...localCategories].sort((a, b) => a.name.localeCompare(b.name));
+      setCategories(sorted);
     } catch (error: any) {
       setError(error.message);
     } finally {
@@ -159,23 +103,8 @@ export const useProduct = (slug: string) => {
   const fetchProduct = async () => {
     try {
       setLoading(true);
-      const { data, error } = await supabase
-        .from('products')
-        .select(`
-          *,
-          categories (
-            id,
-            name,
-            slug
-          )
-        `)
-        .eq('slug', slug)
-        .eq('is_active', true)
-        .maybeSingle();
-
-      if (error) throw error;
-
-      setProduct(data);
+      const found = localProducts.find(p => p.slug === slug && p.is_active);
+      setProduct(found || null);
     } catch (error: any) {
       setError(error.message);
     } finally {
