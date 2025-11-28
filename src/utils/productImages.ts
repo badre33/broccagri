@@ -202,18 +202,29 @@ export const productImages: Record<string, string> = {
   '/src/assets/products/celeri.jpg': celeri,
 };
 
-// Fonction pour obtenir l'image d'un produit
+// Fonction pour obtenir l'image d'un produit (toujours utiliser les images locales en priorité)
 export const getProductImage = (imageUrl: string, productSlug?: string): string => {
-  // Priorité 1: Chercher par slug si disponible
-  if (productSlug && productImagesByName[productSlug]) {
-    return productImagesByName[productSlug];
+  // Priorité 1: Chercher par slug dans le mapping local
+  if (productSlug) {
+    const localImage = productImagesByName[productSlug.toLowerCase()];
+    if (localImage) {
+      return localImage;
+    }
   }
   
-  // Priorité 2: Chercher par URL si disponible
-  if (imageUrl && productImages[imageUrl]) {
-    return productImages[imageUrl];
+  // Priorité 2: Extraire le nom du fichier de l'URL et chercher dans le mapping
+  if (imageUrl) {
+    const fileName = imageUrl.split('/').pop()?.replace('.jpg', '')?.replace('.png', '');
+    if (fileName && productImagesByName[fileName]) {
+      return productImagesByName[fileName];
+    }
+    
+    // Chercher par URL complète
+    if (productImages[imageUrl]) {
+      return productImages[imageUrl];
+    }
   }
   
   // Fallback: image par défaut
-  return imageUrl || 'https://images.unsplash.com/photo-1590779033100-9f60a05a013d?w=400&h=300&fit=crop&auto=format';
+  return 'https://images.unsplash.com/photo-1590779033100-9f60a05a013d?w=400&h=300&fit=crop&auto=format';
 };
