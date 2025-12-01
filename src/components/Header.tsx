@@ -1,4 +1,4 @@
-import { Menu, Phone, MapPin, ShoppingCart } from 'lucide-react';
+import { Menu, Phone, MapPin } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useTranslation } from 'react-i18next';
 import { LanguageSwitcher } from '@/components/LanguageSwitcher';
@@ -60,25 +60,6 @@ export function Header({ onMenuClick, onOrderClick }: HeaderProps) {
           {/* Actions */}
           <div className="flex items-center gap-3">
             <LanguageSwitcher />
-            
-            <Button 
-              variant="default" 
-              size="sm"
-              onClick={onOrderClick}
-              className="hidden sm:inline-flex text-sm font-medium"
-            >
-              <ShoppingCart className="h-4 w-4 mr-2" />
-              {t('nav.order', 'Commander')}
-            </Button>
-            
-            <Button 
-              variant="ghost" 
-              size="sm"
-              onClick={() => window.location.href = '/auth'}
-              className="hidden sm:inline-flex text-sm font-medium"
-            >
-              🔐 {t('nav.admin')}
-            </Button>
             
             <Button 
               variant="ghost" 

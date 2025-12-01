@@ -66,18 +66,6 @@ export function Footer() {
               <a href="/" className="block opacity-90 hover:opacity-100 transition-opacity">
                 {t('nav.home')}
               </a>
-              <a href="/legumes" className="block opacity-90 hover:opacity-100 transition-opacity">
-                {t('nav.vegetables')}
-              </a>
-              <a href="/fruits" className="block opacity-90 hover:opacity-100 transition-opacity">
-                {t('nav.fruits')}
-              </a>
-              <a href="/salades" className="block opacity-90 hover:opacity-100 transition-opacity">
-                {t('nav.salads')}
-              </a>
-              <a href="/herbes" className="block opacity-90 hover:opacity-100 transition-opacity">
-                {t('nav.herbs')}
-              </a>
               <a href="/contact" className="block opacity-90 hover:opacity-100 transition-opacity">
                 {t('nav.contact')}
               </a>
