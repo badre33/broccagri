@@ -1,4 +1,4 @@
-import { X, ShoppingCart } from 'lucide-react';
+import { X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useTranslation } from 'react-i18next';
 
@@ -10,11 +10,6 @@ interface MobileMenuProps {
 export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
   const { t, i18n } = useTranslation();
   const isArabic = i18n.language === 'ar';
-
-  const handleOrderClick = () => {
-    window.open('https://preview--agro-hub-creator.lovable.app/', '_blank');
-    onClose();
-  };
   
   if (!isOpen) return null;
 
@@ -49,13 +44,6 @@ export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
             >
               {t('nav.home')}
             </a>
-            <button 
-              onClick={handleOrderClick}
-              className="w-full text-left block px-4 py-3 text-foreground hover:bg-primary/5 hover:text-primary transition-colors font-medium rounded-md min-h-[44px] flex items-center"
-            >
-              <ShoppingCart className="h-4 w-4 mr-2" />
-              {t('nav.order', 'Commander')}
-            </button>
             <a 
               href="/blog" 
               className="block px-4 py-3 text-foreground hover:bg-primary/5 hover:text-primary transition-colors font-medium rounded-md min-h-[44px] flex items-center"
@@ -69,13 +57,6 @@ export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
               onClick={onClose}
             >
               {t('nav.contact')}
-            </a>
-            <a 
-              href="/auth" 
-              className="block px-4 py-3 text-foreground hover:bg-primary/5 hover:text-primary transition-colors font-medium rounded-md border-t mt-2 pt-4 min-h-[44px] flex items-center"
-              onClick={onClose}
-            >
-              🔐 {t('nav.admin')}
             </a>
           </div>
         </nav>
