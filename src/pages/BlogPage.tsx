@@ -2,9 +2,7 @@ import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
-import { Cart } from '@/components/Cart';
 import { WhatsAppButton } from '@/components/WhatsAppButton';
-import { CheckoutButton } from '@/components/CheckoutButton';
 import { MobileMenu } from '@/components/MobileMenu';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -17,12 +15,15 @@ import blogHeroNew from '@/assets/blog-hero-new.jpg';
 
 export default function BlogPage() {
   const { t } = useTranslation();
-  const [isCartOpen, setIsCartOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [selectedPost, setSelectedPost] = useState<typeof blogPosts[0] | null>(null);
 
   // Assurer la gestion RTL
   useGlobalDirection();
+
+  const handleOrderClick = () => {
+    window.open('https://preview--agro-hub-creator.lovable.app/', '_blank');
+  };
 
   const blogPosts = [
     {
@@ -65,8 +66,8 @@ Chez BroccAgri, nous croyons que cette approche est l'avenir de l'alimentation. 
     return (
       <div className="min-h-screen bg-background">
         <Header 
-          onCartClick={() => setIsCartOpen(true)}
           onMenuClick={() => setIsMobileMenuOpen(true)}
+          onOrderClick={handleOrderClick}
         />
         
         <main className="py-20">
@@ -113,30 +114,24 @@ Chez BroccAgri, nous croyons que cette approche est l'avenir de l'alimentation. 
           </div>
         </main>
         
-        <Footer />
-        
-        <Cart 
-          isOpen={isCartOpen}
-          onClose={() => setIsCartOpen(false)}
-        />
-        
-        <MobileMenu 
-          isOpen={isMobileMenuOpen}
-          onClose={() => setIsMobileMenuOpen(false)}
-        />
-        
-        <WhatsAppButton />
-        <CheckoutButton />
-      </div>
-    );
-  }
-
-  return (
-    <div className="min-h-screen bg-background">
-      <Header 
-        onCartClick={() => setIsCartOpen(true)}
-        onMenuClick={() => setIsMobileMenuOpen(true)}
-      />
+            <Footer />
+            
+            <MobileMenu 
+              isOpen={isMobileMenuOpen}
+              onClose={() => setIsMobileMenuOpen(false)}
+            />
+            
+            <WhatsAppButton />
+          </div>
+        );
+      }
+    
+      return (
+        <div className="min-h-screen bg-background">
+          <Header 
+            onMenuClick={() => setIsMobileMenuOpen(true)}
+            onOrderClick={handleOrderClick}
+          />
       
       <main>
         {/* Hero Section */}
@@ -228,10 +223,7 @@ Chez BroccAgri, nous croyons que cette approche est l'avenir de l'alimentation. 
       
       <Footer />
       
-      <Cart 
-        isOpen={isCartOpen}
-        onClose={() => setIsCartOpen(false)}
-      />
+      <Footer />
       
       <MobileMenu 
         isOpen={isMobileMenuOpen}
@@ -239,7 +231,6 @@ Chez BroccAgri, nous croyons que cette approche est l'avenir de l'alimentation. 
       />
       
       <WhatsAppButton />
-      <CheckoutButton />
     </div>
   );
 }

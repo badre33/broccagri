@@ -163,7 +163,7 @@ export default function AdminDashboard() {
   if (loading) {
     return (
       <div className="min-h-screen bg-background">
-        <Header onCartClick={() => {}} onMenuClick={() => {}} />
+        <Header onMenuClick={() => {}} onOrderClick={() => window.open('https://preview--agro-hub-creator.lovable.app/', '_blank')} />
         <div className="container mx-auto px-4 py-8">
           <div className="text-center">Chargement...</div>
         </div>
@@ -174,7 +174,7 @@ export default function AdminDashboard() {
 
   return (
     <div className="min-h-screen bg-background">
-      <Header onCartClick={() => {}} onMenuClick={() => {}} />
+      <Header onMenuClick={() => {}} onOrderClick={() => window.open('https://preview--agro-hub-creator.lovable.app/', '_blank')} />
       
       <main className="container mx-auto px-4 py-8">
         <div className="mb-8">

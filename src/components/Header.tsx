@@ -1,17 +1,14 @@
-import { ShoppingCart, Menu, Phone, MapPin } from 'lucide-react';
+import { Menu, Phone, MapPin, ShoppingCart } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { Badge } from '@/components/ui/badge';
-import { useSupabaseCart } from '@/hooks/useSupabaseCart';
 import { useTranslation } from 'react-i18next';
 import { LanguageSwitcher } from '@/components/LanguageSwitcher';
 
 interface HeaderProps {
-  onCartClick: () => void;
   onMenuClick: () => void;
+  onOrderClick: () => void;
 }
 
-export function Header({ onCartClick, onMenuClick }: HeaderProps) {
-  const { itemCount } = useSupabaseCart();
+export function Header({ onMenuClick, onOrderClick }: HeaderProps) {
   const { t } = useTranslation();
 
   return (
@@ -52,18 +49,6 @@ export function Header({ onCartClick, onMenuClick }: HeaderProps) {
             <a href="/" className="text-foreground hover:text-primary transition-colors font-medium">
               {t('nav.home')}
             </a>
-            <a href="/legumes" className="text-foreground hover:text-primary transition-colors font-medium">
-              {t('nav.vegetables')}
-            </a>
-            <a href="/fruits" className="text-foreground hover:text-primary transition-colors font-medium">
-              {t('nav.fruits')}
-            </a>
-            <a href="/salades" className="text-foreground hover:text-primary transition-colors font-medium">
-              {t('nav.salads')}
-            </a>
-            <a href="/herbes" className="text-foreground hover:text-primary transition-colors font-medium">
-              {t('nav.herbs')}
-            </a>
             <a href="/blog" className="text-foreground hover:text-primary transition-colors font-medium">
               {t('nav.blog')}
             </a>
@@ -77,28 +62,22 @@ export function Header({ onCartClick, onMenuClick }: HeaderProps) {
             <LanguageSwitcher />
             
             <Button 
+              variant="default" 
+              size="sm"
+              onClick={onOrderClick}
+              className="hidden sm:inline-flex text-sm font-medium"
+            >
+              <ShoppingCart className="h-4 w-4 mr-2" />
+              {t('nav.order', 'Commander')}
+            </Button>
+            
+            <Button 
               variant="ghost" 
               size="sm"
               onClick={() => window.location.href = '/auth'}
               className="hidden sm:inline-flex text-sm font-medium"
             >
               🔐 {t('nav.admin')}
-            </Button>
-            <Button 
-              variant="outline" 
-              size="icon" 
-              onClick={onCartClick}
-              className="relative bg-primary/10 border-primary/20 hover:bg-primary/20"
-            >
-              <ShoppingCart className="h-5 w-5" />
-              {itemCount > 0 && (
-                <Badge 
-                  variant="destructive" 
-                  className="absolute -top-2 -right-2 h-5 w-5 flex items-center justify-center p-0 text-xs"
-                >
-                  {itemCount}
-                </Badge>
-              )}
             </Button>
             
             <Button 

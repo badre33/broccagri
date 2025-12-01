@@ -4,16 +4,15 @@ import { Card, CardContent } from '@/components/ui/card';
 import { useCategories } from '@/hooks/useProducts';
 import { useTranslation } from 'react-i18next';
 import { useSwipeGesture } from '@/hooks/useSwipeGesture';
+import { ExternalLink } from 'lucide-react';
 import categoryVegetables from '@/assets/category-vegetables.jpg';
 import categoryFruits from '@/assets/category-fruits.jpg';
 import categoryHerbs from '@/assets/category-herbs.jpg';
 import categorySalades from '@/assets/category-salades.jpg';
 
-interface CategoriesProps {
-  onCategoryClick: (category: string) => void;
-}
+const SHOP_URL = 'https://preview--agro-hub-creator.lovable.app/';
 
-export function Categories({ onCategoryClick }: CategoriesProps) {
+export function Categories() {
   const { categories, loading } = useCategories();
   const { t, i18n } = useTranslation();
   const isArabic = i18n.language === 'ar';
@@ -23,20 +22,20 @@ export function Categories({ onCategoryClick }: CategoriesProps) {
   const swipeElementRef = useSwipeGesture({
     onSwipeLeft: () => {
       if (currentCategoryIndex < categories.length - 1) {
-        const nextIndex = currentCategoryIndex + 1;
-        setCurrentCategoryIndex(nextIndex);
-        onCategoryClick(categories[nextIndex].slug);
+        setCurrentCategoryIndex(currentCategoryIndex + 1);
       }
     },
     onSwipeRight: () => {
       if (currentCategoryIndex > 0) {
-        const prevIndex = currentCategoryIndex - 1;
-        setCurrentCategoryIndex(prevIndex);
-        onCategoryClick(categories[prevIndex].slug);
+        setCurrentCategoryIndex(currentCategoryIndex - 1);
       }
     },
     threshold: 50
   });
+
+  const handleCategoryClick = () => {
+    window.open(SHOP_URL, '_blank');
+  };
 
   // Mapping des images par slug de catégorie
   const categoryImages = {
@@ -89,7 +88,7 @@ export function Categories({ onCategoryClick }: CategoriesProps) {
                 }`}
                 onClick={() => {
                   setCurrentCategoryIndex(index);
-                  onCategoryClick(category.slug);
+                  handleCategoryClick();
                 }}
               >
                 <div className="relative h-24 w-32 rounded-lg overflow-hidden mb-2 min-h-[44px]">
@@ -127,7 +126,7 @@ export function Categories({ onCategoryClick }: CategoriesProps) {
               key={category.id} 
               className="premium-card cursor-pointer group overflow-hidden"
               style={{ minHeight: '44px' }}
-              onClick={() => onCategoryClick(category.slug)}
+              onClick={handleCategoryClick}
             >
               <div className="relative h-48 overflow-hidden">
                 <img 
@@ -147,7 +146,8 @@ export function Categories({ onCategoryClick }: CategoriesProps) {
               </div>
               <CardContent className="p-4">
                 <Button variant="premium" className="w-full min-h-[44px]">
-                  {t('categories.viewProducts', 'Voir les produits')}
+                  <ExternalLink className="h-4 w-4 mr-2" />
+                  {t('categories.shopNow', 'Commander')}
                 </Button>
               </CardContent>
             </Card>

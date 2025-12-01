@@ -2,9 +2,7 @@ import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
-import { Cart } from '@/components/Cart';
 import { WhatsAppButton } from '@/components/WhatsAppButton';
-import { CheckoutButton } from '@/components/CheckoutButton';
 import { MobileMenu } from '@/components/MobileMenu';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/custom-button';
@@ -17,12 +15,15 @@ import contactHero from '@/assets/contact-hero.jpg';
 
 export default function ContactPage() {
   const { t } = useTranslation();
-  const [isCartOpen, setIsCartOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const { toast } = useToast();
   
   // Assurer la gestion RTL
   useGlobalDirection();
+
+  const handleOrderClick = () => {
+    window.open('https://preview--agro-hub-creator.lovable.app/', '_blank');
+  };
   
   const [formData, setFormData] = useState({
     name: '',
@@ -52,8 +53,8 @@ export default function ContactPage() {
   return (
     <div className="min-h-screen bg-background">
       <Header 
-        onCartClick={() => setIsCartOpen(true)}
         onMenuClick={() => setIsMobileMenuOpen(true)}
+        onOrderClick={handleOrderClick}
       />
       
       <main>
@@ -279,18 +280,12 @@ export default function ContactPage() {
       
       <Footer />
       
-      <Cart 
-        isOpen={isCartOpen}
-        onClose={() => setIsCartOpen(false)}
-      />
-      
       <MobileMenu 
         isOpen={isMobileMenuOpen}
         onClose={() => setIsMobileMenuOpen(false)}
       />
       
       <WhatsAppButton />
-      <CheckoutButton />
     </div>
   );
 }

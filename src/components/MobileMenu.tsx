@@ -1,4 +1,4 @@
-import { X } from 'lucide-react';
+import { X, ShoppingCart } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useTranslation } from 'react-i18next';
 
@@ -10,6 +10,11 @@ interface MobileMenuProps {
 export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
   const { t, i18n } = useTranslation();
   const isArabic = i18n.language === 'ar';
+
+  const handleOrderClick = () => {
+    window.open('https://preview--agro-hub-creator.lovable.app/', '_blank');
+    onClose();
+  };
   
   if (!isOpen) return null;
 
@@ -44,34 +49,13 @@ export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
             >
               {t('nav.home')}
             </a>
-            <a 
-              href="/legumes" 
-              className="block px-4 py-3 text-foreground hover:bg-primary/5 hover:text-primary transition-colors font-medium rounded-md min-h-[44px] flex items-center"
-              onClick={onClose}
+            <button 
+              onClick={handleOrderClick}
+              className="w-full text-left block px-4 py-3 text-foreground hover:bg-primary/5 hover:text-primary transition-colors font-medium rounded-md min-h-[44px] flex items-center"
             >
-              {t('nav.vegetables')}
-            </a>
-            <a 
-              href="/fruits" 
-              className="block px-4 py-3 text-foreground hover:bg-primary/5 hover:text-primary transition-colors font-medium rounded-md min-h-[44px] flex items-center"
-              onClick={onClose}
-            >
-              {t('nav.fruits')}
-            </a>
-            <a 
-              href="/salades" 
-              className="block px-4 py-3 text-foreground hover:bg-primary/5 hover:text-primary transition-colors font-medium rounded-md min-h-[44px] flex items-center"
-              onClick={onClose}
-            >
-              {t('nav.salads')}
-            </a>
-            <a 
-              href="/herbes" 
-              className="block px-4 py-3 text-foreground hover:bg-primary/5 hover:text-primary transition-colors font-medium rounded-md min-h-[44px] flex items-center"
-              onClick={onClose}
-            >
-              {t('nav.herbs')}
-            </a>
+              <ShoppingCart className="h-4 w-4 mr-2" />
+              {t('nav.order', 'Commander')}
+            </button>
             <a 
               href="/blog" 
               className="block px-4 py-3 text-foreground hover:bg-primary/5 hover:text-primary transition-colors font-medium rounded-md min-h-[44px] flex items-center"
