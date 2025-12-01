@@ -6,7 +6,6 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { AuthProvider } from "@/components/AuthProvider";
 import { ProtectedRoute } from "@/components/ProtectedRoute";
 import Index from "./pages/Index";
-import CategoryPage from "./pages/CategoryPage";
 import ContactPage from "./pages/ContactPage";
 import BlogPage from "./pages/BlogPage";
 import AdminDashboard from "./pages/AdminDashboard";
@@ -24,10 +23,6 @@ const App = () => (
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<Index />} />
-            <Route path="/legumes" element={<CategoryPage />} />
-            <Route path="/fruits" element={<CategoryPage />} />
-            <Route path="/salades" element={<CategoryPage />} />
-            <Route path="/herbes" element={<CategoryPage />} />
             <Route path="/contact" element={<ContactPage />} />
             <Route path="/blog" element={<BlogPage />} />
         <Route path="/admin" element={
