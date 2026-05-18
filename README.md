@@ -1,73 +1,44 @@
-# Welcome to your Lovable project
+# Broccagri — Site vitrine
 
-## Project info
+Site vitrine de Broccagri, producteur et exportateur de fruits et légumes frais du terroir marocain. Optimisé SEO, multilingue (FR / AR / ES / EN), avec contenu éditorial (présentation, blog, fiches produits, pages catégories) qui redirige le trafic vers la boutique sur `/boutique`.
 
-**URL**: https://lovable.dev/projects/4bc9ba79-50b0-42dc-8433-f3e60b7337f1
+## Stack
 
-## How can I edit this code?
+- Vite + React 18 + TypeScript
+- shadcn/ui + Tailwind CSS
+- i18next (FR / AR avec RTL, ES / EN à venir)
+- Supabase (catalogue produits + catégories)
+- React Router
 
-There are several ways of editing your application.
-
-**Use Lovable**
-
-Simply visit the [Lovable Project](https://lovable.dev/projects/4bc9ba79-50b0-42dc-8433-f3e60b7337f1) and start prompting.
-
-Changes made via Lovable will be committed automatically to this repo.
-
-**Use your preferred IDE**
-
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
-
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
+## Développement local
 
 ```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
+npm install
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+Le serveur démarre sur `http://localhost:8080`.
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+## Variables d'environnement
 
-**Use GitHub Codespaces**
+Copier `.env.example` vers `.env.local` et renseigner :
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+```
+VITE_SUPABASE_URL=
+VITE_SUPABASE_PUBLISHABLE_KEY=
+VITE_SUPABASE_PROJECT_ID=
+```
 
-## What technologies are used for this project?
+## Architecture
 
-This project is built with:
+- `/` → Landing (Hero, Categories, About, Contact)
+- `/contact` → Page contact
+- `/blog` → Articles
+- `/legumes`, `/fruits`, `/salades`, `/herbes` → Pages catégorie SEO (à venir)
+- `/produits/[slug]` → Fiche produit SEO (à venir)
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+La boutique vit séparément sur `/boutique` via reverse proxy (repo `broccagri-shop`).
 
-## How can I deploy this project?
+## Déploiement
 
-Simply open [Lovable](https://lovable.dev/projects/4bc9ba79-50b0-42dc-8433-f3e60b7337f1) and click on Share -> Publish.
-
-## Can I connect a custom domain to my Lovable project?
-
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+Déployé via Netlify. Le reverse proxy redirige `/boutique/*` vers l'app shop.

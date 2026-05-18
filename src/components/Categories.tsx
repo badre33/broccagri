@@ -9,8 +9,7 @@ import categoryVegetables from '@/assets/category-vegetables.jpg';
 import categoryFruits from '@/assets/category-fruits.jpg';
 import categoryHerbs from '@/assets/category-herbs.jpg';
 import categorySalades from '@/assets/category-salades.jpg';
-
-const SHOP_URL = 'https://preview--agro-hub-creator.lovable.app/';
+import { SHOP_URL } from '@/config/site';
 
 export function Categories() {
   const { categories, loading } = useCategories();

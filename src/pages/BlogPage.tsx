@@ -12,6 +12,7 @@ import { useGlobalDirection } from '@/hooks/useGlobalDirection';
 import heroImage from '@/assets/hero-fresh-produce.jpg';
 import categoryVegetables from '@/assets/category-vegetables.jpg';
 import blogHeroNew from '@/assets/blog-hero-new.jpg';
+import { SHOP_URL } from '@/config/site';
 
 export default function BlogPage() {
   const { t } = useTranslation();
@@ -22,7 +23,7 @@ export default function BlogPage() {
   useGlobalDirection();
 
   const handleOrderClick = () => {
-    window.open('https://preview--agro-hub-creator.lovable.app/', '_blank');
+    window.open(SHOP_URL, '_blank');
   };
 
   const blogPosts = [

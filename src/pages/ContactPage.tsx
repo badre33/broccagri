@@ -12,17 +12,18 @@ import { Phone, MapPin, Clock, MessageCircle, Mail, Send, Users, Truck, Shield }
 import { useToast } from '@/hooks/use-toast';
 import { useGlobalDirection } from '@/hooks/useGlobalDirection';
 import contactHero from '@/assets/contact-hero.jpg';
+import { SHOP_URL } from '@/config/site';
 
 export default function ContactPage() {
   const { t } = useTranslation();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const { toast } = useToast();
-  
+
   // Assurer la gestion RTL
   useGlobalDirection();
 
   const handleOrderClick = () => {
-    window.open('https://preview--agro-hub-creator.lovable.app/', '_blank');
+    window.open(SHOP_URL, '_blank');
   };
   
   const [formData, setFormData] = useState({

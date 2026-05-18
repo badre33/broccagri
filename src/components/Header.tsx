@@ -37,9 +37,9 @@ export function Header({ onMenuClick, onOrderClick }: HeaderProps) {
         <div className="flex items-center justify-between">
           {/* Logo BroccAgri */}
           <div>
-            <img 
-              src="/lovable-uploads/d1e12569-f4ca-4c88-9d38-38d5962561d4.png" 
-              alt="BroccAgri - Produits agricoles frais du Maroc" 
+            <img
+              src="/broccagri-logo.png"
+              alt="Broccagri — fruits et légumes frais du Maroc"
               className="h-12 w-auto"
             />
           </div>

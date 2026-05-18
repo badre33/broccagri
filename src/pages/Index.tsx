@@ -8,6 +8,7 @@ import { Footer } from '@/components/Footer';
 import { WhatsAppButton } from '@/components/WhatsAppButton';
 import { MobileMenu } from '@/components/MobileMenu';
 import { useGlobalDirection } from '@/hooks/useGlobalDirection';
+import { SHOP_URL } from '@/config/site';
 
 const Index = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -16,7 +17,7 @@ const Index = () => {
   useGlobalDirection();
 
   const handleOrderClick = () => {
-    window.open('https://preview--agro-hub-creator.lovable.app/', '_blank');
+    window.open(SHOP_URL, '_blank');
   };
 
   return (

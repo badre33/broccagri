@@ -1,0 +1,67 @@
+# Netlify config — site vitrine Broccagri (déployé sur broccagri.ma)
+# Le shop vit sur un autre site Netlify mais est servi sous /boutique
+# via un proxy (status 200) pour préserver l'autorité du domaine et le SEO unifié.
+
+[build]
+  publish = "dist"
+  command = "npm run build"
+
+[build.environment]
+  NODE_VERSION = "20"
+
+# Cache long pour les assets versionnés par Vite
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+# En-têtes de sécurité de base
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "geolocation=(), microphone=(), camera=()"
+
+# Proxy /boutique vers le shop (l'URL dans le navigateur reste broccagri.ma/boutique)
+# IMPORTANT : à mettre AVANT le SPA fallback sinon il sera capturé.
+[[redirects]]
+  from = "/boutique/*"
+  to = "https://broccagrishop.netlify.app/boutique/:splat"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/boutique"
+  to = "https://broccagrishop.netlify.app/boutique/"
+  status = 200
+  force = true
+
+# Pages catégorie (à implémenter en phase SEO) — pour l'instant on les laisse
+# rediriger vers le filtre du shop pour éviter les 404
+[[redirects]]
+  from = "/legumes"
+  to = "/boutique/?cat=legumes"
+  status = 302
+
+[[redirects]]
+  from = "/fruits"
+  to = "/boutique/?cat=fruits"
+  status = 302
+
+[[redirects]]
+  from = "/salades"
+  to = "/boutique/?cat=salades"
+  status = 302
+
+[[redirects]]
+  from = "/herbes"
+  to = "/boutique/?cat=herbes"
+  status = 302
+
+# SPA fallback (React Router) — DOIT être en dernier
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
